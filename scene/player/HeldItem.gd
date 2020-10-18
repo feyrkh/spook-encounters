@@ -1,9 +1,44 @@
 extends Node2D
 
 # See also MouseRotationPlayerController.gd
+export(NodePath) var itemLayer # where to put items that are dropped
 enum {None, Left, DownLeft, Down, DownRight, Right, UpRight, Up, UpLeft}
-var facing = None
+var facing = Right
+var heldItem = null
 
+func _ready():
+	if itemLayer == null:
+		itemLayer = '../..'
+
+func _process(delta):
+	if Input.is_action_just_pressed('drop_held_item'): dropItem()
+	
+func pickUpItem(item) -> bool:
+	if heldItem != null: return false
+	heldItem = item
+	if item == null: return false
+	if item.has_method('onPickup'):
+		item.onPickup()
+	var attachPoint:Node2D = getAttachPoint(facing)
+	if !attachPoint: return false
+	heldItem.get_parent().remove_child(heldItem)
+	attachPoint.add_child(heldItem)
+	heldItem.position = Vector2.ZERO
+	if item.has_method('onPickup'):
+		item.onPickup()
+	return true
+	
+func dropItem() -> bool:
+	if heldItem == null: return false
+	heldItem.get_parent().remove_child(heldItem)
+	
+	get_node(itemLayer).add_child(heldItem)
+	heldItem.global_position = getAttachPoint(facing).global_position + Vector2(rand_range(-5, 5), rand_range(20, 40))
+	if heldItem.has_method('onDrop'):
+		heldItem.onDrop()
+	heldItem = null
+	return true
+	
 func _on_MoveController_facingChange(oldFacing, newFacing):
 	facing = newFacing
 	var oldAttach:Node2D = getAttachPoint(oldFacing)
@@ -25,3 +60,8 @@ func getAttachPoint(facing):
 		UpRight: return $UpRight
 		Up: return $Up
 		Down: return $Down
+
+
+func _on_ItemDetector_itemPickupRequested(newItem):
+	if heldItem: dropItem()
+	pickUpItem(newItem)

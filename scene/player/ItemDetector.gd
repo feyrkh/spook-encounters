@@ -1,11 +1,18 @@
 extends Area2D
 
+signal itemPickupRequested
+
 var itemsInRange = []
 var highlightedItem = null
 
 func _process(delta):
 	if Input.is_action_just_pressed("cycle_selected_item"):
 		cycleSelectedItem()
+	if Input.is_action_just_pressed("pickup_item"):
+		emit_signal("itemPickupRequested", highlightedItem)
+		highlightedItem = null
+		yield(get_tree().create_timer(0.01), "timeout")
+		updateHighlight()
 
 func cycleSelectedItem():
 	if itemsInRange.size() == 0: return
@@ -24,6 +31,8 @@ func updateHighlight():
 	# if first item in line isn't highlighted already, highlight it
 	elif itemsInRange.size() > 0 and highlightedItem != itemsInRange[0]:
 		highlightedItem = itemsInRange[0]
+		var itemOwner = highlightedItem.get_parent()
+		itemOwner.move_child(highlightedItem, itemOwner.get_child_count())
 		if highlightedItem.has_method('addItemSelectedHighlight'):
 			print('adding highlight to ', highlightedItem.name) 
 			highlightedItem.addItemSelectedHighlight()

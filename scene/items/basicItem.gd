@@ -23,3 +23,10 @@ func addItemInRangeHighlight():
 func removeItemInRangeHighlight():
 	itemInRange = false
 	updateHighlight()
+
+func onPickup():
+	$ItemPickupArea.monitorable = false
+
+func onDrop():
+	$ItemPickupArea.monitorable = true
+	

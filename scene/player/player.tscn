@@ -50,7 +50,7 @@ radius = 24.5103
 height = 45.3058
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 491, 352 )
+position = Vector2( -2, -9 )
 collision_layer = 2
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -110,3 +110,4 @@ shape = SubResource( 3 )
 [connection signal="facingChange" from="MoveController" to="HeldItem" method="_on_MoveController_facingChange"]
 [connection signal="area_entered" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_entered"]
 [connection signal="area_exited" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_exited"]
+[connection signal="itemPickupRequested" from="ItemDetector" to="HeldItem" method="_on_ItemDetector_itemPickupRequested"]

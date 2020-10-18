@@ -5,17 +5,24 @@
 
 [node name="Node2D" type="Node2D"]
 
+[node name="ItemLayer" type="Node2D" parent="."]
+
+[node name="flashlight" parent="ItemLayer" instance=ExtResource( 2 )]
+position = Vector2( 557.648, 278.551 )
+
+[node name="crowbar" parent="ItemLayer" instance=ExtResource( 2 )]
+position = Vector2( 200.291, 114.441 )
+
+[node name="candle" parent="ItemLayer" instance=ExtResource( 2 )]
+position = Vector2( 188.993, 237.524 )
+
+[node name="matches" parent="ItemLayer" instance=ExtResource( 2 )]
+position = Vector2( 159.263, 262.497 )
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 453.465, 262.176 )
 
-[node name="flashlight" parent="." instance=ExtResource( 2 )]
-position = Vector2( 557.648, 278.551 )
+[node name="HeldItem" parent="Player" index="3"]
+itemLayer = NodePath("../../ItemLayer")
 
-[node name="crowbar" parent="." instance=ExtResource( 2 )]
-position = Vector2( 200.291, 114.441 )
-
-[node name="candle" parent="." instance=ExtResource( 2 )]
-position = Vector2( 188.993, 237.524 )
-
-[node name="matches" parent="." instance=ExtResource( 2 )]
-position = Vector2( 159.263, 262.497 )
+[editable path="Player"]
