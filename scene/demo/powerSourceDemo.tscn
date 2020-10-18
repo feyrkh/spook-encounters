@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scene/ghost/Ghost.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scene/ghost/source/PowerSource.tscn" type="PackedScene" id=2]
+
+[node name="PowerSourceDemo" type="Node2D"]
+
+[node name="ghost" parent="." instance=ExtResource( 1 )]
+position = Vector2( 410.653, 252.662 )
+electricalSource = true
+thermalSource = true
+
+[node name="thermal1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 116.919, 106.389 )
+thermalSource = true
+
+[node name="ritual1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 508.168, 265.743 )
+ritualSource = true
+curPower = 100.0
+maxPower = 100.0
+
+[node name="electrical1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 396.382, 75.4697 )
+electricalSource = true
+
+[node name="electrical2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 931.526, 497.638 )
+electricalSource = true
+
+[node name="electrical3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 518.871, 363.258 )
+electricalSource = true
+
+[node name="electrical4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 187.082, 363.258 )
+electricalSource = true
+
+[node name="thermal2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 688.927, 420.34 )
+thermalSource = true
+
+[node name="thermal3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 357.138, 495.26 )
+thermalSource = true
+
+[node name="thermal4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 843.524, 100.443 )
+thermalSource = true

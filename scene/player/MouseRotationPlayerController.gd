@@ -75,7 +75,7 @@ func _process(_delta):
 	if moveVector != noneVector:
 		moveVector = moveVector.normalized() * movePixelsPerSecond
 		moveVector = kinematicBody2D.move_and_slide(moveVector * movingBackwardPenalty)
-		print("Moving: ", moveVector)
+		#print("Moving: ", moveVector)
 
 func updateFacing():
 	var newFacing = None
@@ -203,7 +203,7 @@ func updateMovement(_delta):
 		print("Changing animation: ", animation, " flipped: ", flipped)
 		
 	if newMoveVector != moveVector:
-		print("Changing move vector: ", moveVector, " became ", newMoveVector)
+		#print("Changing move vector: ", moveVector, " became ", newMoveVector)
 		moveVector = newMoveVector
 		if moveVector == Vector2.ZERO:
 			animatedSprite.stop()

@@ -8,15 +8,61 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "MovementController",
+"class": "FloatController",
+"language": "GDScript",
+"path": "res://scene/ghost/move/FloatController.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "GhostController",
+"language": "GDScript",
+"path": "res://scene/ghost/GhostController.gd"
+}, {
+"base": "Node2D",
+"class": "GoalController",
+"language": "GDScript",
+"path": "res://scene/ghost/goal/GoalController.gd"
+}, {
+"base": "Node2D",
+"class": "MovementController",
+"language": "GDScript",
+"path": "res://scene/ghost/move/MovementController.gd"
+}, {
+"base": "Node2D",
+"class": "PowerSource",
+"language": "GDScript",
+"path": "res://scene/ghost/source/PowerSource.gd"
+}, {
+"base": "Node",
+"class": "PowerSourceUtil",
+"language": "GDScript",
+"path": "res://scene/ghost/source/PowerSourceUtil.gd"
+} ]
 _global_script_class_icons={
-
+"FloatController": "",
+"GhostController": "",
+"GoalController": "",
+"MovementController": "",
+"PowerSource": "",
+"PowerSourceUtil": ""
 }
 
 [application]
 
 config/name="Spook Encounters"
 config/icon="res://icon.png"
+
+[debug]
+
+gdscript/warnings/unused_variable=false
+gdscript/warnings/unused_argument=false
+gdscript/warnings/return_value_discarded=false
+
+[display]
+
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [editor_plugins]
 
@@ -44,3 +90,19 @@ p1_move_right={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
  ]
 }
+cycle_selected_item={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777218,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="PhysicalObstruction"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Ghost"
+2d_physics/layer_4="PickableItems"
+
+[rendering]
+
+quality/2d/use_pixel_snap=true

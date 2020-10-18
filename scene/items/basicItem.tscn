@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scene/items/placeholderItem.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scene/items/basicItem.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 25.4773, 25.8857 )
+
+[node name="BasicItem" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="placeholderImage" parent="." instance=ExtResource( 1 )]
+position = Vector2( -1.64295, -24.9623 )
+
+[node name="ItemPickupArea" type="Area2D" parent="."]
+monitoring = false
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemPickupArea"]
+visible = false
+position = Vector2( 0.594604, -24.3788 )
+shape = SubResource( 1 )
