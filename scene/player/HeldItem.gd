@@ -33,7 +33,7 @@ func dropItem() -> bool:
 	heldItem.get_parent().remove_child(heldItem)
 	
 	get_node(itemLayer).add_child(heldItem)
-	heldItem.global_position = getAttachPoint(facing).global_position + Vector2(rand_range(-5, 5), rand_range(20, 40))
+	heldItem.global_position = getAttachPoint(facing).global_position + getAttachPoint(facing).position + Vector2(0, rand_range(10, 20))
 	if heldItem.has_method('onDrop'):
 		heldItem.onDrop()
 	heldItem = null
