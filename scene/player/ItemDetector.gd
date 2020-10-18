@@ -4,38 +4,39 @@ signal itemPickupRequested
 
 var itemsInRange = []
 var highlightedItem = null
+var highlightUpdateTimer = 0
 
 func _process(delta):
-	if Input.is_action_just_pressed("cycle_selected_item"):
-		cycleSelectedItem()
+	#if Input.is_action_just_pressed("cycle_selected_item"):
+	#	cycleSelectedItem()
 	if Input.is_action_just_pressed("pickup_item"):
 		emit_signal("itemPickupRequested", highlightedItem)
 		highlightedItem = null
-		yield(get_tree().create_timer(0.01), "timeout")
+		yield(get_tree().create_timer(0.001), "timeout")
 		updateHighlight()
-
-func cycleSelectedItem():
-	if itemsInRange.size() == 0: return
-	itemsInRange.push_back(itemsInRange.pop_front())
-	updateHighlight()
+	if itemsInRange.size():
+		highlightUpdateTimer -= delta
+		if highlightUpdateTimer <= 0:
+			highlightUpdateTimer = 0.1
+			updateHighlight()
 
 func updateHighlight():
-	# remove highlighting from current highlightedItem if it's no longer first in line
-	if highlightedItem and (itemsInRange.size() == 0 or highlightedItem != itemsInRange[0]):
-		if highlightedItem.has_method('removeItemSelectedHighlight'): 
-			print('removing highlight from ', highlightedItem.name)
+	# Find the closest-to-the-mouse item in range and highlight it
+	var closestDistSquared = 2000000000
+	var closestItem = null
+	var mousePos:Vector2 = get_global_mouse_position()
+	for item in itemsInRange:
+		var distSquared = mousePos.distance_squared_to(item.global_position)
+		if distSquared < closestDistSquared:
+			closestDistSquared = distSquared
+			closestItem = item
+	if closestItem != highlightedItem: 
+		# swap highlights
+		if highlightedItem and highlightedItem.has_method('removeItemSelectedHighlight'):
 			highlightedItem.removeItemSelectedHighlight()
-	
-	# if there are no items in range, clear highlightedItem
-	if itemsInRange.size() == 0: highlightedItem = null
-	# if first item in line isn't highlighted already, highlight it
-	elif itemsInRange.size() > 0 and highlightedItem != itemsInRange[0]:
-		highlightedItem = itemsInRange[0]
-		var itemOwner = highlightedItem.get_parent()
-		itemOwner.move_child(highlightedItem, itemOwner.get_child_count())
-		if highlightedItem.has_method('addItemSelectedHighlight'):
-			print('adding highlight to ', highlightedItem.name) 
-			highlightedItem.addItemSelectedHighlight()
+		if closestItem and closestItem.has_method('addItemSelectedHighlight'):
+			closestItem.addItemSelectedHighlight()
+		highlightedItem = closestItem
 
 func _on_ItemDetector_area_entered(area):
 	print('something entered itemdetector: ', area)
