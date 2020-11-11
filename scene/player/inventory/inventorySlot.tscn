@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scene/player/inventory/itemFrame.jpg" type="Texture" id=1]
+[ext_resource path="res://img/itemImage/default.jpg" type="Texture" id=2]
+
+[node name="InventorySlot" type="Node2D"]
+
+[node name="itemFrame" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="ItemIcon" type="Sprite" parent="."]
+visible = false
+position = Vector2( 48, 64 )
+texture = ExtResource( 2 )

@@ -1,4 +1,5 @@
 extends Node2D
+class_name HeldItem
 
 # See also MouseRotationPlayerController.gd
 export(NodePath) var itemLayer # where to put items that are dropped
@@ -6,27 +7,28 @@ enum {None, Left, DownLeft, Down, DownRight, Right, UpRight, Up, UpLeft}
 var facing = Right
 var heldItem = null
 
+signal item_drop_requested # (heldItem)
+
 func _ready():
 	if itemLayer == null:
 		itemLayer = '../..'
 
-func _process(delta):
-	if Input.is_action_just_pressed('drop_held_item'): dropItem()
-	
-func pickUpItem(item) -> bool:
-	if heldItem != null: return false
-	heldItem = item
-	if item == null: return false
-	if item.has_method('onPickup'):
-		item.onPickup()
+func holdItem(item):
 	var attachPoint:Node2D = getAttachPoint(facing)
-	if !attachPoint: return false
-	heldItem.get_parent().remove_child(heldItem)
+	unholdItem()
+	heldItem = item
+	heldItem.visible = true
+	if heldItem.get_parent() != null: 
+		heldItem.get_parent().remove_child(heldItem)
 	attachPoint.add_child(heldItem)
 	heldItem.position = Vector2.ZERO
-	if item.has_method('onPickup'):
-		item.onPickup()
-	return true
+
+func unholdItem():
+	if heldItem:
+		# Already holding an item - it must be going back into inventory, so make it invisible
+		heldItem.visible = false
+		if heldItem.get_parent() != null:
+			heldItem.get_parent().remove_child(heldItem)
 	
 func dropItem() -> bool:
 	if heldItem == null: return false
@@ -34,8 +36,10 @@ func dropItem() -> bool:
 	
 	get_node(itemLayer).add_child(heldItem)
 	heldItem.global_position = getAttachPoint(facing).global_position + getAttachPoint(facing).position + Vector2(0, rand_range(10, 20))
+	heldItem.isHeld = false
 	if heldItem.has_method('onDrop'):
 		heldItem.onDrop()
+	emit_signal("itemDropped", heldItem)
 	heldItem = null
 	return true
 	
@@ -50,8 +54,8 @@ func _on_MoveController_facingChange(oldFacing, newFacing):
 		oldAttach.remove_child(child)
 		newAttach.add_child(child)
 
-func getAttachPoint(facing):
-	match facing:
+func getAttachPoint(_facing):
+	match _facing:
 		Left: return $Left
 		DownLeft: return $DownLeft
 		UpLeft: return $UpLeft
@@ -62,6 +66,6 @@ func getAttachPoint(facing):
 		Down: return $Down
 
 
-func _on_ItemDetector_itemPickupRequested(newItem):
-	if heldItem: dropItem()
-	pickUpItem(newItem)
+#func _on_ItemDetector_itemPickupRequested(newItem):
+#	if heldItem: dropItem()
+#	pickUpItem(newItem)

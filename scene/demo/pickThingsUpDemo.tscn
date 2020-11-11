@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scene/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scene/items/basicItem.tscn" type="PackedScene" id=2]
+[ext_resource path="res://img/itemImage/flashlight.jpg" type="Texture" id=3]
 
 [node name="Node2D" type="Node2D"]
 
@@ -9,6 +10,7 @@
 
 [node name="flashlight" parent="ItemLayer" instance=ExtResource( 2 )]
 position = Vector2( 557.648, 278.551 )
+itemSlotIconTexture = ExtResource( 3 )
 
 [node name="crowbar" parent="ItemLayer" instance=ExtResource( 2 )]
 position = Vector2( 200.291, 114.441 )

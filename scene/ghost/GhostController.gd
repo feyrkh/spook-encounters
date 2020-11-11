@@ -60,7 +60,7 @@ func targetNewPowerSource():
 	var allPowerSources = get_tree().get_nodes_in_group("powerSource")
 	var canDrainFrom = []
 	for powerSource in allPowerSources:
-		if powerSourcesCompatible(powerSource) && powerSource.curPower > 0:
+		if powerSourcesCompatible(powerSource) && powerSource.curPower > 0 && (!powerSource.get('isHeld')):
 			canDrainFrom.append(powerSource)
 	print("Found ", allPowerSources.size(), " power sources, ", canDrainFrom.size(), " of them are compatible with ", self.name)
 

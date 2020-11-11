@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scene/player/inventory/inventorySlot.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scene/player/inventory/emptyHandItem.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scene/player/inventory/PlayerInventory.gd" type="Script" id=3]
+
+[node name="PlayerInventory" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_top = 472.0
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemFrames" type="Node2D" parent="."]
+position = Vector2( 8, 0 )
+
+[node name="ItemSlot0" parent="ItemFrames" instance=ExtResource( 1 )]
+position = Vector2( 8, 472 )
+
+[node name="ItemSlot1" parent="ItemFrames" instance=ExtResource( 1 )]
+position = Vector2( 120, 472 )
+
+[node name="ItemSlot2" parent="ItemFrames" instance=ExtResource( 1 )]
+position = Vector2( 232, 472 )
+
+[node name="ItemSlot3" parent="ItemFrames" instance=ExtResource( 1 )]
+position = Vector2( 344, 472 )
+
+[node name="ItemSlot4" parent="ItemFrames" instance=ExtResource( 1 )]
+position = Vector2( 456, 472 )
+
+[node name="ItemSlot5" parent="ItemFrames" instance=ExtResource( 1 )]
+position = Vector2( 568, 472 )
+
+[node name="ItemSlot6" parent="ItemFrames" instance=ExtResource( 1 )]
+position = Vector2( 680, 472 )
+
+[node name="ItemSlot7" parent="ItemFrames" instance=ExtResource( 1 )]
+position = Vector2( 792, 472 )
+
+[node name="ItemSlot8" parent="ItemFrames" instance=ExtResource( 1 )]
+position = Vector2( 904, 472 )
+
+[node name="EmptyHandItem" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 64, 536 )

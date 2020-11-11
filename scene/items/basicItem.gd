@@ -2,6 +2,8 @@ extends Node2D
 
 var itemInRange = false
 var itemSelected = false
+var isHeld = false
+export(Texture) var itemSlotIconTexture
 
 func updateHighlight():
 	if itemSelected: $placeholderImage.setBackgroundColor(Color.lightgray)

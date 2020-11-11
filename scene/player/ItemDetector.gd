@@ -41,6 +41,8 @@ func updateHighlight():
 func _on_ItemDetector_area_entered(area):
 	print('something entered itemdetector: ', area)
 	var item = area.get_parent()
+	if item.isHeld: 
+		return # Don't count items which are already being held
 	itemsInRange.append(item)
 	if item.has_method('addItemInRangeHighlight'): 
 		print('adding in-range highlight to ', item.name)
