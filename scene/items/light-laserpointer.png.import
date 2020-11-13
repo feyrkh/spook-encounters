@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/light-flashlight.png-e7bb7820a4c9fc49bcc509d2951701a8.stex"
+path="res://.import/light-laserpointer.png-f21b5d334f1eb238576d4bca14408c97.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scene/props/furniture/light-flashlight.png"
-dest_files=[ "res://.import/light-flashlight.png-e7bb7820a4c9fc49bcc509d2951701a8.stex" ]
+source_file="res://scene/items/light-laserpointer.png"
+dest_files=[ "res://.import/light-laserpointer.png-f21b5d334f1eb238576d4bca14408c97.stex" ]
 
 [params]
 
