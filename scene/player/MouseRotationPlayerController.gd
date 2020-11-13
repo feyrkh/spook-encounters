@@ -4,6 +4,7 @@ extends Node2D
 enum {None, Left, DownLeft, Down, DownRight, Right, UpRight, Up, UpLeft}
 
 signal facingChange # (oldDirection, newDirection, angleDegrees)
+signal updateFacingAngle # (angleDegrees)
 
 const MOVE_BACK_PENALTY = 0.4
 const MOVE_SIDE_PENALTY = 0.7
@@ -41,6 +42,7 @@ const noneVector = Vector2.ZERO
 var animatedSprite:AnimatedSprite
 
 var facing = Right
+var facingAngle
 var moveDirection = None
 export var movePixelsPerSecond = 100
 var moveVector:Vector2 = noneVector
@@ -79,27 +81,30 @@ func _process(_delta):
 
 func updateFacing():
 	var newFacing = None
-	var facingAngle = rad2deg(get_angle_to(get_global_mouse_position()))
-	if facingAngle >= FACE_LEFT_MIN or facingAngle < FACE_LEFT_MAX: 
-		newFacing = Left # or on purpose - "left" straddles from 2pi-1/8pi, then crosses a discontinuity to -2pi+1/8pi
-	elif facingAngle >= FACE_DOWN_LEFT_MIN and facingAngle < FACE_DOWN_LEFT_MAX: 
-		newFacing = DownLeft 
-	elif facingAngle >= FACE_DOWN_MIN and facingAngle < FACE_DOWN_MAX: 
-		newFacing = Down
-	elif facingAngle >= FACE_DOWN_RIGHT_MIN and facingAngle < FACE_DOWN_RIGHT_MAX: 
-		newFacing = DownRight
-	elif facingAngle >= FACE_RIGHT_MIN and facingAngle < FACE_RIGHT_MAX: 
-		newFacing = Right
-	elif facingAngle >= FACE_UP_RIGHT_MIN and facingAngle < FACE_UP_RIGHT_MAX: 
-		newFacing = UpRight
-	elif facingAngle >= FACE_UP_MIN and facingAngle < FACE_UP_MAX: 
-		newFacing = Up
-	elif facingAngle >= FACE_UP_LEFT_MIN and facingAngle < FACE_UP_LEFT_MAX: 
-		newFacing = UpLeft
-	if newFacing != facing:
-		var cardinalFacingAngle = round(facingAngle/HALF_SECTOR_DEG)*HALF_SECTOR_DEG
-		emit_signal("facingChange", facing, newFacing, cardinalFacingAngle)
-		facing = newFacing
+	var newFacingAngle = rad2deg(get_angle_to(get_global_mouse_position()))
+	if newFacingAngle != facingAngle:
+		emit_signal('updateFacingAngle', newFacingAngle)
+		facingAngle = newFacingAngle
+		if facingAngle >= FACE_LEFT_MIN or facingAngle < FACE_LEFT_MAX: 
+			newFacing = Left # or on purpose - "left" straddles from 2pi-1/8pi, then crosses a discontinuity to -2pi+1/8pi
+		elif facingAngle >= FACE_DOWN_LEFT_MIN and facingAngle < FACE_DOWN_LEFT_MAX: 
+			newFacing = DownLeft 
+		elif facingAngle >= FACE_DOWN_MIN and facingAngle < FACE_DOWN_MAX: 
+			newFacing = Down
+		elif facingAngle >= FACE_DOWN_RIGHT_MIN and facingAngle < FACE_DOWN_RIGHT_MAX: 
+			newFacing = DownRight
+		elif facingAngle >= FACE_RIGHT_MIN and facingAngle < FACE_RIGHT_MAX: 
+			newFacing = Right
+		elif facingAngle >= FACE_UP_RIGHT_MIN and facingAngle < FACE_UP_RIGHT_MAX: 
+			newFacing = UpRight
+		elif facingAngle >= FACE_UP_MIN and facingAngle < FACE_UP_MAX: 
+			newFacing = Up
+		elif facingAngle >= FACE_UP_LEFT_MIN and facingAngle < FACE_UP_LEFT_MAX: 
+			newFacing = UpLeft
+		if newFacing != facing:
+			var cardinalFacingAngle = round(facingAngle/HALF_SECTOR_DEG)*HALF_SECTOR_DEG
+			emit_signal("facingChange", facing, newFacing, cardinalFacingAngle)
+			facing = newFacing
 
 func checkInputs(_delta):
 	var nextAction = None

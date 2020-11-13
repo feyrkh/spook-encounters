@@ -6,6 +6,8 @@ export(NodePath) var itemLayer # where to put items that are dropped
 enum {None, Left, DownLeft, Down, DownRight, Right, UpRight, Up, UpLeft}
 var facing = Right
 var heldItem = null
+onready var curAttachPoint = $Right
+var curAngleDegrees = 0
 
 signal item_drop_requested # (heldItem)
 
@@ -22,6 +24,7 @@ func holdItem(item):
 		heldItem.get_parent().remove_child(heldItem)
 	attachPoint.add_child(heldItem)
 	heldItem.position = Vector2.ZERO
+	heldItem.rotation_degrees = curAngleDegrees
 
 func unholdItem():
 	if heldItem:
@@ -49,11 +52,11 @@ func _on_MoveController_facingChange(oldFacing, newFacing, angleDegrees):
 	if !oldAttach: return
 	if oldAttach.get_child_count() == 0: return
 	var newAttach:Node2D = getAttachPoint(newFacing)
+	curAttachPoint = newAttach
 	if !newAttach: return
 	for child in oldAttach.get_children():
 		oldAttach.remove_child(child)
 		newAttach.add_child(child)
-		child.rotation_degrees = angleDegrees
 
 func getAttachPoint(_facing):
 	match _facing:
@@ -66,7 +69,13 @@ func getAttachPoint(_facing):
 		Up: return $Up
 		Down: return $Down
 
-
 #func _on_ItemDetector_itemPickupRequested(newItem):
 #	if heldItem: dropItem()
 #	pickUpItem(newItem)
+
+
+func _on_MoveController_updateFacingAngle(angleDegrees):
+	curAngleDegrees = angleDegrees
+	for child in curAttachPoint.get_children():
+		child.rotation_degrees = curAngleDegrees
+	
