@@ -5,7 +5,9 @@ signal itemUnequipped # (item)
 signal itemEquipped # (item)
 
 export(NodePath) var itemHolderPath
+export(NodePath) var itemDetectorPath
 var itemHolder:HeldItem
+var itemDetector:ItemDetector
 var emptyHandItem
 var invSlots = [null, null, null, null, null, null, null, null, null] # Actual objects that are held - not to be confused with their placeholder images
 var equippedItem = null
@@ -13,6 +15,7 @@ var equippedItem = null
 func _ready():
 	emptyHandItem = find_node("EmptyHandItem", true)
 	itemHolder = get_node(itemHolderPath)
+	itemDetector = get_node(itemDetectorPath)
 	connect("itemEquipped", itemHolder, 'onItemEquipped')
 	updateAllInvSlotImages()
 
@@ -21,6 +24,8 @@ func updateAllInvSlotImages():
 		updateInvSlotImage(i)
 
 func _process(delta):
+	if Input.is_action_just_pressed('use_item'):
+		useEquippedItem()
 	if Input.is_action_just_released('next_item'):
 		switchToNextItem(1)
 	if Input.is_action_just_released('prev_item'):
@@ -47,7 +52,16 @@ func _process(delta):
 		switchToItem(7)
 	if Input.is_action_just_pressed("inv_select_9"):
 		switchToItem(8)
-	
+
+func useEquippedItem():
+	if equippedItem == null && itemDetector.highlightedItem: 
+		if itemDetector.highlightedItem.has_method('onUseItemWithEmptyHand'):
+			itemDetector.highlightedItem.onUseItemWithEmptyHand()
+	elif equippedItem != null:
+		if itemDetector.highlightedItem && equippedItem.has_method('onUseItemOnTarget'):
+			equippedItem.onUseItemOnTarget(itemDetector.highlightedItem)
+		elif equippedItem.has_method('onUseItem'):
+			equippedItem.onUseItem()
 		
 func isRoomForNewItem():
 	for invSlot in invSlots:

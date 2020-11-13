@@ -113,6 +113,7 @@ shape = SubResource( 3 )
 
 [node name="PlayerInventory" parent="HudLayer" instance=ExtResource( 14 )]
 itemHolderPath = NodePath("../../HeldItem")
+itemDetectorPath = NodePath("../../ItemDetector")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

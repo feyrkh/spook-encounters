@@ -1,4 +1,5 @@
 extends Node2D
+class_name BasicItem
 
 var itemInRange = false
 var itemSelected = false
@@ -32,3 +33,5 @@ func onPickup():
 func onDrop():
 	$ItemPickupArea.monitorable = true
 	
+func onUseItem():
+	pass

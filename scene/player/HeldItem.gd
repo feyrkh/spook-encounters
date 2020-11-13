@@ -43,7 +43,7 @@ func dropItem() -> bool:
 	heldItem = null
 	return true
 	
-func _on_MoveController_facingChange(oldFacing, newFacing):
+func _on_MoveController_facingChange(oldFacing, newFacing, angleDegrees):
 	facing = newFacing
 	var oldAttach:Node2D = getAttachPoint(oldFacing)
 	if !oldAttach: return
@@ -53,6 +53,7 @@ func _on_MoveController_facingChange(oldFacing, newFacing):
 	for child in oldAttach.get_children():
 		oldAttach.remove_child(child)
 		newAttach.add_child(child)
+		child.rotation_degrees = angleDegrees
 
 func getAttachPoint(_facing):
 	match _facing:

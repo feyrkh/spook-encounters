@@ -3,7 +3,7 @@ extends Node2D
 # See also HeldItem.gd
 enum {None, Left, DownLeft, Down, DownRight, Right, UpRight, Up, UpLeft}
 
-signal facingChange # (oldDirection, newDirection)
+signal facingChange # (oldDirection, newDirection, angleDegrees)
 
 const MOVE_BACK_PENALTY = 0.4
 const MOVE_SIDE_PENALTY = 0.7
@@ -97,7 +97,8 @@ func updateFacing():
 	elif facingAngle >= FACE_UP_LEFT_MIN and facingAngle < FACE_UP_LEFT_MAX: 
 		newFacing = UpLeft
 	if newFacing != facing:
-		emit_signal("facingChange", facing, newFacing)
+		var cardinalFacingAngle = round(facingAngle/HALF_SECTOR_DEG)*HALF_SECTOR_DEG
+		emit_signal("facingChange", facing, newFacing, cardinalFacingAngle)
 		facing = newFacing
 
 func checkInputs(_delta):
