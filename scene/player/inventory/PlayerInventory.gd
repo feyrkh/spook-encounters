@@ -18,6 +18,7 @@ func _ready():
 	itemDetector = get_node(itemDetectorPath)
 	connect("itemEquipped", itemHolder, 'onItemEquipped')
 	updateAllInvSlotImages()
+	$"/root/EventBus".connect('inventoryIconsNeedUpdate', self, 'updateAllInvSlotImages')
 
 func updateAllInvSlotImages():
 	for i in range(invSlots.size()):

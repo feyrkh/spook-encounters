@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scene/items/flashlight.gd" type="Script" id=1]
+[ext_resource path="res://img/itemImage/flashlight-on.jpg" type="Texture" id=2]
+[ext_resource path="res://img/itemImage/flashlight.jpg" type="Texture" id=3]
+[ext_resource path="res://scene/items/light-flashlight.png" type="Texture" id=4]
+[ext_resource path="res://scene/items/placeholderItem.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scene/items/placeholderItem.gd" type="Script" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 25.4773, 25.8857 )
+
+[node name="flashlight" type="Node2D"]
+position = Vector2( 453.648, 162.551 )
+script = ExtResource( 1 )
+itemSlotIconTextureEnabled = ExtResource( 2 )
+itemSlotIconTextureDisabled = ExtResource( 3 )
+
+[node name="placeholderImage" type="Node2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( -1.64295, -24.9623 )
+script = ExtResource( 6 )
+backgroundColor = Color( 0.0431373, 0.00784314, 0.00784314, 1 )
+
+[node name="ItemPickupArea" type="Area2D" parent="."]
+monitoring = false
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemPickupArea"]
+visible = false
+position = Vector2( 0.594604, -24.3788 )
+shape = SubResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 25.0125, -22.1921 )
+texture = ExtResource( 4 )
+offset = Vector2( 180, 0 )
+shadow_enabled = true
+shadow_filter = 5
+shadow_filter_smooth = 0.7

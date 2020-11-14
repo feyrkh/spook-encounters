@@ -7,7 +7,7 @@ enum {None, Left, DownLeft, Down, DownRight, Right, UpRight, Up, UpLeft}
 var facing = Right
 var heldItem = null
 onready var curAttachPoint = $Right
-var curAngleDegrees = 0
+var curAngleRad = 0
 
 signal item_drop_requested # (heldItem)
 
@@ -24,7 +24,6 @@ func holdItem(item):
 		heldItem.get_parent().remove_child(heldItem)
 	attachPoint.add_child(heldItem)
 	heldItem.position = Vector2.ZERO
-	heldItem.rotation_degrees = curAngleDegrees
 
 func unholdItem():
 	if heldItem:
@@ -69,13 +68,12 @@ func getAttachPoint(_facing):
 		Up: return $Up
 		Down: return $Down
 
-#func _on_ItemDetector_itemPickupRequested(newItem):
-#	if heldItem: dropItem()
-#	pickUpItem(newItem)
 
-
-func _on_MoveController_updateFacingAngle(angleDegrees):
-	curAngleDegrees = angleDegrees
-	for child in curAttachPoint.get_children():
-		child.rotation_degrees = curAngleDegrees
-	
+func _on_MoveController_updateFacingAngle(newPlayerAngle):
+	if heldItem:
+		curAngleRad = heldItem.rotation + heldItem.get_angle_to(get_global_mouse_position())
+		heldItem.rotation = 0
+		#heldItem.rotation = curAngleRad
+		print('rotating to ', curAngleRad, '; ', heldItem.global_position, ' -> ', get_global_mouse_position())
+		heldItem.rotation = curAngleRad
+		print('heldItem rotation: ', heldItem.rotation_degrees)

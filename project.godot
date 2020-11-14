@@ -71,6 +71,10 @@ _global_script_class_icons={
 config/name="Spook Encounters"
 config/icon="res://icon.png"
 
+[autoload]
+
+EventBus="*res://scene/EventBus.tscn"
+
 [debug]
 
 gdscript/warnings/unused_variable=false
