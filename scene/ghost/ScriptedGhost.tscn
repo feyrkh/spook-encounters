@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scene/ghost/ScriptedGhost.gd" type="Script" id=1]
 [ext_resource path="res://scene/ghost/move/styles/float.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scene/ghost/goal/GhostScript.gd" type="Script" id=3]
-[ext_resource path="res://scene/ghost/move/MultiMoveController.gd" type="Script" id=4]
+[ext_resource path="res://scene/ghost/move/MoveStyles.gd" type="Script" id=4]
+[ext_resource path="res://scene/ghost/move/styles/teleport.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 20 )
@@ -36,6 +37,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="GhostScriptTimer" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
+
 [node name="GhostScript" type="Node" parent="."]
 script = ExtResource( 3 )
 
@@ -43,3 +48,6 @@ script = ExtResource( 3 )
 script = ExtResource( 4 )
 
 [node name="float" parent="move" instance=ExtResource( 2 )]
+
+[node name="teleport" parent="move" instance=ExtResource( 5 )]
+[connection signal="timeout" from="GhostScriptTimer" to="GhostScript" method="updateSteps"]

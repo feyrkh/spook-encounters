@@ -45,6 +45,16 @@ _global_script_classes=[ {
 "path": "res://scene/player/ItemDetector.gd"
 }, {
 "base": "Node",
+"class": "MoveStyle",
+"language": "GDScript",
+"path": "res://scene/ghost/move/styles/MoveStyle.gd"
+}, {
+"base": "Node",
+"class": "MoveStyles",
+"language": "GDScript",
+"path": "res://scene/ghost/move/MoveStyles.gd"
+}, {
+"base": "Node",
 "class": "MovementController",
 "language": "GDScript",
 "path": "res://scene/ghost/move/MovementController.gd"
@@ -59,10 +69,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scene/ghost/source/PowerSourceUtil.gd"
 }, {
+"base": "Node",
+"class": "ScriptStep",
+"language": "GDScript",
+"path": "res://scene/ghost/goal/ScriptStep.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "ScriptedGhost",
 "language": "GDScript",
 "path": "res://scene/ghost/ScriptedGhost.gd"
+}, {
+"base": "Object",
+"class": "Tweening",
+"language": "GDScript",
+"path": "res://Tweening.gd"
 } ]
 _global_script_class_icons={
 "BasicItem": "",
@@ -72,10 +92,14 @@ _global_script_class_icons={
 "GoalController": "",
 "HeldItem": "",
 "ItemDetector": "",
+"MoveStyle": "",
+"MoveStyles": "",
 "MovementController": "",
 "PowerSource": "",
 "PowerSourceUtil": "",
-"ScriptedGhost": ""
+"ScriptStep": "",
+"ScriptedGhost": "",
+"Tweening": ""
 }
 
 [application]

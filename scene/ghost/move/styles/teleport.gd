@@ -1,4 +1,4 @@
-extends MovementController
+extends MoveStyle
 
 var teleporting = false
 var startPosition
@@ -14,24 +14,24 @@ func _process(_delta):
 func shake():
 	$ShakeTimer.start()
 	while($ShakeTimer.time_left > 0):
-		controller.global_position = controller.global_position + Vector2(rand_range(-shakeOffset, shakeOffset), rand_range(-shakeOffset, shakeOffset))
+		body.global_position = body.global_position + Vector2(rand_range(-shakeOffset, shakeOffset), rand_range(-shakeOffset, shakeOffset))
 		$ShakeTicker.start()
 		yield($ShakeTicker, "timeout")
 	emit_signal("shakeComplete")
 		
 func startTeleport():
 	teleporting = true
-	startPosition = controller.global_position
-	startVisibility = controller.visible
+	startPosition = body.global_position
+	startVisibility = body.visible
 	shake()
 	yield(self, 'shakeComplete')
-	controller.visible = false
-	controller.global_position = moveTarget.global_position
+	body.visible = false
+	body.global_position = moveTarget.global_position
 	$HideTimer.start()
 	yield($HideTimer, "timeout")
-	controller.visible = startVisibility
+	body.visible = startVisibility
 	shake()
 	yield(self, 'shakeComplete')
 	teleporting = false
-	controller.onMoveFinished(moveTarget)
+	body.onMoveFinished(moveTarget)
 	moveTarget = null

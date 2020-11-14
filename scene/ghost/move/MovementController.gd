@@ -9,3 +9,6 @@ var controller:GhostController
 func onMoveToGoal(ghost:GhostController, newMoveTarget:Node2D):
 	moveTarget = newMoveTarget
 	controller = ghost
+
+func setBody(body:GhostController):
+	
