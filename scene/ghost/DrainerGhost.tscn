@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scene/ghost/GhostController.gd" type="Script" id=1]
-[ext_resource path="res://scene/ghost/move/FloatController.gd" type="Script" id=2]
-[ext_resource path="res://scene/ghost/goal/GoalController.gd" type="Script" id=3]
-[ext_resource path="res://scene/ghost/DebugLabel.gd" type="Script" id=4]
+[ext_resource path="res://scene/ghost/move/styles/teleport.gd" type="Script" id=2]
+[ext_resource path="res://scene/ghost/DebugLabel.gd" type="Script" id=3]
+[ext_resource path="res://scene/ghost/goal/GoalController.gd" type="Script" id=4]
 [ext_resource path="res://scene/ghost/drain/DrainController.gd" type="Script" id=5]
+[ext_resource path="res://scene/ghost/move/styles/teleport.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 20 )
@@ -33,7 +34,7 @@ margin_right = 40.0
 margin_bottom = 40.0
 custom_styles/normal = SubResource( 2 )
 text = "Ghost"
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -46,9 +47,11 @@ autostart = true
 script = ExtResource( 5 )
 
 [node name="GoalController" type="Node2D" parent="."]
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 
-[node name="MovementController" type="Node2D" parent="."]
+[node name="MovementControllerOld" type="Node2D" parent="."]
 script = ExtResource( 2 )
-[connection signal="timeout" from="GoalTimer" to="RichTextLabel" method="_on_GoalTimer_timeout"]
+
+[node name="MovementController" parent="." instance=ExtResource( 6 )]
 [connection signal="timeout" from="GoalTimer" to="." method="_on_GoalTimer_timeout"]
+[connection signal="timeout" from="GoalTimer" to="RichTextLabel" method="_on_GoalTimer_timeout"]

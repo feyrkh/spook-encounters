@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 class_name MovementController
 
 export(float) var movePixelsPerSecond = 40

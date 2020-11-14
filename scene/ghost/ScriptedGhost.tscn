@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scene/ghost/ScriptedGhost.gd" type="Script" id=1]
+[ext_resource path="res://scene/ghost/move/styles/float.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scene/ghost/goal/GhostScript.gd" type="Script" id=3]
+[ext_resource path="res://scene/ghost/move/MultiMoveController.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 20, 20 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.359375, 0.338318, 0.338318, 1 )
+
+[node name="ghost" type="KinematicBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 19.8438, 20.1587 )
+shape = SubResource( 1 )
+
+[node name="Label" type="RichTextLabel" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_styles/normal = SubResource( 2 )
+text = "Ghost"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GhostScript" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="move" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="float" parent="move" instance=ExtResource( 2 )]
