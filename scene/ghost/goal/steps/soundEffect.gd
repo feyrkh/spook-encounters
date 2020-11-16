@@ -4,12 +4,15 @@ export(String) var soundText
 export(float) var soundVolume = 50
 export(Color) var soundColor = Color.white
 export(String) var targetNodePathFromGhost = '..'
-var scene = preload("res://scene/soundVisual/SoundPopup.tscn") 
 
 func startStep():
 	.startStep()
-	var popup = scene.instance()
-	popup.global_position = ghost.global_position
-	popup.setup(soundText, soundVolume, soundColor)
-	ghost.get_node(targetNodePathFromGhost).add_child(popup)
+	var soundOpts = {
+		'sfx': null,
+		'msg': soundText, 
+		'vol': soundVolume, 
+		'pos': ghost.get_node(targetNodePathFromGhost).global_position,
+		'color': soundColor
+	}
+	$"/root/EventBus".emit_signal('soundEffect', soundOpts)
 	emit_signal("stepComplete")

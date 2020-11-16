@@ -82,10 +82,10 @@ waitForSeconds = 5.0
 [node name="move" type="Node" parent="ghost"]
 script = ExtResource( 5 )
 
+[node name="teleport" parent="ghost/move" instance=ExtResource( 3 )]
+
 [node name="float" parent="ghost/move" instance=ExtResource( 2 )]
 movePixelsPerSecond = 80.0
-
-[node name="teleport" parent="ghost/move" instance=ExtResource( 3 )]
 
 [node name="blocker" type="Node2D" parent="."]
 position = Vector2( 102.866, 150.435 )

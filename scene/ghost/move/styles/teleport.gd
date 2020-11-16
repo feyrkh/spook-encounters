@@ -33,5 +33,5 @@ func startTeleport():
 	shake()
 	yield(self, 'shakeComplete')
 	teleporting = false
-	body.onMoveFinished(moveTarget)
+	emit_signal('stepComplete')
 	moveTarget = null
