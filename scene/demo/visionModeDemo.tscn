@@ -1,25 +1,17 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scene/player/player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scene/items/basicItem.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scene/items/laserPointer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scene/props/furniture/table.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scene/props/furniture/light-lamp.png" type="Texture" id=5]
 [ext_resource path="res://scene/props/furniture/wood-floor.jpg" type="Texture" id=6]
 [ext_resource path="res://scene/items/flashlight.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scene/soundVisual/periodicSoundEffect.tscn" type="PackedScene" id=8]
 [ext_resource path="res://shaders/pixel.shader" type="Shader" id=9]
-[ext_resource path="res://shaders/nightvision.shader" type="Shader" id=10]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 9 )
 shader_param/size_x = 3.0
 shader_param/size_y = 3.0
-
-[sub_resource type="ShaderMaterial" id=3]
-shader = ExtResource( 10 )
-shader_param/fade_in_delay = 1.0
-shader_param/noise_amount = 1.0
 
 [sub_resource type="ShaderMaterial" id=2]
 
@@ -74,38 +66,6 @@ position = Vector2( -65, -74 )
 
 [node name="laserPointer" parent="ItemLayer" instance=ExtResource( 3 )]
 
-[node name="dripping pipe" parent="ItemLayer" instance=ExtResource( 2 )]
-position = Vector2( 566.291, 232.441 )
-
-[node name="periodicSoundEffect" parent="ItemLayer/dripping pipe" instance=ExtResource( 8 )]
-position = Vector2( 0, -48.554 )
-soundText = "drip..."
-soundVolume = 10.0
-soundColor = Color( 0.0588235, 0.588235, 0.690196, 1 )
-soundTimeout = 1.0
-
-[node name="banging shutter" parent="ItemLayer" instance=ExtResource( 2 )]
-position = Vector2( 103.564, -47.7353 )
-
-[node name="periodicSoundEffect" parent="ItemLayer/banging shutter" instance=ExtResource( 8 )]
-position = Vector2( 0, -48.554 )
-soundText = "Bang!"
-soundVolume = 50.0
-soundColor = Color( 0.0588235, 0.588235, 0.690196, 1 )
-soundTimeout = 5.0
-soundRandomTimeout = 20.0
-
-[node name="thunder" parent="ItemLayer" instance=ExtResource( 2 )]
-position = Vector2( -241.079, 827.001 )
-
-[node name="periodicSoundEffect" parent="ItemLayer/thunder" instance=ExtResource( 8 )]
-position = Vector2( 0, -48.554 )
-soundText = "CRACK-BOOM!"
-soundVolume = 350.0
-soundColor = Color( 0.756863, 1, 0, 1 )
-soundTimeout = 60.0
-soundRandomTimeout = 20.0
-
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 453.465, 270.176 )
 
@@ -114,15 +74,6 @@ itemLayer = NodePath("../../ItemLayer")
 
 [node name="Camera2D" parent="Player" index="5"]
 material = SubResource( 1 )
-
-[node name="VisionOverlay" type="ColorRect" parent="Player/HudLayer" index="0"]
-material = SubResource( 3 )
-margin_right = 1024.0
-margin_bottom = 600.0
-rect_min_size = Vector2( 1024, 600 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Light2D" type="Light2D" parent="Player"]
 position = Vector2( 0.218658, -11.8604 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scene/player/walk/player-down2.png" type="Texture" id=1]
 [ext_resource path="res://scene/player/HeldItem.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://scene/player/ItemDetector.gd" type="Script" id=13]
 [ext_resource path="res://scene/player/inventory/playerInventory.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scene/player/Ears.tscn" type="PackedScene" id=15]
+[ext_resource path="res://shaders/nightvision.shader" type="Shader" id=16]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -28,9 +29,9 @@ animations = [ {
 "name": "moveUp",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 1 ) ],
+"frames": [ ExtResource( 11 ), ExtResource( 9 ) ],
 "loop": true,
-"name": "moveDown",
+"name": "moveUpRight",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
@@ -38,9 +39,9 @@ animations = [ {
 "name": "moveRight",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 11 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 1 ) ],
 "loop": true,
-"name": "moveUpRight",
+"name": "moveDown",
 "speed": 5.0
 } ]
 
@@ -50,6 +51,11 @@ extents = Vector2( 82, 75 )
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 24.5103
 height = 45.3058
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 16 )
+shader_param/fade_in_delay = 0.5
+shader_param/noise_amount = 0.8
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( -2, -9 )
@@ -110,17 +116,27 @@ position = Vector2( -1.8877, -1.41577 )
 rotation = 1.5708
 shape = SubResource( 3 )
 
-[node name="HudLayer" type="CanvasLayer" parent="."]
-
-[node name="PlayerInventory" parent="HudLayer" instance=ExtResource( 14 )]
-itemHolderPath = NodePath("../../HeldItem")
-itemDetectorPath = NodePath("../../ItemDetector")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
 [node name="Ears" parent="." instance=ExtResource( 15 )]
 position = Vector2( 2, -59 )
+
+[node name="HudLayer" type="CanvasLayer" parent="."]
+
+[node name="VisionMode" type="ColorRect" parent="HudLayer"]
+material = SubResource( 4 )
+margin_right = 1024.0
+margin_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerInventory" parent="HudLayer" instance=ExtResource( 14 )]
+itemHolderPath = NodePath("../../HeldItem")
+itemDetectorPath = NodePath("../../ItemDetector")
 [connection signal="facingChange" from="MoveController" to="HeldItem" method="_on_MoveController_facingChange"]
 [connection signal="updateFacingAngle" from="MoveController" to="HeldItem" method="_on_MoveController_updateFacingAngle"]
 [connection signal="area_entered" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_entered"]

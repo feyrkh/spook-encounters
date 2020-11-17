@@ -11,4 +11,4 @@ func onMoveToGoal(ghost:GhostController, newMoveTarget:Node2D):
 	controller = ghost
 
 func setBody(body:GhostController):
-	
+	self.controller = body
