@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scene/items/flashlight.gd" type="Script" id=1]
 [ext_resource path="res://scene/items/light-laserpointer.png" type="Texture" id=2]
 [ext_resource path="res://scene/items/placeholderItem.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scene/items/VisionModeAffectedLight.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 25.4773, 25.8857 )
@@ -13,6 +14,7 @@ script = ExtResource( 1 )
 
 [node name="placeholderImage" parent="." instance=ExtResource( 3 )]
 position = Vector2( 22.357, 0.0377007 )
+rectSize = Vector2( 50, 50 )
 
 [node name="ItemPickupArea" type="Area2D" parent="."]
 position = Vector2( 24, 24.5 )
@@ -34,3 +36,4 @@ color = Color( 0, 1, 0, 1 )
 shadow_enabled = true
 shadow_filter = 5
 shadow_filter_smooth = 0.7
+script = ExtResource( 4 )

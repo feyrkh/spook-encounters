@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scene/items/visionEquip/abstractVisionEquip.gd" type="Script" id=1]
+[ext_resource path="res://img/itemImage/nightVision-off.jpg" type="Texture" id=2]
+[ext_resource path="res://img/itemImage/nightVision-on.jpg" type="Texture" id=3]
+[ext_resource path="res://scene/items/placeholderItem.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 25.4773, 25.8857 )
+
+[node name="night vision" type="Node2D"]
+position = Vector2( 453.648, 162.551 )
+script = ExtResource( 1 )
+itemSlotIconTextureEnabled = ExtResource( 3 )
+itemSlotIconTextureDisabled = ExtResource( 2 )
+visualModeName = "nightVision"
+
+[node name="placeholderImage" parent="." instance=ExtResource( 5 )]
+position = Vector2( -1.64295, -24.9623 )
+rectSize = Vector2( 50, 50 )
+
+[node name="ItemPickupArea" type="Area2D" parent="."]
+monitoring = false
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemPickupArea"]
+visible = false
+position = Vector2( 0.594604, -24.3788 )
+shape = SubResource( 1 )

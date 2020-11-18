@@ -24,9 +24,11 @@ func holdItem(item):
 		heldItem.get_parent().remove_child(heldItem)
 	attachPoint.add_child(heldItem)
 	heldItem.position = Vector2.ZERO
+	if heldItem.has_method('onHold'): heldItem.onHold()
 
 func unholdItem():
 	if heldItem:
+		if heldItem.has_method('onUnHold'): heldItem.onUnHold()
 		# Already holding an item - it must be going back into inventory, so make it invisible
 		heldItem.visible = false
 		if heldItem.get_parent() != null:

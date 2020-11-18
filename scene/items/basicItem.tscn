@@ -14,6 +14,7 @@ itemSlotIconTexture = ExtResource( 3 )
 
 [node name="placeholderImage" parent="." instance=ExtResource( 1 )]
 position = Vector2( -1.64295, -24.9623 )
+rectSize = Vector2( 50, 50 )
 
 [node name="ItemPickupArea" type="Area2D" parent="."]
 monitoring = false

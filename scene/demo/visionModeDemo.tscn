@@ -1,19 +1,21 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scene/player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://img/itemImage/pixelVision-on.jpg" type="Texture" id=2]
 [ext_resource path="res://scene/items/laserPointer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scene/props/furniture/table.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scene/props/furniture/light-lamp.png" type="Texture" id=5]
 [ext_resource path="res://scene/props/furniture/wood-floor.jpg" type="Texture" id=6]
 [ext_resource path="res://scene/items/flashlight.tscn" type="PackedScene" id=7]
+[ext_resource path="res://img/itemImage/pixelVision-off.jpg" type="Texture" id=8]
 [ext_resource path="res://shaders/pixel.shader" type="Shader" id=9]
+[ext_resource path="res://scene/items/visionEquip/nightVision.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scene/items/visionEquip/VisionModeDarknessOverlay.tscn" type="PackedScene" id=11]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 9 )
 shader_param/size_x = 3.0
 shader_param/size_y = 3.0
-
-[sub_resource type="ShaderMaterial" id=2]
 
 [node name="Node2D" type="Node2D"]
 
@@ -24,23 +26,23 @@ position = Vector2( -32.6499, 9.10954 )
 texture = ExtResource( 6 )
 
 [node name="wood-floor2" type="Sprite" parent="Floors"]
-position = Vector2( 468.524, 9.10954 )
+position = Vector2( 466.524, 9.10954 )
 texture = ExtResource( 6 )
 
 [node name="wood-floor3" type="Sprite" parent="Floors"]
-position = Vector2( 970.54, 9.10954 )
+position = Vector2( 966.54, 9.10954 )
 texture = ExtResource( 6 )
 
 [node name="wood-floor4" type="Sprite" parent="Floors"]
-position = Vector2( -31.809, 510.284 )
+position = Vector2( -31.809, 508.284 )
 texture = ExtResource( 6 )
 
 [node name="wood-floor5" type="Sprite" parent="Floors"]
-position = Vector2( 469.365, 510.284 )
+position = Vector2( 467.365, 508.284 )
 texture = ExtResource( 6 )
 
 [node name="wood-floor6" type="Sprite" parent="Floors"]
-position = Vector2( 968.858, 506.92 )
+position = Vector2( 965.858, 506.92 )
 texture = ExtResource( 6 )
 
 [node name="PropLayer" type="Node2D" parent="."]
@@ -66,6 +68,16 @@ position = Vector2( -65, -74 )
 
 [node name="laserPointer" parent="ItemLayer" instance=ExtResource( 3 )]
 
+[node name="nightVision" parent="ItemLayer" instance=ExtResource( 10 )]
+position = Vector2( 700.002, 109.773 )
+disableOnUnequip = false
+
+[node name="pixelVision" parent="ItemLayer" instance=ExtResource( 10 )]
+position = Vector2( 734.925, 229.646 )
+itemSlotIconTextureEnabled = ExtResource( 2 )
+itemSlotIconTextureDisabled = ExtResource( 8 )
+visualModeName = "pixelVision"
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 453.465, 270.176 )
 
@@ -86,8 +98,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-material = SubResource( 2 )
-color = Color( 0.0313726, 0.0313726, 0.0313726, 1 )
+[node name="VisionModeDarknessOverlay" parent="." instance=ExtResource( 11 )]
+nightVisionColor = Color( 0.223529, 0.227451, 0.247059, 1 )
 
 [editable path="Player"]

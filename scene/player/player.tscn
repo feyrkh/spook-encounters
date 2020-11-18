@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scene/player/walk/player-down2.png" type="Texture" id=1]
 [ext_resource path="res://scene/player/HeldItem.gd" type="Script" id=2]
@@ -16,6 +16,8 @@
 [ext_resource path="res://scene/player/inventory/playerInventory.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scene/player/Ears.tscn" type="PackedScene" id=15]
 [ext_resource path="res://shaders/nightvision.shader" type="Shader" id=16]
+[ext_resource path="res://scene/player/VisionModes.gd" type="Script" id=17]
+[ext_resource path="res://shaders/pixel.shader" type="Shader" id=18]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -24,14 +26,14 @@ animations = [ {
 "name": "moveDownRight",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 4 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "moveDown",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 10 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "moveUp",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "moveUpRight",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
@@ -39,9 +41,9 @@ animations = [ {
 "name": "moveRight",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 1 ) ],
+"frames": [ ExtResource( 11 ), ExtResource( 9 ) ],
 "loop": true,
-"name": "moveDown",
+"name": "moveUpRight",
 "speed": 5.0
 } ]
 
@@ -56,6 +58,11 @@ height = 45.3058
 shader = ExtResource( 16 )
 shader_param/fade_in_delay = 0.5
 shader_param/noise_amount = 0.8
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 18 )
+shader_param/size_x = 0.01
+shader_param/size_y = 0.01
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( -2, -9 )
@@ -124,8 +131,23 @@ position = Vector2( 2, -59 )
 
 [node name="HudLayer" type="CanvasLayer" parent="."]
 
-[node name="VisionMode" type="ColorRect" parent="HudLayer"]
+[node name="VisionModes" type="Node2D" parent="HudLayer"]
+script = ExtResource( 17 )
+
+[node name="nightVision" type="ColorRect" parent="HudLayer/VisionModes"]
+visible = false
 material = SubResource( 4 )
+margin_right = 1024.0
+margin_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pixelVision" type="ColorRect" parent="HudLayer/VisionModes"]
+visible = false
+material = SubResource( 5 )
 margin_right = 1024.0
 margin_bottom = 600.0
 grow_horizontal = 2

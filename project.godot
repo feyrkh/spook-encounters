@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "BasicItem",
+"class": "AbstractVisionEquip",
+"language": "GDScript",
+"path": "res://scene/items/visionEquip/abstractVisionEquip.gd"
+}, {
 "base": "Node2D",
 "class": "BasicItem",
 "language": "GDScript",
@@ -83,8 +88,14 @@ _global_script_classes=[ {
 "class": "Tweening",
 "language": "GDScript",
 "path": "res://Tweening.gd"
+}, {
+"base": "Light2D",
+"class": "VisualModeAffectedLight",
+"language": "GDScript",
+"path": "res://scene/items/VisionModeAffectedLight.gd"
 } ]
 _global_script_class_icons={
+"AbstractVisionEquip": "",
 "BasicItem": "",
 "FloatController": "",
 "GhostController": "",
@@ -99,7 +110,8 @@ _global_script_class_icons={
 "PowerSourceUtil": "",
 "ScriptStep": "",
 "ScriptedGhost": "",
-"Tweening": ""
+"Tweening": "",
+"VisualModeAffectedLight": ""
 }
 
 [application]

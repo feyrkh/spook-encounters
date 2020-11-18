@@ -5,7 +5,7 @@
 [ext_resource path="res://img/itemImage/flashlight.jpg" type="Texture" id=3]
 [ext_resource path="res://scene/items/light-flashlight.png" type="Texture" id=4]
 [ext_resource path="res://scene/items/placeholderItem.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scene/items/placeholderItem.gd" type="Script" id=6]
+[ext_resource path="res://scene/items/VisionModeAffectedLight.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 25.4773, 25.8857 )
@@ -16,10 +16,9 @@ script = ExtResource( 1 )
 itemSlotIconTextureEnabled = ExtResource( 2 )
 itemSlotIconTextureDisabled = ExtResource( 3 )
 
-[node name="placeholderImage" type="Node2D" parent="." instance=ExtResource( 5 )]
+[node name="placeholderImage" parent="." instance=ExtResource( 5 )]
 position = Vector2( -1.64295, -24.9623 )
-script = ExtResource( 6 )
-backgroundColor = Color( 0.0431373, 0.00784314, 0.00784314, 1 )
+rectSize = Vector2( 50, 50 )
 
 [node name="ItemPickupArea" type="Area2D" parent="."]
 monitoring = false
@@ -38,3 +37,4 @@ offset = Vector2( 180, 0 )
 shadow_enabled = true
 shadow_filter = 5
 shadow_filter_smooth = 0.7
+script = ExtResource( 6 )

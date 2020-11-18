@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scene/items/visionEquip/VisionModeDarknessOverlay.gd" type="Script" id=1]
+
+[sub_resource type="ShaderMaterial" id=2]
+
+[node name="VisionModeDarknessOverlay" type="CanvasModulate"]
+material = SubResource( 2 )
+color = Color( 0.0313726, 0.0313726, 0.0313726, 1 )
+script = ExtResource( 1 )

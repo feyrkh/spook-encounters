@@ -6,7 +6,7 @@ shader_type canvas_item;
 // The amount of time that it takes to fade in from black to the night vision. A value lower than 1 will result in faster fade in times and a value higher than 1 will result in longer fade in times.
 uniform float fade_in_delay = 1.0;
 // The amount of grain applied to the night vision.
-uniform float noise_amount = 1.0;
+uniform float noise_amount = 0.25;
 
 // Only difference here is that we don't need to specify `in` in the parameter.
 float hash(float n)
