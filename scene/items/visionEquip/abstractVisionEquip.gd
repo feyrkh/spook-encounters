@@ -48,5 +48,5 @@ func onDrop():
 	turnVisionModeOff()
 	.onDrop()
 
-func onUnequip():
+func onUnHold():
 	if disableOnUnequip: turnVisionModeOff()

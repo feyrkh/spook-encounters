@@ -131,7 +131,7 @@ func putItemInBag(item):
 	add_child(item)
 	item.position = Vector2.ZERO
 	if item == equippedItem:
-		equippedItem = null
+		setEquippedItem(null)
 	updateAllInvSlotImages()
 
 func getEquippedItemSlot():
