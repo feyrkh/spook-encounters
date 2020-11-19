@@ -3,7 +3,7 @@ extends ScriptStep
 export(String) var soundText
 export(float) var soundVolume = 50
 export(Color) var soundColor = Color.white
-export(String) var targetNodePathFromGhost = '..'
+export(String) var targetNodePathFromGhost = '.'
 
 func startStep():
 	.startStep()

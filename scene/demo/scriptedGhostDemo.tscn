@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scene/ghost/ScriptedGhost.gd" type="Script" id=1]
 [ext_resource path="res://scene/ghost/move/styles/float.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scene/ghost/goal/GhostScript.gd" type="Script" id=6]
 [ext_resource path="res://scene/ghost/goal/steps/wait.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scene/ghost/goal/steps/soundEffect.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scene/player/Ears.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 20 )
@@ -56,9 +57,6 @@ autostart = true
 [node name="GhostScript" type="Node" parent="ghost"]
 script = ExtResource( 6 )
 
-[node name="soundEffect" parent="ghost/GhostScript" instance=ExtResource( 8 )]
-soundText = "Here we go again..."
-
 [node name="moveTo" parent="ghost/GhostScript" instance=ExtResource( 4 )]
 target = "Position2D"
 
@@ -79,13 +77,20 @@ soundColor = Color( 0.92549, 0.027451, 0.258824, 1 )
 [node name="wait2" parent="ghost/GhostScript" instance=ExtResource( 7 )]
 waitForSeconds = 5.0
 
+[node name="soundEffect" parent="ghost/GhostScript" instance=ExtResource( 8 )]
+soundText = "Here we go again..."
+
 [node name="move" type="Node" parent="ghost"]
 script = ExtResource( 5 )
 
-[node name="teleport" parent="ghost/move" instance=ExtResource( 3 )]
-
 [node name="float" parent="ghost/move" instance=ExtResource( 2 )]
 movePixelsPerSecond = 80.0
+
+[node name="teleport" parent="ghost/move" instance=ExtResource( 3 )]
+
+[node name="Ears" parent="ghost" instance=ExtResource( 9 )]
+visible = false
+position = Vector2( 2.2475, -16.4814 )
 
 [node name="blocker" type="Node2D" parent="."]
 position = Vector2( 102.866, 150.435 )
