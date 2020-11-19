@@ -43,7 +43,6 @@ func dropItem() -> bool:
 	heldItem.isHeld = false
 	if heldItem.has_method('onDrop'):
 		heldItem.onDrop()
-	emit_signal("itemDropped", heldItem)
 	heldItem = null
 	return true
 	

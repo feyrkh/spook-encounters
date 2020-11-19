@@ -196,4 +196,3 @@ script = ExtResource( 19 )
 [connection signal="area_entered" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_entered"]
 [connection signal="area_exited" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_exited"]
 [connection signal="itemPickupRequested" from="ItemDetector" to="HudLayer/PlayerInventory" method="onItemPickupRequested"]
-[connection signal="itemEquipped" from="HudLayer/PlayerInventory" to="HeldItem" method="_on_PlayerInventory_itemEquipped"]

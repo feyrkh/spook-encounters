@@ -1,18 +1,26 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scene/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://img/itemImage/pixelVision-on.jpg" type="Texture" id=2]
 [ext_resource path="res://scene/items/laserPointer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scene/props/furniture/table.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scene/props/furniture/light-lamp.png" type="Texture" id=5]
+[ext_resource path="res://scene/ghost/ScriptedGhost.gd" type="Script" id=5]
 [ext_resource path="res://scene/props/furniture/wood-floor.jpg" type="Texture" id=6]
 [ext_resource path="res://scene/items/flashlight.tscn" type="PackedScene" id=7]
 [ext_resource path="res://img/itemImage/pixelVision-off.jpg" type="Texture" id=8]
 [ext_resource path="res://shaders/pixel.shader" type="Shader" id=9]
 [ext_resource path="res://scene/items/visionEquip/nightVision.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scene/items/visionEquip/VisionModeDarknessOverlay.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scene/ghost/GhostVisual.gd" type="Script" id=12]
+[ext_resource path="res://scene/ghost/goal/GhostScript.gd" type="Script" id=13]
 [ext_resource path="res://scene/items/candle.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scene/player/visionConeCutout.png" type="Texture" id=15]
+[ext_resource path="res://scene/ghost/visual/ghost.png" type="Texture" id=15]
+[ext_resource path="res://scene/ghost/move/styles/float.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scene/ghost/move/styles/teleport.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scene/ghost/move/MoveStyles.gd" type="Script" id=18]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 20, 20 )
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 9 )
@@ -81,6 +89,128 @@ itemSlotIconTextureEnabled = ExtResource( 2 )
 itemSlotIconTextureDisabled = ExtResource( 8 )
 visualModeName = "pixelVision"
 
+[node name="nightVision ghost" type="KinematicBody2D" parent="ItemLayer"]
+position = Vector2( 566.614, 70.0067 )
+scale = Vector2( 0.870601, 2.386 )
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="GhostVisual" type="Node2D" parent="ItemLayer/nightVision ghost"]
+script = ExtResource( 12 )
+
+[node name="nightVision" type="Sprite" parent="ItemLayer/nightVision ghost/GhostVisual"]
+position = Vector2( 20.2982, 20.4777 )
+scale = Vector2( 0.175451, 0.175451 )
+texture = ExtResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemLayer/nightVision ghost"]
+position = Vector2( 19.8438, 20.1587 )
+shape = SubResource( 2 )
+
+[node name="GhostScriptTimer" type="Timer" parent="ItemLayer/nightVision ghost"]
+wait_time = 0.05
+autostart = true
+
+[node name="GhostScript" type="Node" parent="ItemLayer/nightVision ghost"]
+script = ExtResource( 13 )
+
+[node name="move" type="Node" parent="ItemLayer/nightVision ghost"]
+script = ExtResource( 18 )
+
+[node name="float" parent="ItemLayer/nightVision ghost/move" instance=ExtResource( 16 )]
+
+[node name="teleport" parent="ItemLayer/nightVision ghost/move" instance=ExtResource( 17 )]
+
+[node name="nightVision_default ghost" type="KinematicBody2D" parent="ItemLayer"]
+position = Vector2( 786.666, 90.4974 )
+scale = Vector2( 0.870601, 2.386 )
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="GhostVisual" type="Node2D" parent="ItemLayer/nightVision_default ghost"]
+script = ExtResource( 12 )
+
+[node name="default" type="Sprite" parent="ItemLayer/nightVision_default ghost/GhostVisual"]
+position = Vector2( 20.2982, 20.4777 )
+scale = Vector2( 0.175451, 0.175451 )
+texture = ExtResource( 15 )
+
+[node name="nightVision" type="Sprite" parent="ItemLayer/nightVision_default ghost/GhostVisual"]
+visible = false
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 20.2982, 20.4777 )
+scale = Vector2( 0.5, 0.25 )
+texture = ExtResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemLayer/nightVision_default ghost"]
+position = Vector2( 19.8438, 20.1587 )
+shape = SubResource( 2 )
+
+[node name="GhostScriptTimer" type="Timer" parent="ItemLayer/nightVision_default ghost"]
+wait_time = 0.05
+autostart = true
+
+[node name="GhostScript" type="Node" parent="ItemLayer/nightVision_default ghost"]
+script = ExtResource( 13 )
+
+[node name="move" type="Node" parent="ItemLayer/nightVision_default ghost"]
+script = ExtResource( 18 )
+
+[node name="float" parent="ItemLayer/nightVision_default ghost/move" instance=ExtResource( 16 )]
+
+[node name="teleport" parent="ItemLayer/nightVision_default ghost/move" instance=ExtResource( 17 )]
+
+[node name="pixel ghost" type="KinematicBody2D" parent="ItemLayer"]
+position = Vector2( 769.738, 185.824 )
+scale = Vector2( 2.054, 2.386 )
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="GhostVisual" type="Node2D" parent="ItemLayer/pixel ghost"]
+position = Vector2( 829.237, -5.28049 )
+script = ExtResource( 12 )
+
+[node name="pixelVision" type="Sprite" parent="ItemLayer/pixel ghost/GhostVisual"]
+position = Vector2( -810.633, 26.4519 )
+scale = Vector2( 0.175451, 0.175451 )
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemLayer/pixel ghost"]
+position = Vector2( 19.8438, 20.1587 )
+shape = SubResource( 2 )
+
+[node name="GhostScriptTimer" type="Timer" parent="ItemLayer/pixel ghost"]
+wait_time = 0.05
+autostart = true
+
+[node name="GhostScript" type="Node" parent="ItemLayer/pixel ghost"]
+script = ExtResource( 13 )
+
+[node name="move" type="Node" parent="ItemLayer/pixel ghost"]
+script = ExtResource( 18 )
+
+[node name="float" parent="ItemLayer/pixel ghost/move" instance=ExtResource( 16 )]
+
+[node name="teleport" parent="ItemLayer/pixel ghost/move" instance=ExtResource( 17 )]
+
+[node name="candle" parent="ItemLayer" instance=ExtResource( 14 )]
+position = Vector2( 668.046, 144.364 )
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 453.465, 270.176 )
 
@@ -94,35 +224,16 @@ material = SubResource( 1 )
 z_index = 999
 
 [node name="visionCone" parent="Player/visionHolder" index="1"]
-visible = false
+position = Vector2( -2.0614, -14.4921 )
+scale = Vector2( 0.870601, 2.386 )
 energy = 0.37
 shadow_enabled = true
-
-[node name="visionConeCutout" type="Sprite" parent="Player/visionHolder" index="2"]
-position = Vector2( -64.2322, -12.7743 )
-scale = Vector2( 0.515945, 0.73273 )
-texture = ExtResource( 15 )
-
-[node name="VisionHider" type="Polygon2D" parent="Player/visionHolder" index="3"]
-color = Color( 0, 0, 0, 1 )
-polygon = PoolVector2Array( -10.8509, -122.372, -23.963, -122.491, -68.4349, -107.462, -87.1438, -80.7352, -102.289, -9.46329, -86.2528, 50.227, -52.3987, 90.3174, -10.8435, 96.8726, 329.689, 932.42, 159.828, 1056.87, -496.195, 930.818, -1047.12, 593.908, -1168.57, 71.282, -1021.11, -424.617, -631.045, -806.353, -48.7144, -912.507, 158.146, -909.144, 264.099, -865.417 )
-
-[node name="Light2D" type="Light2D" parent="Player"]
-position = Vector2( 0.218658, -11.8604 )
-texture = ExtResource( 5 )
-texture_scale = 0.5
-energy = 0.3
-shadow_enabled = true
-shadow_color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="VisionModeDarknessOverlay" parent="." instance=ExtResource( 11 )]
 color = Color( 0, 0, 0, 1 )
 nightVisionColor = Color( 0.223529, 0.227451, 0.247059, 1 )
-
-[node name="candle" parent="VisionModeDarknessOverlay" instance=ExtResource( 14 )]
-position = Vector2( 668.046, 144.364 )
+[connection signal="timeout" from="ItemLayer/nightVision ghost/GhostScriptTimer" to="ItemLayer/nightVision ghost/GhostScript" method="updateSteps"]
+[connection signal="timeout" from="ItemLayer/nightVision_default ghost/GhostScriptTimer" to="ItemLayer/nightVision_default ghost/GhostScript" method="updateSteps"]
+[connection signal="timeout" from="ItemLayer/pixel ghost/GhostScriptTimer" to="ItemLayer/pixel ghost/GhostScript" method="updateSteps"]
 
 [editable path="Player"]

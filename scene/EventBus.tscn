@@ -4,3 +4,4 @@
 
 [node name="EventBus" type="Node"]
 script = ExtResource( 1 )
+[connection signal="visualModeChange" from="." to="." method="_on_EventBus_visualModeChange"]

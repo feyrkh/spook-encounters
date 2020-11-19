@@ -1,20 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://scene/ghost/ScriptedGhost.gd" type="Script" id=1]
-[ext_resource path="res://scene/ghost/move/styles/float.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scene/ghost/move/styles/teleport.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scene/ghost/goal/steps/moveTo.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scene/ghost/move/MoveStyles.gd" type="Script" id=5]
-[ext_resource path="res://scene/ghost/goal/GhostScript.gd" type="Script" id=6]
 [ext_resource path="res://scene/ghost/goal/steps/wait.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scene/ghost/goal/steps/soundEffect.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scene/player/Ears.tscn" type="PackedScene" id=9]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 20, 20 )
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.359375, 0.338318, 0.338318, 1 )
+[ext_resource path="res://scene/ghost/ScriptedGhost.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 10, 98.2458 )
@@ -23,74 +13,6 @@ extents = Vector2( 10, 98.2458 )
 extents = Vector2( 102.392, 6.67686 )
 
 [node name="MyScene" type="Node2D"]
-
-[node name="ghost" type="KinematicBody2D" parent="."]
-position = Vector2( 390.148, 252.277 )
-collision_layer = 4
-collision_mask = 0
-script = ExtResource( 1 )
-
-[node name="ColorRect" type="ColorRect" parent="ghost"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ghost"]
-position = Vector2( 19.8438, 20.1587 )
-shape = SubResource( 1 )
-
-[node name="Label" type="RichTextLabel" parent="ghost"]
-margin_right = 40.0
-margin_bottom = 40.0
-custom_styles/normal = SubResource( 2 )
-text = "Ghost"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="GhostScriptTimer" type="Timer" parent="ghost"]
-wait_time = 0.05
-autostart = true
-
-[node name="GhostScript" type="Node" parent="ghost"]
-script = ExtResource( 6 )
-
-[node name="moveTo" parent="ghost/GhostScript" instance=ExtResource( 4 )]
-target = "Position2D"
-
-[node name="wait" parent="ghost/GhostScript" instance=ExtResource( 7 )]
-waitForSeconds = 5.0
-
-[node name="soundEffect2" parent="ghost/GhostScript" instance=ExtResource( 8 )]
-soundText = "Gonna spook this guy..."
-
-[node name="moveTo2" parent="ghost/GhostScript" instance=ExtResource( 4 )]
-target = "Position2D2"
-
-[node name="soundEffect3" parent="ghost/GhostScript" instance=ExtResource( 8 )]
-soundText = "Boo!"
-soundVolume = 100.0
-soundColor = Color( 0.92549, 0.027451, 0.258824, 1 )
-
-[node name="wait2" parent="ghost/GhostScript" instance=ExtResource( 7 )]
-waitForSeconds = 5.0
-
-[node name="soundEffect" parent="ghost/GhostScript" instance=ExtResource( 8 )]
-soundText = "Here we go again..."
-
-[node name="move" type="Node" parent="ghost"]
-script = ExtResource( 5 )
-
-[node name="float" parent="ghost/move" instance=ExtResource( 2 )]
-movePixelsPerSecond = 80.0
-
-[node name="teleport" parent="ghost/move" instance=ExtResource( 3 )]
-
-[node name="Ears" parent="ghost" instance=ExtResource( 9 )]
-visible = false
-position = Vector2( 2.2475, -16.4814 )
 
 [node name="blocker" type="Node2D" parent="."]
 position = Vector2( 102.866, 150.435 )
@@ -119,4 +41,33 @@ position = Vector2( 555.954, 234.274 )
 
 [node name="Position2D2" type="Position2D" parent="."]
 position = Vector2( 316.924, 284.22 )
-[connection signal="timeout" from="ghost/GhostScriptTimer" to="ghost/GhostScript" method="updateSteps"]
+
+[node name="ghost2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 443.324, 255.27 )
+
+[node name="moveTo" parent="ghost2/GhostScript" index="0" instance=ExtResource( 4 )]
+target = "Position2D"
+
+[node name="wait" parent="ghost2/GhostScript" index="1" instance=ExtResource( 7 )]
+waitForSeconds = 5.0
+
+[node name="soundEffect2" parent="ghost2/GhostScript" index="2" instance=ExtResource( 8 )]
+soundText = "Gonna spook this guy..."
+
+[node name="moveTo2" parent="ghost2/GhostScript" index="3" instance=ExtResource( 4 )]
+target = "Position2D2"
+
+[node name="soundEffect3" parent="ghost2/GhostScript" index="4" instance=ExtResource( 8 )]
+soundText = "Boo!"
+soundVolume = 100.0
+soundColor = Color( 0.92549, 0.027451, 0.258824, 1 )
+
+[node name="wait2" parent="ghost2/GhostScript" index="5" instance=ExtResource( 7 )]
+waitForSeconds = 5.0
+
+[node name="soundEffect" parent="ghost2/GhostScript" index="6" instance=ExtResource( 8 )]
+soundText = "Here we go again..."
+
+[node name="Ears" parent="ghost2" instance=ExtResource( 9 )]
+
+[editable path="ghost2"]

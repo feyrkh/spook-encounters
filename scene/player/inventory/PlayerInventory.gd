@@ -16,7 +16,7 @@ func _ready():
 	emptyHandItem = find_node("EmptyHandItem", true)
 	itemHolder = get_node(itemHolderPath)
 	itemDetector = get_node(itemDetectorPath)
-	connect("itemEquipped", itemHolder, 'onItemEquipped')
+	#connect("itemEquipped", itemHolder, 'onItemEquipped')
 	updateAllInvSlotImages()
 	$"/root/EventBus".connect('inventoryIconsNeedUpdate', self, 'updateAllInvSlotImages')
 

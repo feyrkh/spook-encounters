@@ -1,41 +1,32 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scene/ghost/ScriptedGhost.gd" type="Script" id=1]
 [ext_resource path="res://scene/ghost/move/styles/float.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scene/ghost/goal/GhostScript.gd" type="Script" id=3]
 [ext_resource path="res://scene/ghost/move/MoveStyles.gd" type="Script" id=4]
 [ext_resource path="res://scene/ghost/move/styles/teleport.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scene/ghost/GhostVisual.gd" type="Script" id=6]
+[ext_resource path="res://scene/ghost/visual/ghost.png" type="Texture" id=7]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 20, 20 )
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.359375, 0.338318, 0.338318, 1 )
 
 [node name="ghost" type="KinematicBody2D"]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource( 1 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="GhostVisual" type="Node2D" parent="."]
+script = ExtResource( 6 )
+
+[node name="default" type="Sprite" parent="GhostVisual"]
+position = Vector2( 20.2982, 20.4777 )
+scale = Vector2( 0.175451, 0.175451 )
+texture = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 19.8438, 20.1587 )
-shape = SubResource( 1 )
-
-[node name="Label" type="RichTextLabel" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-custom_styles/normal = SubResource( 2 )
-text = "Ghost"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+shape = SubResource( 2 )
 
 [node name="GhostScriptTimer" type="Timer" parent="."]
 wait_time = 0.05

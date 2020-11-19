@@ -22,6 +22,7 @@ func updateSteps():
 			
 
 func nextStep():
+	if get_child_count() == 0: return
 	scriptStepIdx = (scriptStepIdx + 1) % get_child_count()
 	print('nextStep(',scriptStepIdx,'): ', get_child(scriptStepIdx).name)
 	disconnectStepListener()
