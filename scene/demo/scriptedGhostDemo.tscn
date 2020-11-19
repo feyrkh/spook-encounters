@@ -64,7 +64,7 @@ target = "Position2D"
 waitForSeconds = 5.0
 
 [node name="soundEffect2" parent="ghost/GhostScript" instance=ExtResource( 8 )]
-soundText = "Yep..."
+soundText = "Gonna spook this guy..."
 
 [node name="moveTo2" parent="ghost/GhostScript" instance=ExtResource( 4 )]
 target = "Position2D2"
