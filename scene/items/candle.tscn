@@ -31,6 +31,7 @@ visible = false
 position = Vector2( 1, -52 )
 texture = ExtResource( 2 )
 texture_scale = 0.25
+color = Color( 0.662745, 0.0196078, 0.0196078, 1 )
 energy = 0.6
 shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )

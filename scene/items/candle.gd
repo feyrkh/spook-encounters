@@ -1,7 +1,11 @@
 extends BasicItem
 
+export var startsOnFire = true
 onready var startingBrightness = $Light2D2.energy
 const maxBrightnessDiff = 0.1
+
+func _ready():
+	if startsOnFire: onLightWithFire()
 
 func onLightWithFire():
 	$Light2D2.visible = true
