@@ -90,6 +90,9 @@ itemLayer = NodePath("../../ItemLayer")
 [node name="Camera2D" parent="Player" index="5"]
 material = SubResource( 1 )
 
+[node name="visionHolder" parent="Player" index="8"]
+z_index = 999
+
 [node name="visionCone" parent="Player/visionHolder" index="1"]
 visible = false
 energy = 0.37

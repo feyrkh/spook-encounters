@@ -143,6 +143,8 @@ position = Vector2( 2, -59 )
 [node name="HudLayer" type="CanvasLayer" parent="."]
 
 [node name="VisionModes" type="Node2D" parent="HudLayer"]
+z_index = 999
+z_as_relative = false
 script = ExtResource( 17 )
 
 [node name="nightVision" type="ColorRect" parent="HudLayer/VisionModes"]
