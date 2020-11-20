@@ -40,7 +40,7 @@ func updateHighlight():
 		highlightedItem = closestItem
 
 func _on_ItemDetector_area_entered(area):
-	print('something entered itemdetector: ', area)
+	#print('something entered itemdetector: ', area)
 	var item = area.get_parent()
 	if item.isHeld: 
 		return # Don't count items which are already being held
@@ -51,7 +51,7 @@ func _on_ItemDetector_area_entered(area):
 	updateHighlight()
 
 func _on_ItemDetector_area_exited(area):
-	print('something left itemdetector: ', area)
+	#print('something left itemdetector: ', area)
 	var item = area.get_parent()
 	var itemIdx = itemsInRange.find(item)
 	if itemIdx >= 0: itemsInRange.remove(itemIdx)

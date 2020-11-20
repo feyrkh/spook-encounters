@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="BrightLightArea" type="Area2D"]
+input_pickable = false
+monitoring = false
+collision_layer = 2147483664
+collision_mask = 0

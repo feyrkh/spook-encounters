@@ -75,6 +75,6 @@ func _on_MoveController_updateFacingAngle(newPlayerAngle):
 		curAngleRad = heldItem.rotation + heldItem.get_angle_to(get_global_mouse_position())
 		heldItem.rotation = 0
 		#heldItem.rotation = curAngleRad
-		print('rotating to ', curAngleRad, '; ', heldItem.global_position, ' -> ', get_global_mouse_position())
+		#print('rotating to ', curAngleRad, '; ', heldItem.global_position, ' -> ', get_global_mouse_position())
 		heldItem.rotation = curAngleRad
-		print('heldItem rotation: ', heldItem.rotation_degrees)
+		#print('heldItem rotation: ', heldItem.rotation_degrees)

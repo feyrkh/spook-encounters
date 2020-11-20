@@ -208,7 +208,7 @@ func updateMovement(_delta):
 			animatedSprite.stop()
 			animatedSprite.frame = 0
 		animatedSprite.flip_h = flipped
-		print("Changing animation: ", animation, " flipped: ", flipped)
+		#print("Changing animation: ", animation, " flipped: ", flipped)
 		
 	if newMoveVector != moveVector:
 		#print("Changing move vector: ", moveVector, " became ", newMoveVector)

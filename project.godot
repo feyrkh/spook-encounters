@@ -247,6 +247,7 @@ use_item={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Ghost"
 2d_physics/layer_4="PickableItems"
+2d_physics/layer_5="BrightLight"
 2d_physics/layer_20="Light Obstruction"
 
 [rendering]
