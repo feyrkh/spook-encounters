@@ -82,6 +82,10 @@ position = Vector2( -65, -74 )
 position = Vector2( 502.627, 153.732 )
 rotation = -4.09803
 
+[node name="flashlight2" parent="ItemLayer" instance=ExtResource( 7 )]
+position = Vector2( 259.608, 105.8 )
+rotation = -4.09803
+
 [node name="laserPointer" parent="ItemLayer" instance=ExtResource( 3 )]
 
 [node name="nightVision" parent="ItemLayer" instance=ExtResource( 10 )]
@@ -237,6 +241,7 @@ __meta__ = {
 
 [node name="GhostVisual" type="Node2D" parent="ItemLayer/dimLightOnly ghost"]
 script = ExtResource( 12 )
+lightAlphaChangePerSecond = 0.3
 hidesInBrightLight = true
 
 [node name="default" type="Sprite" parent="ItemLayer/dimLightOnly ghost/GhostVisual"]
