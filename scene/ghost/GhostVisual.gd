@@ -4,7 +4,7 @@ onready var EventBus = $"/root/EventBus"
 
 var currentlyVisible = false
 var hidingFromLightCondition = false
-var currentBrightLightAreas = []
+var isBrightlyIlluminated = false
 var lightAlphaTarget = 1
 var currentLightAlpha = 1
 
@@ -29,21 +29,23 @@ func onVisualModeChange(newMode, itemCausingChange):
 	updateVisuals(newMode)
 	
 func updateVisuals(newMode):
-	hidingFromLightCondition = (hidesInBrightLight && currentBrightLightAreas.size() > 0) || (hidesInLowLight && currentBrightLightAreas.size() == 0)
+	hidingFromLightCondition = (hidesInBrightLight && isBrightlyIlluminated) || (hidesInLowLight && !isBrightlyIlluminated)
 	if hidingFromLightCondition: lightAlphaTarget = 0
 	else: lightAlphaTarget = 1
-	print('hiding from light/dark=', hidingFromLightCondition, ' for ', get_parent().get_name(), ' with bright lights: ', currentBrightLightAreas.size(), ' and hidesInLowLight=', hidesInLowLight, '; hidesInBrightLight=', hidesInBrightLight)
+	print('hiding from light/dark=', hidingFromLightCondition, ' for ', get_parent().get_name(), ' with bright lights: ', isBrightlyIlluminated, ' and hidesInLowLight=', hidesInLowLight, '; hidesInBrightLight=', hidesInBrightLight)
 	newMode = newMode.to_lower()
 	for child in get_children():
 		child.visible = newMode in child.name.to_lower()
 
-func _on_BrightLightDetector_onEnterBrightLight(brightLightArea):
+func _on_BrightLightDetector_onEnterBrightLight():
 	print('entered bright light: ', get_parent().get_name())
-	currentBrightLightAreas.append(brightLightArea)
+	#currentBrightLightAreas.append(brightLightArea)
+	isBrightlyIlluminated = true
 	updateVisuals(EventBus.currentVisualMode)
 
 
-func _on_BrightLightDetector_onLeaveBrightLight(brightLightArea):
+func _on_BrightLightDetector_onLeaveBrightLight():
 	print('left a bright light: ', get_parent().get_name())
-	currentBrightLightAreas.erase(brightLightArea)
+	#currentBrightLightAreas.erase(brightLightArea)
+	isBrightlyIlluminated = false
 	updateVisuals(EventBus.currentVisualMode)

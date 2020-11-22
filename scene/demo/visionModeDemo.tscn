@@ -190,7 +190,7 @@ position = Vector2( 20.0571, 19.7795 )
 shape = SubResource( 3 )
 
 [node name="brightLightOnly ghost" type="KinematicBody2D" parent="ItemLayer"]
-position = Vector2( -138.614, 81.0009 )
+position = Vector2( -233.636, 22.1382 )
 collision_layer = 4
 collision_mask = 0
 script = ExtResource( 5 )
@@ -269,6 +269,7 @@ script = ExtResource( 18 )
 scale = Vector2( 0.870601, 2.386 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemLayer/dimLightOnly ghost/BrightLightDetector"]
+visible = false
 position = Vector2( -1.44714, 0.264015 )
 shape = SubResource( 3 )
 
@@ -351,5 +352,7 @@ nightVisionColor = Color( 0.223529, 0.227451, 0.247059, 1 )
 [connection signal="onEnterBrightLight" from="ItemLayer/dimLightOnly ghost/BrightLightDetector" to="ItemLayer/dimLightOnly ghost/GhostVisual" method="_on_BrightLightDetector_onEnterBrightLight"]
 [connection signal="onLeaveBrightLight" from="ItemLayer/dimLightOnly ghost/BrightLightDetector" to="ItemLayer/dimLightOnly ghost/GhostVisual" method="_on_BrightLightDetector_onLeaveBrightLight"]
 [connection signal="timeout" from="ItemLayer/pixel ghost/GhostScriptTimer" to="ItemLayer/pixel ghost/GhostScript" method="updateSteps"]
+
+[editable path="ItemLayer/dimLightOnly ghost/BrightLightDetector"]
 
 [editable path="Player"]
