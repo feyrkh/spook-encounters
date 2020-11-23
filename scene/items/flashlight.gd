@@ -16,7 +16,7 @@ func onUseItem():
 	updateItemSlotIcon()
 	
 func updateItemSlotIcon():
-	if $BrightLightArea: $BrightLightArea.monitorable = $Light2D.visible
+	if get_node_or_null('BrightLightArea'): $BrightLightArea.monitorable = $Light2D.visible
 	if $Light2D.visible:
 		itemSlotIconTexture = itemSlotIconTextureEnabled
 	else:

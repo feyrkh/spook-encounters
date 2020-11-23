@@ -130,6 +130,8 @@ position = Vector2( -51.0267, 20.1599 )
 [node name="DownRight" type="Position2D" parent="HeldItem"]
 position = Vector2( 46.6171, 22.6797 )
 
+[node name="Held" type="Node2D" parent="HeldItem"]
+
 [node name="WalkCollision" type="CollisionShape2D" parent="."]
 position = Vector2( -1.8877, -1.41577 )
 rotation = 1.5708

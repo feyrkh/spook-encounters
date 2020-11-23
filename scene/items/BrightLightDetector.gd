@@ -28,7 +28,7 @@ func _on_BrightLightDetector_area_exited(area):
 		if isIlluminated: # was illuminated, but left the last bright light area
 			isIlluminated = false
 			emit_signal("onLeaveBrightLight")
-			print(self.get_parent().name, ' leaving bright light (no more bright light areas)')
+			#print(self.get_parent().name, ' leaving bright light (no more bright light areas)')
 
 
 func _on_RaytraceTimer_timeout():
@@ -45,9 +45,9 @@ func _on_RaytraceTimer_timeout():
 	if noObstruction && !isIlluminated: # we were not illuminated, but there is currently nothing blocking us from at least one bright light
 		isIlluminated = true
 		emit_signal("onEnterBrightLight")
-		print(self.get_parent().name, ' entered bright light')
+		#print(self.get_parent().name, ' entered bright light')
 	if !noObstruction && isIlluminated: # we were illuminated, but there are currently no unobstructed paths to a bright light
 		isIlluminated = false
 		emit_signal("onLeaveBrightLight")
-		print(self.get_parent().name, ' leaving bright light (still in area, but blocked)')
+		#print(self.get_parent().name, ' leaving bright light (still in area, but blocked)')
 		

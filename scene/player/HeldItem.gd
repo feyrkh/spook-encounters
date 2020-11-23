@@ -7,6 +7,7 @@ enum {None, Left, DownLeft, Down, DownRight, Right, UpRight, Up, UpLeft}
 var facing = Right
 var heldItem = null
 onready var curAttachPoint = $Right
+onready var holdNode = $Held
 var curAngleRad = 0
 
 signal item_drop_requested # (heldItem)
@@ -22,8 +23,8 @@ func holdItem(item):
 	heldItem.visible = true
 	if heldItem.get_parent() != null: 
 		heldItem.get_parent().remove_child(heldItem)
-	attachPoint.add_child(heldItem)
-	heldItem.position = Vector2.ZERO
+	holdNode.add_child(heldItem)
+	heldItem.global_position = attachPoint.global_position
 	if heldItem.has_method('onHold'): heldItem.onHold()
 
 func unholdItem():
@@ -49,14 +50,12 @@ func dropItem() -> bool:
 func _on_MoveController_facingChange(oldFacing, newFacing, angleDegrees):
 	facing = newFacing
 	var oldAttach:Node2D = getAttachPoint(oldFacing)
-	if !oldAttach: return
-	if oldAttach.get_child_count() == 0: return
 	var newAttach:Node2D = getAttachPoint(newFacing)
 	curAttachPoint = newAttach
+	print('moving from ', oldAttach.name, ' to ', newAttach.name)
 	if !newAttach: return
-	for child in oldAttach.get_children():
-		oldAttach.remove_child(child)
-		newAttach.add_child(child)
+	for child in holdNode.get_children():
+		child.global_position = newAttach.global_position
 
 func getAttachPoint(_facing):
 	match _facing:
