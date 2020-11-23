@@ -200,6 +200,7 @@ position = Vector2( 0.310059, -14.363 )
 collision_layer = 2147483680
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="visionHolder/VisionCone"]
+visible = false
 polygon = PoolVector2Array( -104.915, -2.63846, 1.68994, -776.637, 1201.69, -776.637, 1201.69, 823.363, 1.68994, 823.363 )
 
 [node name="Blindspot" type="Polygon2D" parent="visionHolder"]
