@@ -9,7 +9,7 @@
 [ext_resource path="res://scene/items/flashlight.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scene/items/candle.tscn" type="PackedScene" id=10]
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=1]
 script/source = "extends BasicItem
 
 func onUseItemOnTarget(target:BasicItem):
@@ -76,7 +76,7 @@ position = Vector2( 200.291, 114.441 )
 
 [node name="matches" parent="ItemLayer" instance=ExtResource( 2 )]
 position = Vector2( 159.263, 262.497 )
-script = SubResource( 3 )
+script = SubResource( 1 )
 itemSlotIconTexture = null
 
 [node name="Player" parent="." instance=ExtResource( 1 )]

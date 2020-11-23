@@ -5,6 +5,7 @@
 [ext_resource path="res://scene/player/inventory/PlayerInventory.gd" type="Script" id=3]
 
 [node name="PlayerInventory" type="Node2D"]
+position = Vector2( 0, 168 )
 script = ExtResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
