@@ -7,7 +7,7 @@ var moveStyles:MoveStyles
 
 func setGhost(_ghost):
 	.setGhost(_ghost)
-	moveStyles = _ghost.get_node('move') as MoveStyles
+	moveStyles = _ghost.get_node('GhostMoveStyles') as MoveStyles
 
 func startStep():
 	.startStep()

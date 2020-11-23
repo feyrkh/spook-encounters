@@ -7,6 +7,8 @@ var brightLightsInArea = [] # List of bright lights that might be illuminating m
 var detectionPoints = [] # List of Position2D children of this object, used as additional points for raytracing toward center of bright lights
 var isIlluminated = false
 
+export(int) var layerForPhysicsObstructions = 1 # Physics layers that will block light
+
 func _ready():
 	detectionPoints.append(self)
 	for child in get_children():
@@ -26,7 +28,7 @@ func _on_BrightLightDetector_area_exited(area):
 		if isIlluminated: # was illuminated, but left the last bright light area
 			isIlluminated = false
 			emit_signal("onLeaveBrightLight")
-			print('leaving bright light (no more bright light areas)')
+			print(self.get_parent().name, ' leaving bright light (no more bright light areas)')
 
 
 func _on_RaytraceTimer_timeout():
@@ -35,7 +37,7 @@ func _on_RaytraceTimer_timeout():
 	var space_state = get_world_2d().direct_space_state
 	for sourcePoint in brightLightsInArea:
 		for destPoint in detectionPoints:
-			var result = space_state.intersect_ray(sourcePoint.global_position, destPoint.global_position, [], 1)
+			var result = space_state.intersect_ray(sourcePoint.global_position, destPoint.global_position, [], layerForPhysicsObstructions)
 			if result.size() == 0: 
 				noObstruction = true
 				break
@@ -43,9 +45,9 @@ func _on_RaytraceTimer_timeout():
 	if noObstruction && !isIlluminated: # we were not illuminated, but there is currently nothing blocking us from at least one bright light
 		isIlluminated = true
 		emit_signal("onEnterBrightLight")
-		print('entered bright light')
+		print(self.get_parent().name, ' entered bright light')
 	if !noObstruction && isIlluminated: # we were illuminated, but there are currently no unobstructed paths to a bright light
 		isIlluminated = false
 		emit_signal("onLeaveBrightLight")
-		print('leaving bright light (still in area, but blocked)')
+		print(self.get_parent().name, ' leaving bright light (still in area, but blocked)')
 		

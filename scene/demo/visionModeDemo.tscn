@@ -1,35 +1,26 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scene/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://img/itemImage/pixelVision-on.jpg" type="Texture" id=2]
 [ext_resource path="res://scene/items/laserPointer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scene/props/furniture/table.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scene/ghost/ScriptedGhost.gd" type="Script" id=5]
 [ext_resource path="res://scene/props/furniture/wood-floor.jpg" type="Texture" id=6]
 [ext_resource path="res://scene/items/flashlight.tscn" type="PackedScene" id=7]
 [ext_resource path="res://img/itemImage/pixelVision-off.jpg" type="Texture" id=8]
 [ext_resource path="res://shaders/pixel.shader" type="Shader" id=9]
 [ext_resource path="res://scene/items/visionEquip/nightVision.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scene/items/visionEquip/VisionModeDarknessOverlay.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scene/ghost/GhostVisual.gd" type="Script" id=12]
-[ext_resource path="res://scene/ghost/goal/GhostScript.gd" type="Script" id=13]
 [ext_resource path="res://scene/items/candle.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scene/ghost/visual/ghost.png" type="Texture" id=15]
-[ext_resource path="res://scene/ghost/move/styles/float.tscn" type="PackedScene" id=16]
-[ext_resource path="res://scene/ghost/move/styles/teleport.tscn" type="PackedScene" id=17]
-[ext_resource path="res://scene/ghost/move/MoveStyles.gd" type="Script" id=18]
-[ext_resource path="res://scene/items/BrightLightDetector.tscn" type="PackedScene" id=20]
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 20, 20 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 17.097, 7.62505 )
+[ext_resource path="res://scene/props/furniture/wall.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scene/ghost/ScriptedGhost.tscn" type="PackedScene" id=22]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 9 )
 shader_param/size_x = 3.0
 shader_param/size_y = 3.0
+
+[sub_resource type="CircleShape2D" id=2]
 
 [node name="Node2D" type="Node2D"]
 
@@ -76,6 +67,12 @@ position = Vector2( -155, -34 )
 [node name="table5" parent="PropLayer" instance=ExtResource( 4 )]
 position = Vector2( -65, -74 )
 
+[node name="wall" parent="PropLayer" instance=ExtResource( 21 )]
+position = Vector2( 141.262, -63.1456 )
+
+[node name="wall2" parent="PropLayer" instance=ExtResource( 21 )]
+position = Vector2( 222.02, -137.229 )
+
 [node name="ItemLayer" type="Node2D" parent="."]
 
 [node name="flashlight" parent="ItemLayer" instance=ExtResource( 7 )]
@@ -98,225 +95,6 @@ itemSlotIconTextureEnabled = ExtResource( 2 )
 itemSlotIconTextureDisabled = ExtResource( 8 )
 visualModeName = "pixelVision"
 
-[node name="nightVision ghost" type="KinematicBody2D" parent="ItemLayer"]
-position = Vector2( 566.614, 70.0067 )
-scale = Vector2( 0.870601, 2.386 )
-collision_layer = 4
-collision_mask = 0
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="GhostVisual" type="Node2D" parent="ItemLayer/nightVision ghost"]
-script = ExtResource( 12 )
-
-[node name="nightVision" type="Sprite" parent="ItemLayer/nightVision ghost/GhostVisual"]
-position = Vector2( 20.2982, 20.4777 )
-scale = Vector2( 0.175451, 0.175451 )
-texture = ExtResource( 15 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemLayer/nightVision ghost"]
-position = Vector2( 19.8438, 20.1587 )
-shape = SubResource( 2 )
-
-[node name="GhostScriptTimer" type="Timer" parent="ItemLayer/nightVision ghost"]
-wait_time = 0.05
-autostart = true
-
-[node name="GhostScript" type="Node" parent="ItemLayer/nightVision ghost"]
-script = ExtResource( 13 )
-
-[node name="move" type="Node" parent="ItemLayer/nightVision ghost"]
-script = ExtResource( 18 )
-
-[node name="float" parent="ItemLayer/nightVision ghost/move" instance=ExtResource( 16 )]
-
-[node name="teleport" parent="ItemLayer/nightVision ghost/move" instance=ExtResource( 17 )]
-
-[node name="BrightLightDetector" parent="ItemLayer/nightVision ghost" instance=ExtResource( 20 )]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemLayer/nightVision ghost/BrightLightDetector"]
-visible = false
-position = Vector2( 20.0571, 19.7795 )
-shape = SubResource( 3 )
-
-[node name="nightVision_default ghost" type="KinematicBody2D" parent="ItemLayer"]
-position = Vector2( 786.666, 90.4974 )
-scale = Vector2( 0.870601, 2.386 )
-collision_layer = 4
-collision_mask = 0
-script = ExtResource( 5 )
-
-[node name="GhostVisual" type="Node2D" parent="ItemLayer/nightVision_default ghost"]
-script = ExtResource( 12 )
-
-[node name="default" type="Sprite" parent="ItemLayer/nightVision_default ghost/GhostVisual"]
-position = Vector2( 20.2982, 20.4777 )
-scale = Vector2( 0.175451, 0.175451 )
-texture = ExtResource( 15 )
-
-[node name="nightVision" type="Sprite" parent="ItemLayer/nightVision_default ghost/GhostVisual"]
-visible = false
-modulate = Color( 1, 0, 0, 1 )
-position = Vector2( 20.2982, 20.4777 )
-scale = Vector2( 0.5, 0.25 )
-texture = ExtResource( 15 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemLayer/nightVision_default ghost"]
-position = Vector2( 19.8438, 20.1587 )
-shape = SubResource( 2 )
-
-[node name="GhostScriptTimer" type="Timer" parent="ItemLayer/nightVision_default ghost"]
-wait_time = 0.05
-autostart = true
-
-[node name="GhostScript" type="Node" parent="ItemLayer/nightVision_default ghost"]
-script = ExtResource( 13 )
-
-[node name="move" type="Node" parent="ItemLayer/nightVision_default ghost"]
-script = ExtResource( 18 )
-
-[node name="float" parent="ItemLayer/nightVision_default ghost/move" instance=ExtResource( 16 )]
-
-[node name="teleport" parent="ItemLayer/nightVision_default ghost/move" instance=ExtResource( 17 )]
-
-[node name="BrightLightDetector" parent="ItemLayer/nightVision_default ghost" instance=ExtResource( 20 )]
-scale = Vector2( 1, 1 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemLayer/nightVision_default ghost/BrightLightDetector"]
-visible = false
-position = Vector2( 20.0571, 19.7795 )
-shape = SubResource( 3 )
-
-[node name="brightLightOnly ghost" type="KinematicBody2D" parent="ItemLayer"]
-position = Vector2( -233.636, 22.1382 )
-collision_layer = 4
-collision_mask = 0
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="GhostVisual" type="Node2D" parent="ItemLayer/brightLightOnly ghost"]
-script = ExtResource( 12 )
-hidesInLowLight = true
-
-[node name="default" type="Sprite" parent="ItemLayer/brightLightOnly ghost/GhostVisual"]
-scale = Vector2( 0.175451, 0.175451 )
-texture = ExtResource( 15 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemLayer/brightLightOnly ghost"]
-shape = SubResource( 2 )
-
-[node name="GhostScriptTimer" type="Timer" parent="ItemLayer/brightLightOnly ghost"]
-wait_time = 0.05
-autostart = true
-
-[node name="GhostScript" type="Node" parent="ItemLayer/brightLightOnly ghost"]
-script = ExtResource( 13 )
-
-[node name="move" type="Node" parent="ItemLayer/brightLightOnly ghost"]
-script = ExtResource( 18 )
-
-[node name="float" parent="ItemLayer/brightLightOnly ghost/move" instance=ExtResource( 16 )]
-
-[node name="teleport" parent="ItemLayer/brightLightOnly ghost/move" instance=ExtResource( 17 )]
-
-[node name="BrightLightDetector" parent="ItemLayer/brightLightOnly ghost" instance=ExtResource( 20 )]
-scale = Vector2( 0.870601, 2.386 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemLayer/brightLightOnly ghost/BrightLightDetector"]
-visible = false
-shape = SubResource( 3 )
-
-[node name="dimLightOnly ghost" type="KinematicBody2D" parent="ItemLayer"]
-position = Vector2( 31.4749, -199.332 )
-collision_layer = 4
-collision_mask = 0
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="GhostVisual" type="Node2D" parent="ItemLayer/dimLightOnly ghost"]
-script = ExtResource( 12 )
-lightAlphaChangePerSecond = 0.3
-hidesInBrightLight = true
-
-[node name="default" type="Sprite" parent="ItemLayer/dimLightOnly ghost/GhostVisual"]
-scale = Vector2( 0.175451, 0.175451 )
-texture = ExtResource( 15 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemLayer/dimLightOnly ghost"]
-shape = SubResource( 2 )
-
-[node name="GhostScriptTimer" type="Timer" parent="ItemLayer/dimLightOnly ghost"]
-wait_time = 0.05
-autostart = true
-
-[node name="GhostScript" type="Node" parent="ItemLayer/dimLightOnly ghost"]
-script = ExtResource( 13 )
-
-[node name="move" type="Node" parent="ItemLayer/dimLightOnly ghost"]
-script = ExtResource( 18 )
-
-[node name="float" parent="ItemLayer/dimLightOnly ghost/move" instance=ExtResource( 16 )]
-
-[node name="teleport" parent="ItemLayer/dimLightOnly ghost/move" instance=ExtResource( 17 )]
-
-[node name="BrightLightDetector" parent="ItemLayer/dimLightOnly ghost" instance=ExtResource( 20 )]
-scale = Vector2( 0.870601, 2.386 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemLayer/dimLightOnly ghost/BrightLightDetector"]
-visible = false
-position = Vector2( -1.44714, 0.264015 )
-shape = SubResource( 3 )
-
-[node name="pixel ghost" type="KinematicBody2D" parent="ItemLayer"]
-position = Vector2( 908.33, 252.599 )
-scale = Vector2( 2.054, 2.386 )
-collision_layer = 4
-collision_mask = 0
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="GhostVisual" type="Node2D" parent="ItemLayer/pixel ghost"]
-script = ExtResource( 12 )
-
-[node name="pixelVision" type="Sprite" parent="ItemLayer/pixel ghost/GhostVisual"]
-scale = Vector2( 0.175451, 0.175451 )
-texture = ExtResource( 15 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemLayer/pixel ghost"]
-shape = SubResource( 2 )
-
-[node name="GhostScriptTimer" type="Timer" parent="ItemLayer/pixel ghost"]
-wait_time = 0.05
-autostart = true
-
-[node name="GhostScript" type="Node" parent="ItemLayer/pixel ghost"]
-script = ExtResource( 13 )
-
-[node name="move" type="Node" parent="ItemLayer/pixel ghost"]
-script = ExtResource( 18 )
-
-[node name="float" parent="ItemLayer/pixel ghost/move" instance=ExtResource( 16 )]
-
-[node name="teleport" parent="ItemLayer/pixel ghost/move" instance=ExtResource( 17 )]
-
-[node name="BrightLightDetector" parent="ItemLayer/pixel ghost" instance=ExtResource( 20 )]
-scale = Vector2( 0.423856, 0.999998 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemLayer/pixel ghost/BrightLightDetector"]
-visible = false
-shape = SubResource( 3 )
-
 [node name="candle" parent="ItemLayer" instance=ExtResource( 14 )]
 position = Vector2( 668.046, 144.364 )
 
@@ -332,27 +110,130 @@ material = SubResource( 1 )
 [node name="visionHolder" parent="Player" index="8"]
 z_index = 999
 
-[node name="visionCone" parent="Player/visionHolder" index="1"]
-position = Vector2( -2.0614, -14.4921 )
-scale = Vector2( 0.870601, 2.386 )
-energy = 0.37
-shadow_enabled = true
+[node name="defaultVisionGhost" parent="." instance=ExtResource( 22 )]
+position = Vector2( -95, 133 )
+
+[node name="default" type="Sprite" parent="defaultVisionGhost/GhostVisual" index="0"]
+position = Vector2( 19, 20 )
+scale = Vector2( 0.146667, 0.164444 )
+texture = ExtResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="defaultVisionGhost/BrightLightDetector" index="1"]
+position = Vector2( 19.5998, 20.4907 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="defaultVisionGhost/PlayerVisionDetector" index="1"]
+position = Vector2( 19.5998, 20.4907 )
+shape = SubResource( 2 )
+
+[node name="dimLightOnly" parent="." instance=ExtResource( 22 )]
+position = Vector2( 223.7, -215.972 )
+
+[node name="GhostVisual" parent="dimLightOnly" index="0"]
+hidesInBrightLight = true
+
+[node name="default" type="Sprite" parent="dimLightOnly/GhostVisual" index="0"]
+position = Vector2( 19, 20 )
+scale = Vector2( 0.146667, 0.164444 )
+texture = ExtResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dimLightOnly/BrightLightDetector" index="1"]
+position = Vector2( 19.5998, 20.4907 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dimLightOnly/PlayerVisionDetector" index="1"]
+position = Vector2( 19.5998, 20.4907 )
+shape = SubResource( 2 )
+
+[node name="brightLightOnlyGhost" parent="." instance=ExtResource( 22 )]
+position = Vector2( 8.88321, -89.3499 )
+
+[node name="GhostVisual" parent="brightLightOnlyGhost" index="0"]
+hidesInLowLight = true
+
+[node name="default" type="Sprite" parent="brightLightOnlyGhost/GhostVisual" index="0"]
+scale = Vector2( 0.146667, 0.164444 )
+texture = ExtResource( 15 )
+
+[node name="CollisionShape2D" parent="brightLightOnlyGhost" index="1"]
+position = Vector2( 0, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="brightLightOnlyGhost/BrightLightDetector" index="1"]
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="brightLightOnlyGhost/PlayerVisionDetector" index="1"]
+shape = SubResource( 2 )
+
+[node name="pixelGhost" parent="." instance=ExtResource( 22 )]
+position = Vector2( 739.169, -11.6342 )
+
+[node name="pixelVision" type="Sprite" parent="pixelGhost/GhostVisual" index="0"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 19, 20 )
+scale = Vector2( 0.373, 0.286 )
+texture = ExtResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pixelGhost/BrightLightDetector" index="1"]
+position = Vector2( 19.5998, 20.4907 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pixelGhost/PlayerVisionDetector" index="1"]
+position = Vector2( 19.5998, 20.4907 )
+shape = SubResource( 2 )
+
+[node name="nightVisionGhost" parent="." instance=ExtResource( 22 )]
+position = Vector2( 786.259, 122.909 )
+
+[node name="nightVision" type="Sprite" parent="nightVisionGhost/GhostVisual" index="0"]
+position = Vector2( 19, 20 )
+scale = Vector2( 0.146667, 0.164444 )
+texture = ExtResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="nightVisionGhost/BrightLightDetector" index="1"]
+position = Vector2( 19.5998, 20.4907 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="nightVisionGhost/PlayerVisionDetector" index="1"]
+position = Vector2( 18.759, 20.4907 )
+shape = SubResource( 2 )
+
+[node name="defaultAndNightVisionGhost" parent="." instance=ExtResource( 22 )]
+position = Vector2( 677.784, 271.748 )
+
+[node name="default" type="Sprite" parent="defaultAndNightVisionGhost/GhostVisual" index="0"]
+position = Vector2( 19, 20 )
+scale = Vector2( 0.146667, 0.164444 )
+texture = ExtResource( 15 )
+
+[node name="nightVision" type="Sprite" parent="defaultAndNightVisionGhost/GhostVisual" index="1"]
+visible = false
+modulate = Color( 0.780392, 0.0627451, 0.0627451, 1 )
+position = Vector2( 18.1592, 20 )
+scale = Vector2( 0.439, 0.395 )
+texture = ExtResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="defaultAndNightVisionGhost/BrightLightDetector" index="1"]
+position = Vector2( 30.5314, 33.945 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="defaultAndNightVisionGhost/PlayerVisionDetector" index="1"]
+position = Vector2( 30.5315, 32.2632 )
+shape = SubResource( 2 )
 
 [node name="VisionModeDarknessOverlay" parent="." instance=ExtResource( 11 )]
 color = Color( 0, 0, 0, 1 )
 nightVisionColor = Color( 0.223529, 0.227451, 0.247059, 1 )
-[connection signal="timeout" from="ItemLayer/nightVision ghost/GhostScriptTimer" to="ItemLayer/nightVision ghost/GhostScript" method="updateSteps"]
-[connection signal="timeout" from="ItemLayer/nightVision_default ghost/GhostScriptTimer" to="ItemLayer/nightVision_default ghost/GhostScript" method="updateSteps"]
-[connection signal="onEnterBrightLight" from="ItemLayer/nightVision_default ghost/BrightLightDetector" to="ItemLayer/nightVision_default ghost/GhostVisual" method="_on_BrightLightDetector_onEnterBrightLight"]
-[connection signal="onLeaveBrightLight" from="ItemLayer/nightVision_default ghost/BrightLightDetector" to="ItemLayer/nightVision_default ghost/GhostVisual" method="_on_BrightLightDetector_onLeaveBrightLight"]
-[connection signal="timeout" from="ItemLayer/brightLightOnly ghost/GhostScriptTimer" to="ItemLayer/brightLightOnly ghost/GhostScript" method="updateSteps"]
-[connection signal="onEnterBrightLight" from="ItemLayer/brightLightOnly ghost/BrightLightDetector" to="ItemLayer/brightLightOnly ghost/GhostVisual" method="_on_BrightLightDetector_onEnterBrightLight"]
-[connection signal="onLeaveBrightLight" from="ItemLayer/brightLightOnly ghost/BrightLightDetector" to="ItemLayer/brightLightOnly ghost/GhostVisual" method="_on_BrightLightDetector_onLeaveBrightLight"]
-[connection signal="timeout" from="ItemLayer/dimLightOnly ghost/GhostScriptTimer" to="ItemLayer/dimLightOnly ghost/GhostScript" method="updateSteps"]
-[connection signal="onEnterBrightLight" from="ItemLayer/dimLightOnly ghost/BrightLightDetector" to="ItemLayer/dimLightOnly ghost/GhostVisual" method="_on_BrightLightDetector_onEnterBrightLight"]
-[connection signal="onLeaveBrightLight" from="ItemLayer/dimLightOnly ghost/BrightLightDetector" to="ItemLayer/dimLightOnly ghost/GhostVisual" method="_on_BrightLightDetector_onLeaveBrightLight"]
-[connection signal="timeout" from="ItemLayer/pixel ghost/GhostScriptTimer" to="ItemLayer/pixel ghost/GhostScript" method="updateSteps"]
-
-[editable path="ItemLayer/dimLightOnly ghost/BrightLightDetector"]
 
 [editable path="Player"]
+
+[editable path="defaultVisionGhost"]
+
+[editable path="dimLightOnly"]
+
+[editable path="brightLightOnlyGhost"]
+
+[editable path="pixelGhost"]
+
+[editable path="nightVisionGhost"]
+
+[editable path="defaultAndNightVisionGhost"]

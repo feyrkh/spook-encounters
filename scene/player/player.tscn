@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://scene/player/walk/player-down2.png" type="Texture" id=1]
 [ext_resource path="res://scene/player/HeldItem.gd" type="Script" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://scene/items/VisionModeAffectedLight.gd" type="Script" id=19]
 [ext_resource path="res://scene/items/light-flashlight.png" type="Texture" id=20]
 [ext_resource path="res://scene/props/furniture/light-lamp.png" type="Texture" id=21]
+[ext_resource path="res://scene/items/BrightLightArea.tscn" type="PackedScene" id=22]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -129,7 +130,7 @@ position = Vector2( -51.0267, 20.1599 )
 [node name="DownRight" type="Position2D" parent="HeldItem"]
 position = Vector2( 46.6171, 22.6797 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="WalkCollision" type="CollisionShape2D" parent="."]
 position = Vector2( -1.8877, -1.41577 )
 rotation = 1.5708
 shape = SubResource( 3 )
@@ -183,16 +184,28 @@ texture = ExtResource( 21 )
 energy = 0.2
 script = ExtResource( 19 )
 
-[node name="visionCone" type="Light2D" parent="visionHolder"]
+[node name="visionLighting" type="Light2D" parent="visionHolder"]
 show_behind_parent = true
-position = Vector2( 2.88452, -10.5 )
-scale = Vector2( 1.45269, 1.34495 )
+position = Vector2( -149.109, -17.6353 )
+scale = Vector2( 2.05269, 21.0249 )
 texture = ExtResource( 20 )
 offset = Vector2( 200, 0 )
+energy = 0.2
 script = ExtResource( 19 )
+
+[node name="VisionCone" parent="visionHolder" instance=ExtResource( 22 )]
+position = Vector2( 0.310059, -14.363 )
+collision_layer = 2147483680
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="visionHolder/VisionCone"]
+polygon = PoolVector2Array( -104.915, -2.63846, 1.68994, -776.637, 1201.69, -776.637, 1201.69, 823.363, 1.68994, 823.363 )
+
+[node name="Blindspot" type="Polygon2D" parent="visionHolder"]
+color = Color( 0.301961, 0.294118, 0.294118, 0.803922 )
+polygon = PoolVector2Array( 1.91592, -790.618, -877.138, -785.68, -1180.39, -216.75, -846.638, 689.761, 1.88977, 809.969, -104.046, -15.4931 )
 [connection signal="facingChange" from="MoveController" to="HeldItem" method="_on_MoveController_facingChange"]
-[connection signal="updateFacingAngle" from="MoveController" to="HeldItem" method="_on_MoveController_updateFacingAngle"]
 [connection signal="updateFacingAngle" from="MoveController" to="visionHolder" method="_on_MoveController_updateFacingAngle"]
+[connection signal="updateFacingAngle" from="MoveController" to="HeldItem" method="_on_MoveController_updateFacingAngle"]
 [connection signal="area_entered" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_entered"]
 [connection signal="area_exited" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_exited"]
 [connection signal="itemPickupRequested" from="ItemDetector" to="HudLayer/PlayerInventory" method="onItemPickupRequested"]
