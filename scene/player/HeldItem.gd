@@ -25,6 +25,7 @@ func holdItem(item):
 		heldItem.get_parent().remove_child(heldItem)
 	holdNode.add_child(heldItem)
 	heldItem.global_position = attachPoint.global_position
+	updateHeldItemRotation()
 	if heldItem.has_method('onHold'): heldItem.onHold()
 
 func unholdItem():
@@ -70,6 +71,9 @@ func getAttachPoint(_facing):
 
 
 func _on_MoveController_updateFacingAngle(newPlayerAngle):
+		updateHeldItemRotation()
+
+func updateHeldItemRotation():
 	if heldItem:
 		curAngleRad = heldItem.rotation + heldItem.get_angle_to(get_global_mouse_position())
 		heldItem.rotation = 0
