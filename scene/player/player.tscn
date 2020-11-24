@@ -192,7 +192,7 @@ position = Vector2( -149.109, -17.6353 )
 scale = Vector2( 2.05269, 21.0249 )
 texture = ExtResource( 20 )
 offset = Vector2( 200, 0 )
-energy = 0.2
+energy = 0.5
 script = ExtResource( 19 )
 
 [node name="VisionCone" parent="visionHolder" instance=ExtResource( 22 )]
@@ -204,11 +204,13 @@ visible = false
 polygon = PoolVector2Array( -104.915, -2.63846, 1.68994, -776.637, 1201.69, -776.637, 1201.69, 823.363, 1.68994, 823.363 )
 
 [node name="Blindspot" type="Polygon2D" parent="visionHolder"]
+z_index = 999
+z_as_relative = false
 color = Color( 0.301961, 0.294118, 0.294118, 0.803922 )
 polygon = PoolVector2Array( 1.91592, -790.618, -877.138, -785.68, -1180.39, -216.75, -846.638, 689.761, 1.88977, 809.969, -104.046, -15.4931 )
 [connection signal="facingChange" from="MoveController" to="HeldItem" method="_on_MoveController_facingChange"]
-[connection signal="updateFacingAngle" from="MoveController" to="visionHolder" method="_on_MoveController_updateFacingAngle"]
 [connection signal="updateFacingAngle" from="MoveController" to="HeldItem" method="_on_MoveController_updateFacingAngle"]
+[connection signal="updateFacingAngle" from="MoveController" to="visionHolder" method="_on_MoveController_updateFacingAngle"]
 [connection signal="area_entered" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_entered"]
 [connection signal="area_exited" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_exited"]
 [connection signal="itemPickupRequested" from="ItemDetector" to="HudLayer/PlayerInventory" method="onItemPickupRequested"]

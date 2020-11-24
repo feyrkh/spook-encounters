@@ -5,7 +5,7 @@
 [ext_resource path="res://img/itemImage/default.jpg" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 25.4773, 25.8857 )
+extents = Vector2( 24, 17 )
 
 [node name="BasicItem" type="Node2D"]
 position = Vector2( -1.18921, 28.541 )

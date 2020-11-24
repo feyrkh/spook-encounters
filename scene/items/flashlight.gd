@@ -5,7 +5,7 @@ export(Texture) var itemSlotIconTextureDisabled
 
 func _ready():
 	updateItemSlotIcon()
-
+	
 func onUseItem():
 	$Light2D.visible = !$Light2D.visible
 	if $BrightLightArea: 
@@ -14,6 +14,10 @@ func onUseItem():
 		$BrightLightArea.position.x -= 0.01
 		
 	updateItemSlotIcon()
+	
+
+func onUseItemWithEmptyHand():
+	onUseItem()
 	
 func updateItemSlotIcon():
 	if get_node_or_null('BrightLightArea'): $BrightLightArea.monitorable = $Light2D.visible

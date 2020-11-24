@@ -1,6 +1,7 @@
 extends Node2D
 
 signal noRoomForNewItem
+signal pickupNotAllowed # (item)
 signal itemUnequipped # (item)
 signal itemEquipped # (item)
 
@@ -98,6 +99,11 @@ func updateInvSlotImage(itemSlotIdx):
 			itemFrame.get_node('ItemIcon').texture = icon
 
 func onItemPickupRequested(highlightedItem):
+	if highlightedItem && !highlightedItem.canBePickedUp:
+		if highlightedItem.has_method('interactWithStationaryItem'):
+			highlightedItem.interactWithStationaryItem(self)
+		else:
+			emit_signal("pickupNotAllowed", highlightedItem)
 	if !isRoomForNewItem():
 		emit_signal("noRoomForNewItem")
 		return

@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scene/splashscreen/FadeInOut.gd" type="Script" id=1]
+[ext_resource path="res://scene/splashscreen/ribbonblack.jpg" type="Texture" id=2]
+[ext_resource path="res://scene/splashscreen/liquidenthusiasm.png" type="Texture" id=3]
+
+[node name="SplashScreen" type="Node2D"]
+script = ExtResource( 1 )
+fadeOutSeconds = 0.25
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Background" type="ColorRect" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 20.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="liquidenthusiasm" type="Sprite" parent="."]
+position = Vector2( 776.339, 472.488 )
+scale = Vector2( 0.44334, 0.44334 )
+texture = ExtResource( 3 )
+
+[node name="ribbonblack" type="Sprite" parent="."]
+position = Vector2( 152.723, 135.259 )
+scale = Vector2( 0.292959, 0.292959 )
+texture = ExtResource( 2 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 20.0
+margin_bottom = 20.0
+text = "Ribbon Black"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 20.0
+margin_bottom = 20.0
+text = "Liquid Enthusiasm"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 20.0
+margin_bottom = 20.0
+text = "and"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Overlay" type="ColorRect" parent="."]
+margin_right = 1600.0
+margin_bottom = 1600.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartFadeTimer" type="Timer" parent="."]
+wait_time = 0.01
+one_shot = true
+autostart = true
+[connection signal="timeout" from="StartFadeTimer" to="." method="_on_StartFadeTimer_timeout"]

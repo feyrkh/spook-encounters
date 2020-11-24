@@ -46,12 +46,12 @@ func updateVisuals(newMode):
 	hidingFromLightCondition = (hidesInBrightLight && isBrightlyIlluminated) || (hidesInLowLight && !isBrightlyIlluminated)
 	if hidingFromLightCondition: lightAlphaTarget = 0
 	else: lightAlphaTarget = 1
-	if isInVisionCone: visionConeAlphaTarget = 1
+	if !hidesOutsideVisionCone || isInVisionCone: visionConeAlphaTarget = 1
 	else: visionConeAlphaTarget = 0
 	#print('hiding from light/dark=', hidingFromLightCondition, ' for ', get_parent().get_name(), ' with bright lights: ', isBrightlyIlluminated, ' and hidesInLowLight=', hidesInLowLight, '; hidesInBrightLight=', hidesInBrightLight, '; inVisionCone=', isInVisionCone)
 	newMode = newMode.to_lower()
 	for child in get_children():
-		child.visible = newMode in child.name.to_lower()
+		child.visible = newMode in child.name.to_lower() || child.name == "all"
 
 func _on_BrightLightDetector_onEnterBrightLight():
 	#print('entered bright light: ', get_parent().get_name())

@@ -116,7 +116,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Spook Encounters"
+config/name="Polterguise"
+run/main_scene="res://scene/splashscreen/SplashScreen.tscn"
 config/icon="res://icon.png"
 
 [autoload]

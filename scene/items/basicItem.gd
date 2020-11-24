@@ -4,12 +4,16 @@ class_name BasicItem
 var itemInRange = false
 var itemSelected = false
 var isHeld = false
+var canBePickedUp = true
 export(Texture) var itemSlotIconTexture
 
+const itemInRangeMaterial:Material = preload("res://shaders/itemInRangeMaterial.tres")
+const itemSelectedMaterial:Material = preload("res://shaders/itemSelectedMaterial.tres")
+
 func updateHighlight():
-	if itemSelected: $placeholderImage.setBackgroundColor(Color.lightgray)
-	elif itemInRange: $placeholderImage.setBackgroundColor(Color.darkgray)
-	else: $placeholderImage.setBackgroundColor(Color.black)
+	if itemSelected: self.material = itemSelectedMaterial
+	elif itemInRange: self.material = itemInRangeMaterial
+	else: self.material = null
 
 func addItemSelectedHighlight():
 	itemSelected = true
@@ -33,5 +37,12 @@ func onPickup():
 func onDrop():
 	$ItemPickupArea.monitorable = true
 	
+# Called when player presses the 'use' button while holding an item, or looking at an item on the ground
 func onUseItem():
+	pass
+
+func onUseItemWithEmptyHand():
+	pass
+	
+func interactWithStationaryItem(playerInventory):
 	pass
