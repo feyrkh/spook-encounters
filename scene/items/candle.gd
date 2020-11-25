@@ -10,10 +10,10 @@ func _ready():
 func onLightWithFire():
 	$Light2D2.visible = true
 
-func onUseItemWithEmptyHand():
+func onUseItemWithEmptyHand(player):
 	putOut()
 
-func onUseItem():
+func onUseItem(player):
 	putOut()
 	
 func putOut():

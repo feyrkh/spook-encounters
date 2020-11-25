@@ -4,5 +4,5 @@
 
 [resource]
 shader = ExtResource( 1 )
-shader_param/outLineSize = 0.015
+shader_param/outLineSize = 0.05
 shader_param/outLineColor = Plane( 1, 1, 0.008, 0.8 )

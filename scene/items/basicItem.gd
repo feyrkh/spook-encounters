@@ -36,13 +36,12 @@ func onPickup():
 
 func onDrop():
 	$ItemPickupArea.monitorable = true
-	
-# Called when player presses the 'use' button while holding an item, or looking at an item on the ground
-func onUseItem():
+
+func onUseItem(player):
 	pass
 
-func onUseItemWithEmptyHand():
-	pass
+func onUseItemWithEmptyHand(player):
+	onUseItem(player)
 	
-func interactWithStationaryItem(playerInventory):
-	pass
+func interactWithStationaryItem(player):
+	onUseItem(player)

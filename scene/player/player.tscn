@@ -175,6 +175,7 @@ __meta__ = {
 [node name="PlayerInventory" parent="HudLayer" instance=ExtResource( 14 )]
 itemHolderPath = NodePath("../../HeldItem")
 itemDetectorPath = NodePath("../../ItemDetector")
+playerPath = NodePath("../..")
 
 [node name="visionHolder" type="Node2D" parent="."]
 script = SubResource( 6 )
@@ -209,8 +210,8 @@ z_as_relative = false
 color = Color( 0.301961, 0.294118, 0.294118, 0.803922 )
 polygon = PoolVector2Array( 1.91592, -790.618, -877.138, -785.68, -1180.39, -216.75, -846.638, 689.761, 1.88977, 809.969, -104.046, -15.4931 )
 [connection signal="facingChange" from="MoveController" to="HeldItem" method="_on_MoveController_facingChange"]
-[connection signal="updateFacingAngle" from="MoveController" to="HeldItem" method="_on_MoveController_updateFacingAngle"]
 [connection signal="updateFacingAngle" from="MoveController" to="visionHolder" method="_on_MoveController_updateFacingAngle"]
+[connection signal="updateFacingAngle" from="MoveController" to="HeldItem" method="_on_MoveController_updateFacingAngle"]
 [connection signal="area_entered" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_entered"]
 [connection signal="area_exited" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_exited"]
 [connection signal="itemPickupRequested" from="ItemDetector" to="HudLayer/PlayerInventory" method="onItemPickupRequested"]

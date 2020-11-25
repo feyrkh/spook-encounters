@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bible-book-icon-isolated-on-transparent-background-vector-23738209.jpg-fabd7fe442264ac5bdeddfa6d0a635c1.stex"
+path="res://.import/bible.jpg-bc898ceca4280a12e46cc8a2115d3f18.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scene/items/book/bible-book-icon-isolated-on-transparent-background-vector-23738209.jpg"
-dest_files=[ "res://.import/bible-book-icon-isolated-on-transparent-background-vector-23738209.jpg-fabd7fe442264ac5bdeddfa6d0a635c1.stex" ]
+source_file="res://scene/items/book/bible.jpg"
+dest_files=[ "res://.import/bible.jpg-bc898ceca4280a12e46cc8a2115d3f18.stex" ]
 
 [params]
 

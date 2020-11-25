@@ -7,26 +7,38 @@ signal itemEquipped # (item)
 
 export(NodePath) var itemHolderPath
 export(NodePath) var itemDetectorPath
+export(NodePath) var playerPath
+var player
 var itemHolder:HeldItem
 var itemDetector:ItemDetector
 var emptyHandItem
 var invSlots = [null, null, null, null, null, null, null, null, null] # Actual objects that are held - not to be confused with their placeholder images
 var equippedItem = null
+var playerClickControls = true
 
 func _ready():
 	emptyHandItem = find_node("EmptyHandItem", true)
 	itemHolder = get_node(itemHolderPath)
 	itemDetector = get_node(itemDetectorPath)
+	player = get_node(playerPath)
 	#connect("itemEquipped", itemHolder, 'onItemEquipped')
 	updateAllInvSlotImages()
 	$"/root/EventBus".connect('inventoryIconsNeedUpdate', self, 'updateAllInvSlotImages')
+	$"/root/EventBus".connect('disablePlayerClickControls', self, 'disablePlayerClickControls')
+	$"/root/EventBus".connect('enablePlayerClickControls', self, 'enablePlayerClickControls')
+
+func enablePlayerClickControls():
+	playerClickControls = true
+
+func disablePlayerClickControls():
+	playerClickControls = false
 
 func updateAllInvSlotImages():
 	for i in range(invSlots.size()):
 		updateInvSlotImage(i)
 
 func _process(delta):
-	if Input.is_action_just_pressed('use_item'):
+	if playerClickControls && Input.is_action_just_pressed('use_item'):
 		useEquippedItem()
 	if Input.is_action_just_released('next_item'):
 		switchToNextItem(1)
@@ -58,12 +70,12 @@ func _process(delta):
 func useEquippedItem():
 	if equippedItem == null && itemDetector.highlightedItem: 
 		if itemDetector.highlightedItem.has_method('onUseItemWithEmptyHand'):
-			itemDetector.highlightedItem.onUseItemWithEmptyHand()
+			itemDetector.highlightedItem.onUseItemWithEmptyHand(player)
 	elif equippedItem != null:
 		if itemDetector.highlightedItem && equippedItem.has_method('onUseItemOnTarget'):
-			equippedItem.onUseItemOnTarget(itemDetector.highlightedItem)
+			equippedItem.onUseItemOnTarget(itemDetector.highlightedItem, player)
 		elif equippedItem.has_method('onUseItem'):
-			equippedItem.onUseItem()
+			equippedItem.onUseItem(player)
 		
 func isRoomForNewItem():
 	for invSlot in invSlots:
@@ -101,7 +113,7 @@ func updateInvSlotImage(itemSlotIdx):
 func onItemPickupRequested(highlightedItem):
 	if highlightedItem && !highlightedItem.canBePickedUp:
 		if highlightedItem.has_method('interactWithStationaryItem'):
-			highlightedItem.interactWithStationaryItem(self)
+			highlightedItem.interactWithStationaryItem(player)
 		else:
 			emit_signal("pickupNotAllowed", highlightedItem)
 	if !isRoomForNewItem():

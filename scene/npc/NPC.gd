@@ -3,5 +3,5 @@ extends BasicItem
 func _ready():
 	canBePickedUp = false
 
-func interactWithStationaryItem(playerInventory):
+func interactWithStationaryItem(player):
 	pass

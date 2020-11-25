@@ -14,7 +14,7 @@ func _ready():
 	updateItemSlotIcon()
 	EventBus.connect("visualModeChange", self, 'onVisualModeChange')
 
-func onUseItem():
+func onUseItem(player):
 	if enabled: turnVisionModeOff()
 	else: turnVisionModeOn()
 
