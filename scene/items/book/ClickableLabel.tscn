@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://font/AguafinaScript-Regular.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scene/items/book/ClickableLabel.gd" type="Script" id=2]
+
+[node name="ClickableLabel" type="Label"]
+margin_left = -306.586
+margin_top = -117.123
+margin_right = -115.585
+margin_bottom = -56.1226
+mouse_filter = 1
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "in nomine patris "
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="gui_input" from="." to="." method="_on_Label_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_Label_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Label_mouse_exited"]

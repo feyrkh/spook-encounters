@@ -4,7 +4,7 @@ var target
 var player
 var popupOffset
 
-const maxPixelDistanceBeforeClosing = 1600
+const maxPixelDistanceBeforeClosing = 400
 const maxPixelDistanceSquaredBeforeClosing = maxPixelDistanceBeforeClosing*maxPixelDistanceBeforeClosing
 
 onready var bookDialog = $BookDialog

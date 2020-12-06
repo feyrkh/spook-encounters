@@ -39,7 +39,9 @@ func updateAllInvSlotImages():
 
 func _process(delta):
 	if playerClickControls && Input.is_action_just_pressed('use_item'):
-		useEquippedItem()
+		useEquippedItem(true)
+	elif playerClickControls && Input.is_action_just_pressed("use_item_alternate"):
+		useEquippedItem(false)
 	if Input.is_action_just_released('next_item'):
 		switchToNextItem(1)
 	if Input.is_action_just_released('prev_item'):
@@ -67,15 +69,21 @@ func _process(delta):
 	if Input.is_action_just_pressed("inv_select_9"):
 		switchToItem(8)
 
-func useEquippedItem():
+func useEquippedItem(primaryClick):
 	if equippedItem == null && itemDetector.highlightedItem: 
-		if itemDetector.highlightedItem.has_method('onUseItemWithEmptyHand'):
+		if primaryClick && itemDetector.highlightedItem.has_method('onUseItemWithEmptyHand'):
 			itemDetector.highlightedItem.onUseItemWithEmptyHand(player)
+		elif !primaryClick && itemDetector.highlightedItem.has_method('onAlternateUseItemWithEmptyHand'):
+			itemDetector.highlightedItem.onAlternateUseItemWithEmptyHand(player)
 	elif equippedItem != null:
-		if itemDetector.highlightedItem && equippedItem.has_method('onUseItemOnTarget'):
-			equippedItem.onUseItemOnTarget(itemDetector.highlightedItem, player)
-		elif equippedItem.has_method('onUseItem'):
+		if primaryClick && itemDetector.highlightedItem && equippedItem.has_method('onUseItemOnTarget'):
+			equippedItem.onUseItemOnTarget(itemDetector.highlightedItem, player)		
+		elif !primaryClick && itemDetector.highlightedItem && equippedItem.has_method('onAlternateUseItemOnTarget'):
+			equippedItem.onAlternateUseItemOnTarget(itemDetector.highlightedItem, player)
+		elif primaryClick && equippedItem.has_method('onUseItem'):
 			equippedItem.onUseItem(player)
+		elif !primaryClick && equippedItem.has_method('onAlternateUseItem'):
+			equippedItem.onAlternateUseItem(player)
 		
 func isRoomForNewItem():
 	for invSlot in invSlots:
