@@ -195,8 +195,8 @@ script = ExtResource( 17 )
 [node name="nightVision" type="ColorRect" parent="HudLayer/VisionModes"]
 visible = false
 material = SubResource( 4 )
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_right = 1918.0
+margin_bottom = 1077.0
 grow_horizontal = 2
 grow_vertical = 2
 __meta__ = {
@@ -204,10 +204,9 @@ __meta__ = {
 }
 
 [node name="pixelVision" type="ColorRect" parent="HudLayer/VisionModes"]
-visible = false
 material = SubResource( 5 )
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_right = 1918.0
+margin_bottom = 1085.0
 grow_horizontal = 2
 grow_vertical = 2
 __meta__ = {
@@ -252,8 +251,8 @@ z_as_relative = false
 color = Color( 0.301961, 0.294118, 0.294118, 0.803922 )
 polygon = PoolVector2Array( 1.91592, -790.618, -877.138, -785.68, -1180.39, -216.75, -846.638, 689.761, 1.88977, 809.969, -104.046, -15.4931 )
 [connection signal="facingChange" from="MoveController" to="HeldItem" method="_on_MoveController_facingChange"]
-[connection signal="updateFacingAngle" from="MoveController" to="visionHolder" method="_on_MoveController_updateFacingAngle"]
 [connection signal="updateFacingAngle" from="MoveController" to="HeldItem" method="_on_MoveController_updateFacingAngle"]
+[connection signal="updateFacingAngle" from="MoveController" to="visionHolder" method="_on_MoveController_updateFacingAngle"]
 [connection signal="area_entered" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_entered"]
 [connection signal="area_exited" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_exited"]
 [connection signal="itemPickupRequested" from="ItemDetector" to="HudLayer/PlayerInventory" method="onItemPickupRequested"]
