@@ -61,7 +61,8 @@ var leftControl = "p1_move_left"
 var rightControl = "p1_move_right"
 
 var animation = "moveRight" # Currently playing animation
-var playingAnimation = false
+var playingAnimation = false # True if we are not currently idle
+var animateBackward = false # True if we're walking backward and we should reverse the animation
 var flipped = false # Is the animation image flipped horizontally
 var movingBackwardPenalty = 1.0 # If we're moving in a direction other than the one we're facing, get a penalty. < 1.0 means moving slower than normal
 
@@ -82,6 +83,7 @@ func _process(_delta):
 		moveVector = moveVector.normalized() * movePixelsPerSecond
 		moveVector = kinematicBody2D.move_and_slide(moveVector * movingBackwardPenalty)
 		#print("Moving: ", moveVector)
+		
 func isMoving():
 	return moveVector != Vector2.ZERO
 	
@@ -136,11 +138,14 @@ func changeMovementDirection(newDirection):
 	moveDirection = newDirection
 
 func updateMovePenalty(curDir, straightDir, foreDir1, foreDir2, sideDir1, sideDir2):
+	animateBackward = false
 	match curDir:
 		straightDir: movingBackwardPenalty = MOVE_STRAIGHT_PENALTY
 		foreDir1, foreDir2: movingBackwardPenalty = MOVE_FORWARD_PENALTY
 		sideDir1, sideDir2: movingBackwardPenalty = MOVE_SIDE_PENALTY
-		_: movingBackwardPenalty = MOVE_BACK_PENALTY
+		_: 
+			animateBackward = true
+			movingBackwardPenalty = MOVE_BACK_PENALTY
 
 func updateMovement(_delta):
 	#reverseMovement = false # Are we walking backward?
@@ -215,7 +220,7 @@ func updateMovement(_delta):
 	if newAnimation != animation or newFlipped != flipped or (!playingAnimation && isMoving()):
 		animation = newAnimation
 		flipped = newFlipped
-		animatedSprite.play(animation)
+		animatedSprite.play(animation, animateBackward)
 		playingAnimation = true
 		if !isMoving():
 			animatedSprite.stop()
