@@ -180,7 +180,7 @@ shape = SubResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 0.333, 0.333 )
+zoom = Vector2( 0.25, 0.25 )
 
 [node name="Ears" parent="." instance=ExtResource( 15 )]
 position = Vector2( 2, -59 )
