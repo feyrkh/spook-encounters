@@ -61,6 +61,7 @@ var leftControl = "p1_move_left"
 var rightControl = "p1_move_right"
 
 var animation = "moveRight" # Currently playing animation
+var playingAnimation = false
 var flipped = false # Is the animation image flipped horizontally
 var movingBackwardPenalty = 1.0 # If we're moving in a direction other than the one we're facing, get a penalty. < 1.0 means moving slower than normal
 
@@ -68,6 +69,7 @@ func _ready():
 	animatedSprite = get_parent().get_node("AnimatedSprite")
 	animatedSprite.play(animation)
 	animatedSprite.stop()
+	playingAnimation = false
 	kinematicBody2D = get_node(kinematicBody2DPath)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -80,7 +82,9 @@ func _process(_delta):
 		moveVector = moveVector.normalized() * movePixelsPerSecond
 		moveVector = kinematicBody2D.move_and_slide(moveVector * movingBackwardPenalty)
 		#print("Moving: ", moveVector)
-
+func isMoving():
+	return moveVector != Vector2.ZERO
+	
 func updateFacing():
 	var newFacing = None
 	var newFacingAngle = rad2deg(get_angle_to(get_global_mouse_position()))
@@ -166,47 +170,57 @@ func updateMovement(_delta):
 
 	match facing:
 		Up: 
-			newAnimation = "moveUp"
+			if isMoving(): newAnimation = "moveUp"
+			else: newAnimation = "idleUp"
 			newFlipped = false
 			updateMovePenalty(newMoveVector, upVector, upLeftVector, upRightVector, leftVector, rightVector)
 		UpLeft:
-			newAnimation = "moveUpRight"
+			if isMoving(): newAnimation = "moveUpRight"
+			else: newAnimation = "idleUpRight"
 			newFlipped = true
 			updateMovePenalty(newMoveVector, upLeftVector, upVector, leftVector, downLeftVector, upRightVector)
 		UpRight:
-			newAnimation = "moveUpRight"
+			if isMoving(): newAnimation = "moveUpRight"
+			else: newAnimation = "idleUpRight"
 			newFlipped = false
 			updateMovePenalty(newMoveVector, upRightVector, upVector, rightVector, upLeftVector, downRightVector)
 		Left:
-			newAnimation = "moveRight"
+			if isMoving(): newAnimation = "moveRight"
+			else: newAnimation = "idleRight"
 			newFlipped = true
 			updateMovePenalty(newMoveVector, leftVector, upLeftVector, downLeftVector, upVector, downVector)
 		Right:
-			newAnimation = "moveRight"
+			if isMoving(): newAnimation = "moveRight"
+			else: newAnimation = "idleRight"
 			newFlipped = false
 			updateMovePenalty(newMoveVector, rightVector, upRightVector, downRightVector, upVector, downVector)
 		Down: 
-			newAnimation = "moveDown"
+			if isMoving(): newAnimation = "moveDown"
+			else: newAnimation = "idleDown"
 			newFlipped = false
 			updateMovePenalty(newMoveVector, downVector, downLeftVector, downRightVector, leftVector, rightVector)
 		DownLeft:
-			newAnimation = "moveDownRight"
+			if isMoving(): newAnimation = "moveDownRight"
+			else: newAnimation = "idleDownRight"
 			newFlipped = true
 			updateMovePenalty(newMoveVector, downLeftVector, downVector, leftVector, upLeftVector, downRightVector)
 		DownRight:
-			newAnimation = "moveDownRight"
+			if isMoving(): newAnimation = "moveDownRight"
+			else: newAnimation = "idleDownRight"
 			newFlipped = false
 			updateMovePenalty(newMoveVector, downRightVector, downVector, rightVector, upRightVector, downLeftVector)
 		None:
 			pass
 		
-	if newAnimation != animation or newFlipped != flipped:
+	if newAnimation != animation or newFlipped != flipped or (!playingAnimation && isMoving()):
 		animation = newAnimation
 		flipped = newFlipped
 		animatedSprite.play(animation)
-		if moveVector == Vector2.ZERO:
+		playingAnimation = true
+		if !isMoving():
 			animatedSprite.stop()
 			animatedSprite.frame = 0
+			playingAnimation = false
 		animatedSprite.flip_h = flipped
 		#print("Changing animation: ", animation, " flipped: ", flipped)
 		
@@ -216,3 +230,4 @@ func updateMovement(_delta):
 		if moveVector == Vector2.ZERO:
 			animatedSprite.stop()
 			animatedSprite.frame = 0
+			playingAnimation = false

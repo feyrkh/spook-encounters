@@ -1,11 +1,14 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://scene/demo/assets/chara_sprites/walkcycle-down05.png" type="Texture" id=1]
 [ext_resource path="res://scene/player/HeldItem.gd" type="Script" id=2]
 [ext_resource path="res://scene/player/MouseRotationPlayerController.gd" type="Script" id=3]
 [ext_resource path="res://scene/demo/assets/chara_sprites/walkcycle-up01.png" type="Texture" id=4]
+[ext_resource path="res://scene/demo/assets/chara_sprites/chara-static_down.png" type="Texture" id=5]
+[ext_resource path="res://scene/demo/assets/chara_sprites/chara-static_up.png" type="Texture" id=6]
 [ext_resource path="res://scene/demo/assets/chara_sprites/walkcycle-down08.png" type="Texture" id=7]
 [ext_resource path="res://scene/demo/assets/chara_sprites/walkcycle-side02.png" type="Texture" id=8]
+[ext_resource path="res://scene/demo/assets/chara_sprites/chara-static_side.png" type="Texture" id=9]
 [ext_resource path="res://scene/demo/assets/chara_sprites/walkcycle-up04.png" type="Texture" id=10]
 [ext_resource path="res://scene/demo/assets/chara_sprites/walkcycle-up03.png" type="Texture" id=12]
 [ext_resource path="res://scene/player/ItemDetector.gd" type="Script" id=13]
@@ -39,6 +42,26 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "idleUp",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "idleDown",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "idleDownRight",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "idleRight",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 34 ), ExtResource( 8 ), ExtResource( 27 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 31 ) ],
 "loop": true,
 "name": "moveDownRight",
@@ -62,6 +85,11 @@ animations = [ {
 "frames": [ ExtResource( 34 ), ExtResource( 8 ), ExtResource( 27 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 31 ) ],
 "loop": true,
 "name": "moveRight",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "idleUpRight",
 "speed": 5.0
 } ]
 
@@ -97,7 +125,7 @@ collision_layer = 2
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -1.84302, -12.6439 )
 frames = SubResource( 1 )
-animation = "moveDownRight"
+animation = "idleUpRight"
 
 [node name="MoveController" type="Node2D" parent="."]
 visible = false
