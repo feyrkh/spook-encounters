@@ -172,7 +172,7 @@ func updateMovement(_delta):
 		None:
 			newMoveVector = noneVector
 			
-
+	var oldAnimateBackward = animateBackward
 	match facing:
 		Up: 
 			if isMoving(): newAnimation = "moveUp"
@@ -217,9 +217,10 @@ func updateMovement(_delta):
 		None:
 			pass
 		
-	if newAnimation != animation or newFlipped != flipped or (!playingAnimation && isMoving()):
+	if newAnimation != animation or newFlipped != flipped or (!playingAnimation && isMoving()) or (oldAnimateBackward != animateBackward):
 		animation = newAnimation
 		flipped = newFlipped
+		animatedSprite.stop()
 		animatedSprite.play(animation, animateBackward)
 		playingAnimation = true
 		if !isMoving():
