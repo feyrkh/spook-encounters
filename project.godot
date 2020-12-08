@@ -139,7 +139,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "codeandweb.texturepacker", "messagebox", "ui_design_tool", "xphere-zone" )
+enabled=PoolStringArray( "ui_design_tool" )
 
 [importer_defaults]
 

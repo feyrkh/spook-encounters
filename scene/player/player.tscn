@@ -40,22 +40,11 @@
 [ext_resource path="res://assets/chara_sprites/walkcycle-down04.png" type="Texture" id=39]
 [ext_resource path="res://assets/chara_sprites/walkcycle-down03.png" type="Texture" id=40]
 
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "idleUp",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "idleDown",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 9 ) ],
-"loop": true,
-"name": "idleDownRight",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 9 ) ],
@@ -73,14 +62,24 @@ animations = [ {
 "name": "moveUpRight",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 37 ), ExtResource( 38 ), ExtResource( 40 ), ExtResource( 39 ), ExtResource( 1 ), ExtResource( 25 ), ExtResource( 32 ), ExtResource( 7 ) ],
+"frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "moveDown",
+"name": "idleDown",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ), ExtResource( 30 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 28 ), ExtResource( 35 ), ExtResource( 33 ), ExtResource( 36 ) ],
 "loop": true,
 "name": "moveUp",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 37 ), ExtResource( 38 ), ExtResource( 40 ), ExtResource( 39 ), ExtResource( 1 ), ExtResource( 25 ), ExtResource( 32 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "moveDown",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "idleDownRight",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 34 ), ExtResource( 8 ), ExtResource( 27 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 31 ) ],
@@ -131,7 +130,7 @@ animation = "idleUpRight"
 [node name="MoveController" type="Node2D" parent="."]
 visible = false
 script = ExtResource( 3 )
-movePixelsPerSecond = 149
+movePixelsPerSecond = 50
 kinematicBody2DPath = NodePath("..")
 
 [node name="ItemDetector" type="Area2D" parent="."]
@@ -253,8 +252,8 @@ z_as_relative = false
 color = Color( 0.301961, 0.294118, 0.294118, 0.803922 )
 polygon = PoolVector2Array( 1.91592, -790.618, -877.138, -785.68, -1180.39, -216.75, -846.638, 689.761, 1.88977, 809.969, -104.046, -15.4931 )
 [connection signal="facingChange" from="MoveController" to="HeldItem" method="_on_MoveController_facingChange"]
-[connection signal="updateFacingAngle" from="MoveController" to="HeldItem" method="_on_MoveController_updateFacingAngle"]
 [connection signal="updateFacingAngle" from="MoveController" to="visionHolder" method="_on_MoveController_updateFacingAngle"]
+[connection signal="updateFacingAngle" from="MoveController" to="HeldItem" method="_on_MoveController_updateFacingAngle"]
 [connection signal="area_entered" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_entered"]
 [connection signal="area_exited" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_exited"]
 [connection signal="itemPickupRequested" from="ItemDetector" to="HudLayer/PlayerInventory" method="onItemPickupRequested"]
