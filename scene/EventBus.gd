@@ -4,6 +4,8 @@ signal inventoryIconsNeedUpdate # an item in your inventory has changed and you 
 signal soundEffect # {sfx:FilePathString, msg:String, vol:int [1-100], pos:Vector2, color:Color)
 signal visualModeChange # (visualModeName, itemCausingChange)
 
+signal setAnimationSuffix # (suffix)
+
 signal disablePlayerClickControls # Something happened that requires normal clicking, not item-use clicking
 signal enablePlayerClickControls # Reenable item-use clicking
 

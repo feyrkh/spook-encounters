@@ -27,6 +27,7 @@ func holdItem(item):
 	heldItem.global_position = attachPoint.global_position
 	updateHeldItemRotation()
 	if heldItem.has_method('onHold'): heldItem.onHold()
+	EventBus.emit_signal("setAnimationSuffix", 'HoldItem')
 
 func unholdItem():
 	if heldItem:
@@ -35,6 +36,7 @@ func unholdItem():
 		heldItem.visible = false
 		if heldItem.get_parent() != null:
 			heldItem.get_parent().remove_child(heldItem)
+		EventBus.emit_signal("setAnimationSuffix", '')
 	
 func dropItem() -> bool:
 	if heldItem == null: return false
@@ -46,6 +48,7 @@ func dropItem() -> bool:
 	if heldItem.has_method('onDrop'):
 		heldItem.onDrop()
 	heldItem = null
+	EventBus.emit_signal("setAnimationSuffix", '')
 	return true
 	
 func _on_MoveController_facingChange(oldFacing, newFacing, angleDegrees):

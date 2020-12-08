@@ -61,6 +61,7 @@ var leftControl = "p1_move_left"
 var rightControl = "p1_move_right"
 
 var animation = "moveRight" # Currently playing animation
+var animationSuffix = '' # Suffix indicating current activity, like holding item
 var playingAnimation = false # True if we are not currently idle
 var animateBackward = false # True if we're walking backward and we should reverse the animation
 var flipped = false # Is the animation image flipped horizontally
@@ -72,6 +73,10 @@ func _ready():
 	animatedSprite.stop()
 	playingAnimation = false
 	kinematicBody2D = get_node(kinematicBody2DPath)
+	EventBus.connect("setAnimationSuffix", self, 'setAnimationSuffix')
+	
+func setAnimationSuffix(suffix):
+	animationSuffix = suffix
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -216,7 +221,8 @@ func updateMovement(_delta):
 			updateMovePenalty(newMoveVector, downRightVector, downVector, rightVector, upRightVector, downLeftVector)
 		None:
 			pass
-		
+	newAnimation = newAnimation + animationSuffix
+	
 	if newAnimation != animation or newFlipped != flipped or (!playingAnimation && isMoving()) or (oldAnimateBackward != animateBackward):
 		animation = newAnimation
 		flipped = newFlipped

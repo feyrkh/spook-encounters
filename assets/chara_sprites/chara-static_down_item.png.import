@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/walkcycle-side-item010.png-b6d138057f36b8d67b88e7f7dccec658.stex"
+path="res://.import/chara-static_down_item.png-4186f72090f8e234dd4b1aa85617d234.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/chara_sprites/walkcycle-side-item010.png"
-dest_files=[ "res://.import/walkcycle-side-item010.png-b6d138057f36b8d67b88e7f7dccec658.stex" ]
+source_file="res://assets/chara_sprites/chara-static_down_item.png"
+dest_files=[ "res://.import/chara-static_down_item.png-4186f72090f8e234dd4b1aa85617d234.stex" ]
 
 [params]
 
