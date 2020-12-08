@@ -204,6 +204,7 @@ __meta__ = {
 }
 
 [node name="pixelVision" type="ColorRect" parent="HudLayer/VisionModes"]
+visible = false
 material = SubResource( 5 )
 margin_right = 1918.0
 margin_bottom = 1085.0
