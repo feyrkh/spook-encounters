@@ -173,9 +173,8 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 82, 75 )
 
-[sub_resource type="CapsuleShape2D" id=3]
-radius = 24.5103
-height = 45.3058
+[sub_resource type="CircleShape2D" id=7]
+radius = 3.27124
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 16 )
@@ -196,13 +195,12 @@ func _on_MoveController_updateFacingAngle(angleDegrees):
 "
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( -2, -9 )
 collision_layer = 2
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( -1.84302, -12.6439 )
+position = Vector2( 0, -15 )
 frames = SubResource( 1 )
-animation = "moveUpRightHoldItem"
+animation = "idleUpHoldItem"
 
 [node name="MoveController" type="Node2D" parent="."]
 visible = false
@@ -211,6 +209,7 @@ movePixelsPerSecond = 50
 kinematicBody2DPath = NodePath("..")
 
 [node name="ItemDetector" type="Area2D" parent="."]
+position = Vector2( 1.83675, -2.35031 )
 monitorable = false
 collision_layer = 2147483650
 collision_mask = 8
@@ -225,42 +224,44 @@ shape = SubResource( 2 )
 script = ExtResource( 2 )
 
 [node name="Right" type="Position2D" parent="HeldItem"]
-position = Vector2( 48.507, -12.5981 )
+position = Vector2( 4, -14 )
 
 [node name="Left" type="Position2D" parent="HeldItem"]
-position = Vector2( -52.2867, -13.228 )
+position = Vector2( -3, -14 )
 
 [node name="Down" type="Position2D" parent="HeldItem"]
-position = Vector2( 0.629944, 29.6093 )
+position = Vector2( 5, -12 )
 
 [node name="Up" type="Position2D" parent="HeldItem"]
-position = Vector2( -2.5199, -44.0961 )
+position = Vector2( -5, -12 )
 
 [node name="UpLeft" type="Position2D" parent="HeldItem"]
-position = Vector2( -51.6567, -45.356 )
+position = Vector2( -3, -14 )
 
 [node name="UpRight" type="Position2D" parent="HeldItem"]
-position = Vector2( 47.8771, -47.2459 )
+position = Vector2( 4, -14 )
 
 [node name="DownLeft" type="Position2D" parent="HeldItem"]
-position = Vector2( -51.0267, 20.1599 )
+position = Vector2( -3, -14 )
 
 [node name="DownRight" type="Position2D" parent="HeldItem"]
-position = Vector2( 46.6171, 22.6797 )
+position = Vector2( 4, -14 )
 
 [node name="Held" type="Node2D" parent="HeldItem"]
 
 [node name="WalkCollision" type="CollisionShape2D" parent="."]
-position = Vector2( -1.8877, -1.41577 )
+visible = false
+position = Vector2( -0.994247, 0.686474 )
 rotation = 1.5708
-shape = SubResource( 3 )
+shape = SubResource( 7 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 1.83675, -2.35031 )
 current = true
 zoom = Vector2( 0.167, 0.167 )
 
 [node name="Ears" parent="." instance=ExtResource( 15 )]
-position = Vector2( 2, -59 )
+position = Vector2( 3.83675, -61.3503 )
 
 [node name="HudLayer" type="CanvasLayer" parent="."]
 
@@ -297,6 +298,7 @@ itemDetectorPath = NodePath("../../ItemDetector")
 playerPath = NodePath("../..")
 
 [node name="visionHolder" type="Node2D" parent="."]
+position = Vector2( 1.83675, -2.35031 )
 script = SubResource( 6 )
 
 [node name="visionNearby" type="Light2D" parent="visionHolder"]
@@ -329,8 +331,8 @@ z_as_relative = false
 color = Color( 0.301961, 0.294118, 0.294118, 0.803922 )
 polygon = PoolVector2Array( 1.91592, -790.618, -877.138, -785.68, -1180.39, -216.75, -846.638, 689.761, 1.88977, 809.969, -104.046, -15.4931 )
 [connection signal="facingChange" from="MoveController" to="HeldItem" method="_on_MoveController_facingChange"]
-[connection signal="updateFacingAngle" from="MoveController" to="visionHolder" method="_on_MoveController_updateFacingAngle"]
 [connection signal="updateFacingAngle" from="MoveController" to="HeldItem" method="_on_MoveController_updateFacingAngle"]
+[connection signal="updateFacingAngle" from="MoveController" to="visionHolder" method="_on_MoveController_updateFacingAngle"]
 [connection signal="area_entered" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_entered"]
 [connection signal="area_exited" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_exited"]
 [connection signal="itemPickupRequested" from="ItemDetector" to="HudLayer/PlayerInventory" method="onItemPickupRequested"]

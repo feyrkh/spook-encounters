@@ -1,6 +1,6 @@
 extends Node2D
 
-# See also HeldItem.gd
+# See also HeldItem.gd, basicItem.gd
 enum {None, Left, DownLeft, Down, DownRight, Right, UpRight, Up, UpLeft}
 
 signal facingChange # (oldDirection, newDirection, angleDegrees)

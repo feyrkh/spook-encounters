@@ -99,6 +99,7 @@ func pickupNewItem(newItem):
 			break
 	invSlots[newItemSlot] = newItem
 	newItem.isHeld = true
+	if newItem.has_method('onPickup'): newItem.onPickup()
 	if equippedItem == null:
 		setEquippedItem(newItem)
 	else: 

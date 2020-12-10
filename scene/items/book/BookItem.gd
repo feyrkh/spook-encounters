@@ -17,6 +17,7 @@ func _process(delta):
 
 # Called when player presses the 'use' button while holding an item, or looking at an item on the ground
 func onUseItem(player):
+	return # TODO: FIX
 	if !bookInUseBySomeoneElse(player):
 		if !bookDialog.visible:
 			openBook(player, player)
@@ -24,6 +25,7 @@ func onUseItem(player):
 			closeBook(player)
 
 func onUseItemWithEmptyHand(player):
+	return # TODO: FIX
 	if !bookInUseBySomeoneElse(player):
 		if !bookDialog.visible:
 			openBook(player, self)

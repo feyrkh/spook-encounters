@@ -1,7 +1,7 @@
 extends Node2D
 class_name HeldItem
 
-# See also MouseRotationPlayerController.gd
+# See also MouseRotationPlayerController.gd, basicItem.gd
 export(NodePath) var itemLayer # where to put items that are dropped
 enum {None, Left, DownLeft, Down, DownRight, Right, UpRight, Up, UpLeft}
 var facing = Right
@@ -56,10 +56,12 @@ func _on_MoveController_facingChange(oldFacing, newFacing, angleDegrees):
 	var oldAttach:Node2D = getAttachPoint(oldFacing)
 	var newAttach:Node2D = getAttachPoint(newFacing)
 	curAttachPoint = newAttach
+	if heldItem && heldItem.has_method('updateFacing'): heldItem.updateFacing(oldFacing, newFacing, angleDegrees)
 	print('moving from ', oldAttach.name, ' to ', newAttach.name)
 	if !newAttach: return
 	for child in holdNode.get_children():
 		child.global_position = newAttach.global_position
+	
 
 func getAttachPoint(_facing):
 	match _facing:
@@ -77,10 +79,8 @@ func _on_MoveController_updateFacingAngle(newPlayerAngle):
 		updateHeldItemRotation()
 
 func updateHeldItemRotation():
-	if heldItem:
-		curAngleRad = heldItem.rotation + heldItem.get_angle_to(get_global_mouse_position())
-		heldItem.rotation = 0
-		#heldItem.rotation = curAngleRad
-		#print('rotating to ', curAngleRad, '; ', heldItem.global_position, ' -> ', get_global_mouse_position())
-		heldItem.rotation = curAngleRad
-		#print('heldItem rotation: ', heldItem.rotation_degrees)
+	pass
+#	if heldItem:
+#		curAngleRad = heldItem.rotation + heldItem.get_angle_to(get_global_mouse_position())
+#		heldItem.rotation = 0
+#		heldItem.rotation = curAngleRad
