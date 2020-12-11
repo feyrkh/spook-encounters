@@ -261,7 +261,7 @@ current = true
 zoom = Vector2( 0.167, 0.167 )
 
 [node name="Ears" parent="." instance=ExtResource( 15 )]
-position = Vector2( 3.83675, -61.3503 )
+position = Vector2( -16.4499, -42.2199 )
 
 [node name="HudLayer" type="CanvasLayer" parent="."]
 
