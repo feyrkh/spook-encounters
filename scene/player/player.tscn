@@ -74,9 +74,14 @@ animations = [ {
 "name": "idleDownHoldItem",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 65 ) ],
+"frames": [ ExtResource( 9 ) ],
 "loop": true,
-"name": "idleDownRightHoldItem",
+"name": "idleUpRight",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 34 ), ExtResource( 8 ), ExtResource( 27 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 31 ) ],
+"loop": true,
+"name": "moveUpRight",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 65 ) ],
@@ -86,52 +91,12 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 65 ) ],
 "loop": true,
-"name": "idleRightHoldItem",
+"name": "idleDownRightHoldItem",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 64 ) ],
 "loop": true,
 "name": "idleUpHoldItem",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 55 ), ExtResource( 42 ), ExtResource( 47 ), ExtResource( 57 ), ExtResource( 46 ), ExtResource( 53 ), ExtResource( 62 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "moveDownHoldItem",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 60 ), ExtResource( 61 ), ExtResource( 56 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 58 ), ExtResource( 59 ) ],
-"loop": true,
-"name": "moveRightHoldItem",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 60 ), ExtResource( 61 ), ExtResource( 56 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 58 ), ExtResource( 59 ) ],
-"loop": true,
-"name": "moveDownRightHoldItem",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 41 ), ExtResource( 63 ), ExtResource( 43 ), ExtResource( 48 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 54 ), ExtResource( 52 ) ],
-"loop": true,
-"name": "moveUpHoldItem",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 60 ), ExtResource( 61 ), ExtResource( 56 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 58 ), ExtResource( 59 ) ],
-"loop": true,
-"name": "moveUpRightHoldItem",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "idleUp",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 9 ) ],
-"loop": true,
-"name": "idleRight",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 30 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 28 ), ExtResource( 35 ), ExtResource( 33 ), ExtResource( 36 ) ],
-"loop": true,
-"name": "moveUp",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 34 ), ExtResource( 8 ), ExtResource( 27 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 31 ) ],
@@ -144,19 +109,49 @@ animations = [ {
 "name": "moveRight",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ) ],
-"loop": true,
-"name": "idleUpRight",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 34 ), ExtResource( 8 ), ExtResource( 27 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 31 ) ],
-"loop": true,
-"name": "moveUpRight",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "idleDown",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 65 ) ],
+"loop": true,
+"name": "idleRightHoldItem",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 55 ), ExtResource( 42 ), ExtResource( 47 ), ExtResource( 57 ), ExtResource( 46 ), ExtResource( 53 ), ExtResource( 62 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "moveDownHoldItem",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "idleRight",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 30 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 28 ), ExtResource( 35 ), ExtResource( 33 ), ExtResource( 36 ) ],
+"loop": true,
+"name": "moveUp",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 60 ), ExtResource( 61 ), ExtResource( 56 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 58 ), ExtResource( 59 ) ],
+"loop": true,
+"name": "moveDownRightHoldItem",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 60 ), ExtResource( 61 ), ExtResource( 56 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 58 ), ExtResource( 59 ) ],
+"loop": true,
+"name": "moveUpRightHoldItem",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "idleUp",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 37 ), ExtResource( 38 ), ExtResource( 40 ), ExtResource( 39 ), ExtResource( 1 ), ExtResource( 25 ), ExtResource( 32 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "moveDown",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 9 ) ],
@@ -164,16 +159,21 @@ animations = [ {
 "name": "idleDownRight",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 37 ), ExtResource( 38 ), ExtResource( 40 ), ExtResource( 39 ), ExtResource( 1 ), ExtResource( 25 ), ExtResource( 32 ), ExtResource( 7 ) ],
+"frames": [ ExtResource( 60 ), ExtResource( 61 ), ExtResource( 56 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 58 ), ExtResource( 59 ) ],
 "loop": true,
-"name": "moveDown",
+"name": "moveRightHoldItem",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 41 ), ExtResource( 63 ), ExtResource( 43 ), ExtResource( 48 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 54 ), ExtResource( 52 ) ],
+"loop": true,
+"name": "moveUpHoldItem",
 "speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 82, 75 )
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=3]
 radius = 3.27124
 
 [sub_resource type="ShaderMaterial" id=4]
@@ -250,10 +250,9 @@ position = Vector2( 4, -14 )
 [node name="Held" type="Node2D" parent="HeldItem"]
 
 [node name="WalkCollision" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( -0.994247, 0.686474 )
+position = Vector2( 0.120633, -2.28654 )
 rotation = 1.5708
-shape = SubResource( 7 )
+shape = SubResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 1.83675, -2.35031 )
@@ -310,7 +309,7 @@ script = ExtResource( 19 )
 
 [node name="visionLighting" type="Light2D" parent="visionHolder"]
 show_behind_parent = true
-position = Vector2( -149.109, -17.6353 )
+position = Vector2( -147.251, -21.3516 )
 scale = Vector2( 2.05269, 21.0249 )
 texture = ExtResource( 20 )
 offset = Vector2( 200, 0 )
