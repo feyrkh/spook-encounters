@@ -104,13 +104,6 @@ margin_right = 908.0
 margin_bottom = 422.0
 rect_rotation = 89.9999
 
-[node name="WCTri2" parent="Level/WallCorners" instance=ExtResource( 2 )]
-margin_left = 643.0
-margin_top = 529.0
-margin_right = 699.0
-margin_bottom = 569.0
-rect_rotation = 180.0
-
 [node name="WCBot" parent="Level/WallCorners" instance=ExtResource( 5 )]
 margin_left = 466.0
 margin_top = 509.0
@@ -124,12 +117,19 @@ margin_right = 872.0
 margin_bottom = 529.0
 rect_scale = Vector2( -1, 1 )
 
+[node name="WCTop3" parent="Level/WallCorners" instance=ExtResource( 3 )]
+margin_left = 852.0
+margin_top = 236.0
+margin_right = 877.0
+margin_bottom = 276.0
+rect_scale = Vector2( -1, 1 )
+
+[node name="WCTri2" parent="Level/WallCorners" instance=ExtResource( 2 )]
+margin_left = 643.0
+margin_top = 529.0
+margin_right = 699.0
+margin_bottom = 569.0
+rect_rotation = -180.0
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.890196, 0.827451, 0.827451, 1 )
-
-[node name="WCTop" parent="." instance=ExtResource( 3 )]
-margin_left = 767.0
-margin_top = 273.0
-margin_right = 792.0
-margin_bottom = 313.0
-rect_scale = Vector2( -1, 1 )

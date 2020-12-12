@@ -258,7 +258,7 @@ shape = SubResource( 3 )
 [node name="Camera2D" type="Camera2D" parent="."]
 visible = false
 current = true
-zoom = Vector2( 0.167, 0.167 )
+zoom = Vector2( 0.15, 0.15 )
 script = ExtResource( 67 )
 
 [node name="Ears" parent="." instance=ExtResource( 15 )]
@@ -332,8 +332,8 @@ z_as_relative = false
 color = Color( 0.301961, 0.294118, 0.294118, 0.803922 )
 polygon = PoolVector2Array( 1.91592, -790.618, -877.138, -785.68, -1180.39, -216.75, -846.638, 689.761, 1.88977, 809.969, -104.046, -15.4931 )
 [connection signal="facingChange" from="MoveController" to="HeldItem" method="_on_MoveController_facingChange"]
-[connection signal="updateFacingAngle" from="MoveController" to="HeldItem" method="_on_MoveController_updateFacingAngle"]
 [connection signal="updateFacingAngle" from="MoveController" to="visionHolder" method="_on_MoveController_updateFacingAngle"]
+[connection signal="updateFacingAngle" from="MoveController" to="HeldItem" method="_on_MoveController_updateFacingAngle"]
 [connection signal="area_entered" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_entered"]
 [connection signal="area_exited" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_exited"]
 [connection signal="itemPickupRequested" from="ItemDetector" to="HudLayer/PlayerInventory" method="onItemPickupRequested"]
