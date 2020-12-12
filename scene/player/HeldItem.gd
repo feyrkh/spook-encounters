@@ -2,7 +2,7 @@ extends Node2D
 class_name HeldItem
 
 # See also MouseRotationPlayerController.gd, basicItem.gd
-export(NodePath) var itemLayer # where to put items that are dropped
+var itemLayer # where to put items that are dropped
 enum {None, Left, DownLeft, Down, DownRight, Right, UpRight, Up, UpLeft}
 var facing = Right
 var heldItem = null
@@ -13,8 +13,7 @@ var curAngleRad = 0
 signal item_drop_requested # (heldItem)
 
 func _ready():
-	if itemLayer == null:
-		itemLayer = '../..'
+	itemLayer = get_tree().get_nodes_in_group('ItemLayer')[0]
 
 func holdItem(item):
 	var attachPoint:Node2D = getAttachPoint(facing)
@@ -42,7 +41,7 @@ func dropItem() -> bool:
 	if heldItem == null: return false
 	heldItem.get_parent().remove_child(heldItem)
 	
-	get_node(itemLayer).add_child(heldItem)
+	itemLayer.add_child(heldItem)
 	heldItem.global_position = getAttachPoint(facing).global_position + getAttachPoint(facing).position + Vector2(0, rand_range(10, 20))
 	heldItem.isHeld = false
 	if heldItem.has_method('onDrop'):

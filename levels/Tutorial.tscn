@@ -67,6 +67,21 @@ margin_top = 407.0
 margin_right = 852.0
 margin_bottom = 557.0
 
+[node name="Props" type="YSort" parent="Level" groups=[
+"ItemLayer",
+]]
+position = Vector2( 85, -37 )
+
+[node name="Player" parent="Level/Props" instance=ExtResource( 1 )]
+position = Vector2( 560, 400 )
+
+[node name="ExorcismBook" parent="Level/Props" instance=ExtResource( 4 )]
+position = Vector2( 606, 393 )
+
+[node name="WallToppers" type="Node2D" parent="Level" groups=[
+"WallTopperParent",
+]]
+
 [node name="Corners" type="Node" parent="Level"]
 
 [node name="wall_piece-corner_T" parent="Level/Corners" instance=ExtResource( 2 )]
@@ -95,21 +110,5 @@ position = Vector2( 391, 283 )
 position = Vector2( 757, 283 )
 rotation = 1.5708
 
-[node name="Props" type="YSort" parent="."]
-
-[node name="Player" parent="Props" instance=ExtResource( 1 )]
-position = Vector2( 560, 400 )
-
-[node name="HeldItem" parent="Props/Player" index="3"]
-itemLayer = NodePath("../..")
-
-[node name="visionLighting" parent="Props/Player/visionHolder" index="1"]
-position = Vector2( -158.837, -52.6497 )
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.890196, 0.827451, 0.827451, 1 )
-
-[node name="ExorcismBook" parent="." instance=ExtResource( 4 )]
-position = Vector2( 606, 393 )
-
-[editable path="Props/Player"]

@@ -13,6 +13,7 @@ wait_time = 0.25
 autostart = true
 
 [node name="Label" type="Label" parent="."]
+visible = false
 material = SubResource( 1 )
 margin_right = 85.0
 margin_bottom = 14.0
