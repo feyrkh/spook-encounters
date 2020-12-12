@@ -17,29 +17,29 @@ position = Vector2( -85, 37 )
 margin_left = 693.0
 margin_top = 400.0
 margin_right = 852.0
-margin_bottom = 449.0
+margin_bottom = 448.0
 
 [node name="Wall3" parent="Level/Walls" instance=ExtResource( 7 )]
 margin_left = 467.0
 margin_top = 236.0
 margin_right = 851.0
-margin_bottom = 285.0
+margin_bottom = 284.0
 
 [node name="Wall2" parent="Level/Walls" instance=ExtResource( 7 )]
 margin_left = 605.0
 margin_top = 400.0
 margin_right = 668.0
-margin_bottom = 449.0
+margin_bottom = 448.0
 
 [node name="Wall4" parent="Level/Walls" instance=ExtResource( 7 )]
 margin_left = 466.0
-margin_top = 508.0
+margin_top = 509.0
 margin_right = 744.0
 margin_bottom = 557.0
 
 [node name="Wall5" parent="Level/Walls" instance=ExtResource( 7 )]
 margin_left = 770.0
-margin_top = 508.0
+margin_top = 509.0
 margin_right = 852.0
 margin_bottom = 557.0
 
@@ -53,13 +53,13 @@ margin_bottom = 557.0
 margin_left = 466.0
 margin_top = 237.0
 margin_right = 486.0
-margin_bottom = 557.0
+margin_bottom = 553.0
 
 [node name="Wall9" parent="Level/Walls" instance=ExtResource( 7 )]
 margin_left = 832.0
 margin_top = 242.0
 margin_right = 852.0
-margin_bottom = 445.0
+margin_bottom = 471.0
 
 [node name="Wall7" parent="Level/Walls" instance=ExtResource( 7 )]
 margin_left = 832.0
@@ -70,22 +70,22 @@ margin_bottom = 557.0
 [node name="Corners" type="Node" parent="Level"]
 
 [node name="wall_piece-corner_T" parent="Level/Corners" instance=ExtResource( 2 )]
-position = Vector2( 530, 555 )
+position = Vector2( 530, 556 )
 rotation = 3.14159
 
 [node name="wall_piece-corner_T2" parent="Level/Corners" instance=ExtResource( 2 )]
-position = Vector2( 757, 447 )
+position = Vector2( 757, 446 )
 rotation = 1.57079
 
 [node name="wall_piece-corner_top" parent="Level/Corners" instance=ExtResource( 3 )]
 position = Vector2( 530, 447 )
 
 [node name="wall_piece-corner_top4" parent="Level/Corners" instance=ExtResource( 3 )]
-position = Vector2( 391, 554 )
+position = Vector2( 391, 556 )
 rotation = -1.5708
 
 [node name="wall_piece-corner_top5" parent="Level/Corners" instance=ExtResource( 3 )]
-position = Vector2( 757, 555 )
+position = Vector2( 757, 556 )
 rotation = 3.14159
 
 [node name="wall_piece-corner_top2" parent="Level/Corners" instance=ExtResource( 3 )]
@@ -96,6 +96,7 @@ position = Vector2( 757, 283 )
 rotation = 1.5708
 
 [node name="Props" type="YSort" parent="."]
+visible = false
 
 [node name="Player" parent="Props" instance=ExtResource( 1 )]
 position = Vector2( 560, 400 )

@@ -11,8 +11,8 @@ cull_mode = 1
 polygon = PoolVector2Array( 40, 0, 0, 0, 0, 19, 40, 19 )
 
 [node name="wall" type="NinePatchRect"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 19.0
+margin_bottom = 48.0
 texture = ExtResource( 1 )
 patch_margin_left = 5
 patch_margin_top = 5
@@ -20,7 +20,9 @@ patch_margin_right = 5
 patch_margin_bottom = 43
 script = ExtResource( 2 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_horizontal_guides_": [ 4.0, 15.0 ],
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 4.0, 15.0 ]
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
