@@ -6,8 +6,8 @@ extends NinePatchRect
 func _ready():
 	$StaticBody2D/MoveObstruction.shape = RectangleShape2D.new()
 	$StaticBody2D/MoveObstruction.shape.extents = Vector2(self.rect_size.x/2, self.rect_size.y/2 - 11)
-	
 	$StaticBody2D/MoveObstruction.position = Vector2(self.rect_size.x/2, (self.rect_size.y/2)+11)
+	$Topper.visible = true
 	resizeWallTopper()
 	moveWallToppersAboveEverything()
 	
@@ -16,7 +16,8 @@ func resizeWallTopper():
 	if rect_size.x > (rect_size.y - patch_margin_bottom): #  we are probably stretched left/right
 		wallTopper.rect_size.x = rect_size.x
 	else:
-		wallTopper.rect_size.y = rect_size.y
+		wallTopper.rect_size.y = rect_size.y 
+		wallTopper.visible = false
 	
 
 func moveWallToppersAboveEverything():

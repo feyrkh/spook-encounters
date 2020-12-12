@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://assets/chara_sprites/walkcycle-down05.png" type="Texture" id=1]
 [ext_resource path="res://scene/player/HeldItem.gd" type="Script" id=2]
@@ -66,6 +66,7 @@
 [ext_resource path="res://assets/chara_sprites/chara-static_up_item.png" type="Texture" id=64]
 [ext_resource path="res://assets/chara_sprites/chara-static_side_item.png" type="Texture" id=65]
 [ext_resource path="res://assets/chara_sprites/chara-static_down_item.png" type="Texture" id=66]
+[ext_resource path="res://scene/player/Camera2D.gd" type="Script" id=67]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -174,7 +175,7 @@ animations = [ {
 extents = Vector2( 82, 75 )
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 3.27124
+radius = 5.0
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 16 )
@@ -255,9 +256,10 @@ rotation = 1.5708
 shape = SubResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 1.83675, -2.35031 )
+visible = false
 current = true
 zoom = Vector2( 0.167, 0.167 )
+script = ExtResource( 67 )
 
 [node name="Ears" parent="." instance=ExtResource( 15 )]
 position = Vector2( -16.4499, -42.2199 )
@@ -309,7 +311,7 @@ script = ExtResource( 19 )
 
 [node name="visionLighting" type="Light2D" parent="visionHolder"]
 show_behind_parent = true
-position = Vector2( -147.251, -21.3516 )
+position = Vector2( -147.251, -21.7024 )
 scale = Vector2( 2.05269, 21.0249 )
 texture = ExtResource( 20 )
 offset = Vector2( 200, 0 )

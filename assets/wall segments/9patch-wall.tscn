@@ -11,14 +11,17 @@ extents = Vector2( 20, 24 )
 cull_mode = 1
 polygon = PoolVector2Array( 40, 0, 0, 0, 0, 19, 40, 19 )
 
-[node name="Wall" type="NinePatchRect"]
-margin_right = 19.0
-margin_bottom = 48.0
+[node name="Wall" type="NinePatchRect" groups=[
+"wall",
+]]
+margin_right = 20.0
+margin_bottom = 58.0
 texture = ExtResource( 1 )
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 43
+region_rect = Rect2( 0, 0, 20, 58 )
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 10
+patch_margin_bottom = 48
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 4.0, 15.0 ],
@@ -30,6 +33,7 @@ __meta__ = {
 collision_mask = 0
 
 [node name="MoveObstruction" type="CollisionShape2D" parent="StaticBody2D"]
+visible = false
 position = Vector2( 20, 24 )
 shape = SubResource( 1 )
 
@@ -37,14 +41,20 @@ shape = SubResource( 1 )
 visible = false
 occluder = SubResource( 2 )
 
-[node name="Topper" type="NinePatchRect" parent="."]
-margin_right = 19.0
-margin_bottom = 19.0
+[node name="Topper" type="NinePatchRect" parent="." groups=[
+"wallTopper",
+]]
+visible = false
+margin_right = 20.0
+margin_bottom = 35.0
 texture = ExtResource( 3 )
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 16
+region_rect = Rect2( 0, 0, 20, 35 )
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 10
+patch_margin_bottom = 25
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
