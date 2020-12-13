@@ -204,9 +204,12 @@ collision_layer = 2
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -15 )
 frames = SubResource( 1 )
-animation = "idleUpHoldItem"
+animation = "moveDownRightHoldItem"
+frame = 6
+flip_h = true
 
 [node name="BehindWallVisibilitySprite" type="AnimatedSprite" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0.168627 )
 light_mask = 512
 position = Vector2( 0, -15 )
@@ -243,28 +246,28 @@ shape = SubResource( 2 )
 script = ExtResource( 2 )
 
 [node name="Right" type="Position2D" parent="HeldItem"]
-position = Vector2( 4, -14 )
+position = Vector2( 2, -17 )
 
 [node name="Left" type="Position2D" parent="HeldItem"]
-position = Vector2( -3, -14 )
+position = Vector2( -1, -17 )
 
 [node name="Down" type="Position2D" parent="HeldItem"]
-position = Vector2( 5, -12 )
+position = Vector2( 1, -15 )
 
 [node name="Up" type="Position2D" parent="HeldItem"]
-position = Vector2( -5, -12 )
+position = Vector2( -1.93753, -17.0113 )
 
 [node name="UpLeft" type="Position2D" parent="HeldItem"]
-position = Vector2( -3, -14 )
+position = Vector2( -1, -16 )
 
 [node name="UpRight" type="Position2D" parent="HeldItem"]
-position = Vector2( 4, -14 )
+position = Vector2( 2, -17 )
 
 [node name="DownLeft" type="Position2D" parent="HeldItem"]
-position = Vector2( -3, -14 )
+position = Vector2( -1, -16 )
 
 [node name="DownRight" type="Position2D" parent="HeldItem"]
-position = Vector2( 4, -14 )
+position = Vector2( 2, -17 )
 
 [node name="Held" type="Node2D" parent="HeldItem"]
 
@@ -367,8 +370,8 @@ shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
 script = ExtResource( 19 )
 [connection signal="frame_changed" from="AnimatedSprite" to="BehindWallVisibilitySprite" method="_on_AnimatedSprite_frame_changed"]
-[connection signal="facingChange" from="MoveController" to="BehindWallVisibilitySprite" method="_on_MoveController_facingChange"]
 [connection signal="facingChange" from="MoveController" to="HeldItem" method="_on_MoveController_facingChange"]
+[connection signal="facingChange" from="MoveController" to="BehindWallVisibilitySprite" method="_on_MoveController_facingChange"]
 [connection signal="updateFacingAngle" from="MoveController" to="HeldItem" method="_on_MoveController_updateFacingAngle"]
 [connection signal="updateFacingAngle" from="MoveController" to="visionHolder" method="_on_MoveController_updateFacingAngle"]
 [connection signal="updatedAnimation" from="MoveController" to="BehindWallVisibilitySprite" method="_on_MoveController_updatedAnimation"]

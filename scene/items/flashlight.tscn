@@ -1,24 +1,20 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scene/items/flashlight.gd" type="Script" id=1]
-[ext_resource path="res://img/itemImage/flashlight-on.jpg" type="Texture" id=2]
-[ext_resource path="res://img/itemImage/flashlight.jpg" type="Texture" id=3]
 [ext_resource path="res://scene/items/light-flashlight.png" type="Texture" id=4]
-[ext_resource path="res://scene/items/placeholderItem.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/held_items/held_item-flashlight_side.png" type="Texture" id=5]
 [ext_resource path="res://scene/items/VisionModeAffectedLight.gd" type="Script" id=6]
 [ext_resource path="res://scene/items/BrightLightArea.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/held_items/held_item-flashlight_up.png" type="Texture" id=8]
+[ext_resource path="res://assets/held_items/held_item-flashlight_down.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 25.4773, 25.8857 )
 
 [node name="flashlight" type="Node2D"]
 script = ExtResource( 1 )
-itemSlotIconTextureEnabled = ExtResource( 2 )
-itemSlotIconTextureDisabled = ExtResource( 3 )
-
-[node name="placeholderImage" parent="." instance=ExtResource( 5 )]
-position = Vector2( 0, 0 )
-rectSize = Vector2( 50, 50 )
+itemSlotIconTextureEnabled = ExtResource( 9 )
+itemSlotIconTextureDisabled = ExtResource( 5 )
 
 [node name="ItemPickupArea" type="Area2D" parent="."]
 position = Vector2( 0, 24 )
@@ -44,5 +40,25 @@ script = ExtResource( 6 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BrightLightArea"]
 position = Vector2( 0, 24 )
 polygon = PoolVector2Array( 0, -24, 32, -40, 304, -128, 320, -24, 304, 80, 32, -8 )
+
+[node name="DownHeld" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 9 )
+
+[node name="UpHeld" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 8 )
+
+[node name="LeftHeld" type="Sprite" parent="."]
+visible = false
+scale = Vector2( -1, 1 )
+texture = ExtResource( 5 )
+
+[node name="RightHeld" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 5 )
+
+[node name="Placed" type="Sprite" parent="."]
+texture = ExtResource( 9 )
 
 [editable path="BrightLightArea"]

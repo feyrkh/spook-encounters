@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scene/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/wall segments/wall_piece-corner_T.tscn" type="PackedScene" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://scene/props/furniture/wood-floor.jpg" type="Texture" id=6]
 [ext_resource path="res://assets/wall segments/9patch-wall.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scene/items/light-flashlight.png" type="Texture" id=8]
+[ext_resource path="res://scene/items/ExorcismBook.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scene/items/candle.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scene/items/flashlight.tscn" type="PackedScene" id=11]
 
 [node name="Tutorial" type="Node2D"]
 
@@ -102,6 +105,15 @@ position = Vector2( 535, 447 )
 
 [node name="table" parent="Level/Props" instance=ExtResource( 4 )]
 position = Vector2( 643, 373 )
+
+[node name="ExorcismBook" parent="Level/Props" instance=ExtResource( 9 )]
+position = Vector2( 538, 388 )
+
+[node name="candle" parent="Level/Props" instance=ExtResource( 10 )]
+position = Vector2( 478, 403 )
+
+[node name="flashlight" parent="Level/Props" instance=ExtResource( 11 )]
+position = Vector2( 527, 360 )
 
 [node name="WallToppers" type="Node2D" parent="Level" groups=[
 "WallTopperParent",

@@ -34,7 +34,8 @@ func showTexture(specificName, generalName, xScale):
 	var node = get_node_or_null(specificName)
 	if !node: node = get_node(generalName)
 	node.visible = true
-	node.scale.x = xScale
+	if xScale > 0: node.scale.x = abs(node.scale.x)
+	else: node.scale.x = -abs(node.scale.x)
 
 func updateTexture():
 	print('Updating texture; facing=', facing, ' held=', isHeld)

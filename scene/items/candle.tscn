@@ -1,20 +1,18 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scene/items/candle.gd" type="Script" id=1]
 [ext_resource path="res://scene/props/furniture/light-lamp.png" type="Texture" id=2]
-[ext_resource path="res://scene/items/placeholderItem.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/held_items/held_item-candle_up.png" type="Texture" id=3]
 [ext_resource path="res://scene/items/VisionModeAffectedLight.gd" type="Script" id=4]
+[ext_resource path="res://assets/held_items/held_item-candle_side.png" type="Texture" id=5]
+[ext_resource path="res://assets/held_items/held_item-candle_down.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 25.4773, 25.8857 )
 
 [node name="candle" type="Node2D"]
-position = Vector2( 188.993, 237.524 )
 script = ExtResource( 1 )
-
-[node name="placeholderImage" parent="." instance=ExtResource( 3 )]
-position = Vector2( -1.64295, -24.9623 )
-rectSize = Vector2( 50, 50 )
+itemSlotIconTexture = ExtResource( 3 )
 
 [node name="ItemPickupArea" type="Area2D" parent="."]
 monitoring = false
@@ -27,12 +25,11 @@ position = Vector2( 0.594604, -24.3788 )
 shape = SubResource( 1 )
 
 [node name="Light2D2" type="Light2D" parent="."]
-visible = false
-position = Vector2( 1, -52 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 2 )
 texture_scale = 0.25
-color = Color( 0.662745, 0.0196078, 0.0196078, 1 )
-energy = 0.6
+color = Color( 1, 0.890196, 0, 1 )
+energy = 0.77
 shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
 script = ExtResource( 4 )
@@ -40,4 +37,25 @@ script = ExtResource( 4 )
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
+
+[node name="DownHeld" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 6 )
+
+[node name="LeftHeld" type="Sprite" parent="."]
+visible = false
+scale = Vector2( -1, 1 )
+texture = ExtResource( 5 )
+
+[node name="RightHeld" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 5 )
+
+[node name="UpHeld" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 3 )
+
+[node name="Placed" type="Sprite" parent="."]
+position = Vector2( 3.5385, -1.81933 )
+texture = ExtResource( 3 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

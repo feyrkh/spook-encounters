@@ -3,6 +3,9 @@ extends AnimatedSprite
 
 onready var source = $'../AnimatedSprite'
 
+func _ready():
+	visible = true
+
 func _on_AnimatedSprite_frame_changed():
 	print('changing to ', source.animation, ' frame ', source.frame)
 	self.animation = source.animation
