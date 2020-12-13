@@ -106,14 +106,14 @@ margin_bottom = 567.0
 position = Vector2( 85, -37 )
 
 [node name="Player" parent="Level/Props" instance=ExtResource( 1 )]
-position = Vector2( 589, 371 )
+position = Vector2( 535, 447 )
 
 [node name="visionLighting" parent="Level/Props/Player/visionHolder" index="1"]
 mode = 2
 range_item_cull_mask = 3
 shadow_item_cull_mask = 3
 
-[node name="Light2D" parent="Level/Props/Player" index="9"]
+[node name="Light2D" parent="Level/Props/Player" index="10"]
 color = Color( 0.054902, 0.054902, 0.054902, 1 )
 energy = 1.0
 range_item_cull_mask = 1
