@@ -95,6 +95,8 @@ func isMoving():
 	
 func updateFacing():
 	var newFacing = None
+	var mouseDistance = global_position.distance_to(get_global_mouse_position())
+	if mouseDistance < 3: return
 	var newFacingAngle = rad2deg(get_angle_to(get_global_mouse_position()))
 	if newFacingAngle != facingAngle:
 		emit_signal('updateFacingAngle', newFacingAngle)

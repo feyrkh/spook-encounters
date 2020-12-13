@@ -26,3 +26,7 @@ func updateItemSlotIcon():
 	else:
 		itemSlotIconTexture = itemSlotIconTextureDisabled
 	$"/root/EventBus".emit_signal('inventoryIconsNeedUpdate')
+
+func updateRotation(curAngleRad):
+	$BrightLightArea.rotation = curAngleRad
+	$Light2D.rotation = curAngleRad

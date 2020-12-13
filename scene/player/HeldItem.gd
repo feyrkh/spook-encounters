@@ -78,8 +78,10 @@ func _on_MoveController_updateFacingAngle(newPlayerAngle):
 		updateHeldItemRotation()
 
 func updateHeldItemRotation():
-	pass
-#	if heldItem:
-#		curAngleRad = heldItem.rotation + heldItem.get_angle_to(get_global_mouse_position())
+	if heldItem && heldItem.has_method('updateRotation'):
+		var mouseDistance = heldItem.global_position.distance_to(get_global_mouse_position())
+		if mouseDistance < 2: return
+		curAngleRad = heldItem.rotation + heldItem.get_angle_to(get_global_mouse_position())
+		heldItem.updateRotation(curAngleRad)
 #		heldItem.rotation = 0
 #		heldItem.rotation = curAngleRad

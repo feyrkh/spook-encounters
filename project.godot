@@ -286,3 +286,4 @@ use_item_alternate={
 [rendering]
 
 quality/2d/use_pixel_snap=true
+quality/shadows/filter_mode=2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scene/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/wall segments/wall_piece-corner_T.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/wall segments/wall_piece-corner_bottom.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scene/props/furniture/wood-floor.jpg" type="Texture" id=6]
 [ext_resource path="res://assets/wall segments/9patch-wall.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/wall segments/doorframe.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scene/items/ExorcismBook.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scene/items/candle.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scene/items/flashlight.tscn" type="PackedScene" id=11]
@@ -42,9 +43,9 @@ texture = ExtResource( 6 )
 
 [node name="Wall" parent="Level/Walls" instance=ExtResource( 7 )]
 margin_left = 693.0
-margin_top = 399.0
+margin_top = 400.0
 margin_right = 852.0
-margin_bottom = 457.0
+margin_bottom = 458.0
 
 [node name="Wall3" parent="Level/Walls" instance=ExtResource( 7 )]
 margin_left = 466.0
@@ -92,7 +93,7 @@ margin_bottom = 457.0
 margin_left = 832.0
 margin_top = 400.0
 margin_right = 852.0
-margin_bottom = 567.0
+margin_bottom = 528.0
 
 [node name="Props" type="YSort" parent="Level" groups=[
 "ItemLayer",
@@ -100,7 +101,7 @@ margin_bottom = 567.0
 position = Vector2( 85, -37 )
 
 [node name="Player" parent="Level/Props" instance=ExtResource( 1 )]
-position = Vector2( 535, 447 )
+position = Vector2( 596, 507 )
 
 [node name="table" parent="Level/Props" instance=ExtResource( 4 )]
 position = Vector2( 643, 373 )
@@ -118,6 +119,9 @@ position = Vector2( 527, 360 )
 "WallTopperParent",
 ]]
 
+[node name="DoorFrame" parent="Level/WallToppers" instance=ExtResource( 8 )]
+position = Vector2( 681, 410 )
+
 [node name="WallCorners" type="Node2D" parent="Level"]
 
 [node name="WCTop" parent="Level/WallCorners" instance=ExtResource( 3 )]
@@ -134,9 +138,9 @@ margin_bottom = 276.0
 
 [node name="WCTri" parent="Level/WallCorners" instance=ExtResource( 2 )]
 margin_left = 852.0
-margin_top = 381.0
+margin_top = 382.0
 margin_right = 908.0
-margin_bottom = 421.0
+margin_bottom = 422.0
 rect_rotation = 89.9999
 
 [node name="WCBot" parent="Level/WallCorners" instance=ExtResource( 5 )]
@@ -169,4 +173,4 @@ rect_rotation = -180.0
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2( 11, -40 )
 z_index = 4096
-color = Color( 0, 0, 0, 1 )
+color = Color( 0.156863, 0.156863, 0.156863, 1 )

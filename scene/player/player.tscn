@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=2]
+[gd_scene load_steps=76 format=2]
 
 [ext_resource path="res://assets/chara_sprites/walkcycle-down05.png" type="Texture" id=1]
 [ext_resource path="res://scene/player/HeldItem.gd" type="Script" id=2]
@@ -67,7 +67,6 @@
 [ext_resource path="res://assets/chara_sprites/chara-static_side_item.png" type="Texture" id=65]
 [ext_resource path="res://assets/chara_sprites/chara-static_down_item.png" type="Texture" id=66]
 [ext_resource path="res://scene/player/Camera2D.gd" type="Script" id=67]
-[ext_resource path="res://scene/player/playerVisionLightOverlay.png" type="Texture" id=68]
 [ext_resource path="res://scene/player/BehindWallVisibilitySprite.gd" type="Script" id=69]
 [ext_resource path="res://scene/items/light-laserpointer.png" type="Texture" id=70]
 
@@ -202,7 +201,6 @@ func _on_MoveController_updateFacingAngle(angleDegrees):
 collision_layer = 2
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -15 )
 frames = SubResource( 1 )
 animation = "moveDownRightHoldItem"
 frame = 6
@@ -212,13 +210,13 @@ flip_h = true
 visible = false
 modulate = Color( 1, 1, 1, 0.168627 )
 light_mask = 512
-position = Vector2( 0, -15 )
 z_index = 10
 frames = SubResource( 1 )
 animation = "idleUpHoldItem"
 script = ExtResource( 69 )
 
 [node name="Light2D" type="Light2D" parent="BehindWallVisibilitySprite"]
+visible = false
 scale = Vector2( 0.0426998, 35.0144 )
 texture = ExtResource( 70 )
 range_item_cull_mask = 512
@@ -231,7 +229,7 @@ movePixelsPerSecond = 50
 kinematicBody2DPath = NodePath("..")
 
 [node name="ItemDetector" type="Area2D" parent="."]
-position = Vector2( 1.83675, -2.35031 )
+position = Vector2( 1.27489, 12.6328 )
 monitorable = false
 collision_layer = 2147483650
 collision_mask = 8
@@ -246,33 +244,33 @@ shape = SubResource( 2 )
 script = ExtResource( 2 )
 
 [node name="Right" type="Position2D" parent="HeldItem"]
-position = Vector2( 2, -17 )
+position = Vector2( 1.43814, -2.01692 )
 
 [node name="Left" type="Position2D" parent="HeldItem"]
-position = Vector2( -1, -17 )
+position = Vector2( -1.56186, -2.01692 )
 
 [node name="Down" type="Position2D" parent="HeldItem"]
-position = Vector2( 1, -15 )
+position = Vector2( 0.438141, -0.016923 )
 
 [node name="Up" type="Position2D" parent="HeldItem"]
-position = Vector2( -1.93753, -17.0113 )
+position = Vector2( -2.49939, -2.02823 )
 
 [node name="UpLeft" type="Position2D" parent="HeldItem"]
-position = Vector2( -1, -16 )
+position = Vector2( -1.56186, -1.01692 )
 
 [node name="UpRight" type="Position2D" parent="HeldItem"]
-position = Vector2( 2, -17 )
+position = Vector2( 1.43814, -2.01692 )
 
 [node name="DownLeft" type="Position2D" parent="HeldItem"]
-position = Vector2( -1, -16 )
+position = Vector2( -1.56186, -1.01692 )
 
 [node name="DownRight" type="Position2D" parent="HeldItem"]
-position = Vector2( 2, -17 )
+position = Vector2( 1.43814, -2.01692 )
 
 [node name="Held" type="Node2D" parent="HeldItem"]
 
 [node name="WalkCollision" type="CollisionShape2D" parent="."]
-position = Vector2( 0.120633, -2.28654 )
+position = Vector2( -0.441223, 12.6965 )
 rotation = 1.5708
 shape = SubResource( 3 )
 
@@ -283,7 +281,7 @@ zoom = Vector2( 0.15, 0.15 )
 script = ExtResource( 67 )
 
 [node name="Ears" parent="." instance=ExtResource( 15 )]
-position = Vector2( -16.4499, -42.2199 )
+position = Vector2( -17.0118, -27.2368 )
 
 [node name="HudLayer" type="CanvasLayer" parent="."]
 
@@ -320,10 +318,11 @@ itemDetectorPath = NodePath("../../ItemDetector")
 playerPath = NodePath("../..")
 
 [node name="visionHolder" type="Node2D" parent="."]
-position = Vector2( 1.83675, -2.35031 )
+position = Vector2( 1.27489, 12.6328 )
 script = SubResource( 6 )
 
 [node name="visionLighting" type="Light2D" parent="visionHolder"]
+visible = false
 show_behind_parent = true
 position = Vector2( -1.91951, -21.0542 )
 scale = Vector2( 2.05269, 21.0249 )
@@ -335,6 +334,7 @@ shadow_enabled = true
 script = ExtResource( 19 )
 
 [node name="VisionCone" parent="visionHolder" instance=ExtResource( 22 )]
+visible = false
 position = Vector2( 0.310059, -14.363 )
 collision_layer = 2147483680
 
@@ -348,32 +348,22 @@ z_as_relative = false
 color = Color( 0.301961, 0.294118, 0.294118, 0.803922 )
 polygon = PoolVector2Array( 1.91592, -790.618, -877.138, -785.68, -1180.39, -216.75, -846.638, 689.761, 1.88977, 809.969, -104.046, -15.4931 )
 
-[node name="Light2D" type="Light2D" parent="."]
-position = Vector2( 0, -23.4974 )
-scale = Vector2( 120, 60 )
-texture = ExtResource( 68 )
-color = Color( 0.215686, 0.215686, 0.215686, 1 )
-energy = 0.3
-shadow_enabled = true
-shadow_color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_editor_description_": "
-"
-}
-
 [node name="visionNearby" type="Light2D" parent="."]
-position = Vector2( -0.036129, -23.668 )
-scale = Vector2( 0.188846, 0.166923 )
+position = Vector2( -0.597992, -8.68491 )
+scale = Vector2( 0.497469, 0.439718 )
 texture = ExtResource( 21 )
 energy = 0.29
+mode = 2
 shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
+shadow_filter = 5
+shadow_filter_smooth = 2.0
 script = ExtResource( 19 )
 [connection signal="frame_changed" from="AnimatedSprite" to="BehindWallVisibilitySprite" method="_on_AnimatedSprite_frame_changed"]
 [connection signal="facingChange" from="MoveController" to="HeldItem" method="_on_MoveController_facingChange"]
 [connection signal="facingChange" from="MoveController" to="BehindWallVisibilitySprite" method="_on_MoveController_facingChange"]
-[connection signal="updateFacingAngle" from="MoveController" to="HeldItem" method="_on_MoveController_updateFacingAngle"]
 [connection signal="updateFacingAngle" from="MoveController" to="visionHolder" method="_on_MoveController_updateFacingAngle"]
+[connection signal="updateFacingAngle" from="MoveController" to="HeldItem" method="_on_MoveController_updateFacingAngle"]
 [connection signal="updatedAnimation" from="MoveController" to="BehindWallVisibilitySprite" method="_on_MoveController_updatedAnimation"]
 [connection signal="area_entered" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_entered"]
 [connection signal="area_exited" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_exited"]
