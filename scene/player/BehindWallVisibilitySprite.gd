@@ -12,6 +12,5 @@ func _on_AnimatedSprite_frame_changed():
 func _on_MoveController_facingChange(facing, newFacing, cardinalFacingAngle):
 	_on_AnimatedSprite_frame_changed()
 
-
-func _on_MoveController_updateFacingAngle(newAngle):
+func _on_MoveController_updatedAnimation():
 	_on_AnimatedSprite_frame_changed()

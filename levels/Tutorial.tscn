@@ -36,14 +36,6 @@ texture = ExtResource( 6 )
 position = Vector2( 672, 395 )
 texture = ExtResource( 6 )
 
-[node name="Light2D" type="Light2D" parent="Level/Floors"]
-position = Vector2( 804, 347 )
-rotation = -1.31773
-texture = ExtResource( 8 )
-range_item_cull_mask = 3
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_item_cull_mask = 3
-
 [node name="Walls" type="YSort" parent="Level"]
 
 [node name="Wall" parent="Level/Walls" instance=ExtResource( 7 )]
@@ -78,7 +70,7 @@ margin_bottom = 567.0
 
 [node name="Wall6" parent="Level/Walls" instance=ExtResource( 7 )]
 margin_left = 605.0
-margin_top = 401.0
+margin_top = 419.0
 margin_right = 625.0
 margin_bottom = 532.0
 
@@ -107,18 +99,6 @@ position = Vector2( 85, -37 )
 
 [node name="Player" parent="Level/Props" instance=ExtResource( 1 )]
 position = Vector2( 535, 447 )
-
-[node name="visionLighting" parent="Level/Props/Player/visionHolder" index="1"]
-mode = 2
-range_item_cull_mask = 3
-shadow_item_cull_mask = 3
-
-[node name="Light2D" parent="Level/Props/Player" index="10"]
-color = Color( 0.054902, 0.054902, 0.054902, 1 )
-energy = 1.0
-range_item_cull_mask = 1
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_item_cull_mask = -2147483647
 
 [node name="table" parent="Level/Props" instance=ExtResource( 4 )]
 position = Vector2( 643, 373 )
@@ -176,9 +156,14 @@ margin_bottom = 569.0
 rect_rotation = -180.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 position = Vector2( 11, -40 )
 z_index = 4096
 color = Color( 0, 0, 0, 1 )
 
-[editable path="Level/Props/Player"]
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 597, 541 )
+rotation = -1.31773
+texture = ExtResource( 8 )
+offset = Vector2( 200, 0 )
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )

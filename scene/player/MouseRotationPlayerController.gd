@@ -5,6 +5,7 @@ enum {None, Left, DownLeft, Down, DownRight, Right, UpRight, Up, UpLeft}
 
 signal facingChange # (oldDirection, newDirection, angleDegrees)
 signal updateFacingAngle # (angleDegrees)
+signal updatedAnimation 
 
 const MOVE_BACK_PENALTY = 0.4
 const MOVE_SIDE_PENALTY = 0.7
@@ -234,6 +235,7 @@ func updateMovement(_delta):
 			animatedSprite.frame = 0
 			playingAnimation = false
 		animatedSprite.flip_h = flipped
+		emit_signal('updatedAnimation')
 		#print("Changing animation: ", animation, " flipped: ", flipped)
 		
 	if newMoveVector != moveVector:
