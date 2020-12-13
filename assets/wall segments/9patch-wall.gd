@@ -13,11 +13,20 @@ func _ready():
 	
 func resizeWallTopper():
 	var wallTopper = $Topper
+	var lightOccluder = $LightOccluder2D
+	var oldOccluder = lightOccluder.occluder
+	var newOccluder = oldOccluder.duplicate()
+	lightOccluder.occluder = newOccluder
 	if rect_size.x > (rect_size.y - patch_margin_bottom): #  we are probably stretched left/right
 		wallTopper.rect_size.x = rect_size.x
+		lightOccluder.occluder.polygon[2].x = rect_size.x
+		lightOccluder.occluder.polygon[3].x = rect_size.x
 	else:
 		wallTopper.rect_size.y = rect_size.y 
 		wallTopper.visible = false
+		lightOccluder.occluder.polygon[0].y = rect_size.y
+		lightOccluder.occluder.polygon[3].y = rect_size.y
+		lightOccluder.occluder.polygon[4].y = rect_size.y
 	
 
 func moveWallToppersAboveEverything():

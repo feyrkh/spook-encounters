@@ -2,7 +2,9 @@
 
 [ext_resource path="res://assets/wall segments/wall_piece-corner_bottom.png" type="Texture" id=1]
 
-[node name="WCBot" type="NinePatchRect"]
+[node name="WCBot" type="NinePatchRect" groups=[
+"wallJoint",
+]]
 margin_right = 20.0
 margin_bottom = 20.0
 texture = ExtResource( 1 )

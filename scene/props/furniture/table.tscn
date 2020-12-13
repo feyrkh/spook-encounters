@@ -11,8 +11,8 @@ cull_mode = 1
 polygon = PoolVector2Array( -221.781, 12.2821, -220.118, -37.4476, -125.34, -131.381, 129.063, -129.539, 222.178, -41.1312, 217.19, 10.4402, -220.118, 10.4402 )
 
 [node name="table" type="Sprite"]
-position = Vector2( 2, -30.5 )
-scale = Vector2( 0.159292, 0.143805 )
+position = Vector2( -0.0811157, -0.472565 )
+scale = Vector2( 0.0417082, 0.0376531 )
 texture = ExtResource( 1 )
 
 [node name="Collider" type="StaticBody2D" parent="."]
