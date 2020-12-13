@@ -87,13 +87,13 @@ margin_bottom = 567.0
 margin_left = 832.0
 margin_top = 236.0
 margin_right = 852.0
-margin_bottom = 457.0
+margin_bottom = 490.0
 
 [node name="Wall10" parent="Level/Walls" instance=ExtResource( 7 )]
 margin_left = 832.0
 margin_top = 400.0
 margin_right = 852.0
-margin_bottom = 528.0
+margin_bottom = 561.0
 
 [node name="Props" type="YSort" parent="Level" groups=[
 "ItemLayer",
@@ -173,4 +173,4 @@ rect_rotation = -180.0
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2( 11, -40 )
 z_index = 4096
-color = Color( 0.156863, 0.156863, 0.156863, 1 )
+color = Color( 0, 0, 0, 1 )

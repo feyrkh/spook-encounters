@@ -17,6 +17,12 @@ func resizeWallTopper():
 	var botOc = duplicateOccluder($BottomOccluder)
 	var leftOc = duplicateOccluder($LeftOccluder)
 	var rightOc = duplicateOccluder($RightOccluder)
+	var boxOc = duplicateOccluder($BoxOccluder)
+	
+	boxOc.occluder.polygon[0] = Vector2(6, 6)
+	boxOc.occluder.polygon[1] = Vector2(rect_size.x - 6, 6)
+	boxOc.occluder.polygon[2] = Vector2(rect_size.x - 6, rect_size.y - patch_margin_bottom + 4)
+	boxOc.occluder.polygon[3] = Vector2(6, rect_size.y - patch_margin_bottom + 4)
 	
 	if rect_size.x > (rect_size.y - patch_margin_bottom): #  we are probably stretched left/right
 		wallTopper.rect_size.x = rect_size.x
