@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/wall segments/wall-stretch_vertical.png" type="Texture" id=1]
 [ext_resource path="res://assets/wall segments/9patch-wall.gd" type="Script" id=2]
@@ -10,7 +10,12 @@ extents = Vector2( 20, 24 )
 [sub_resource type="OccluderPolygon2D" id=2]
 closed = false
 cull_mode = 1
-polygon = PoolVector2Array( 0.999992, 21, 1, 1, 19, 1, 19, 21, 1, 21 )
+polygon = PoolVector2Array( 0, 1, 20, 1 )
+
+[sub_resource type="OccluderPolygon2D" id=3]
+closed = false
+cull_mode = 2
+polygon = PoolVector2Array( 0, 19, 20, 19 )
 
 [node name="Wall" type="NinePatchRect" groups=[
 "wall",
@@ -38,8 +43,11 @@ visible = false
 position = Vector2( 20, 24 )
 shape = SubResource( 1 )
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+[node name="TopOccluder" type="LightOccluder2D" parent="."]
 occluder = SubResource( 2 )
+
+[node name="BottomOccluder" type="LightOccluder2D" parent="."]
+occluder = SubResource( 3 )
 
 [node name="Topper" type="NinePatchRect" parent="." groups=[
 "wallTopper",

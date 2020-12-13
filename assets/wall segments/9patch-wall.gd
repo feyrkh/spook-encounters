@@ -13,21 +13,25 @@ func _ready():
 	
 func resizeWallTopper():
 	var wallTopper = $Topper
-	var lightOccluder = $LightOccluder2D
-	var oldOccluder = lightOccluder.occluder
-	var newOccluder = oldOccluder.duplicate()
-	lightOccluder.occluder = newOccluder
+	var topOc = duplicateOccluder($TopOccluder)
+	var botOc = duplicateOccluder($BottomOccluder)
+	
 	if rect_size.x > (rect_size.y - patch_margin_bottom): #  we are probably stretched left/right
 		wallTopper.rect_size.x = rect_size.x
-		lightOccluder.occluder.polygon[2].x = rect_size.x
-		lightOccluder.occluder.polygon[3].x = rect_size.x
+		topOc.occluder.polygon[1].x = rect_size.x
+		botOc.occluder.polygon[1].x = rect_size.x
 	else:
 		wallTopper.rect_size.y = rect_size.y 
 		wallTopper.visible = false
-		lightOccluder.occluder.polygon[0].y = rect_size.y
-		lightOccluder.occluder.polygon[3].y = rect_size.y
-		lightOccluder.occluder.polygon[4].y = rect_size.y
-	
+		botOc.occluder.polygon[0] = Vector2(0,0)
+		botOc.occluder.polygon[1] = Vector2(0,rect_size.y)
+		topOc.occluder.polygon[0] = Vector2(rect_size.x,0)
+		topOc.occluder.polygon[1] = Vector2(rect_size.x,rect_size.y)
+
+func duplicateOccluder(oc):
+	var newOc = oc.occluder.duplicate()
+	oc.occluder = newOc
+	return oc
 
 func moveWallToppersAboveEverything():
 	var wallToppersParent = get_tree().get_nodes_in_group('WallTopperParent')

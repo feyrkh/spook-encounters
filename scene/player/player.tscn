@@ -304,7 +304,7 @@ position = Vector2( 1.83675, -2.35031 )
 script = SubResource( 6 )
 
 [node name="visionNearby" type="Light2D" parent="visionHolder"]
-position = Vector2( -1.87288, -0.172029 )
+position = Vector2( -1.87288, -21.3177 )
 scale = Vector2( 0.188846, 0.166923 )
 texture = ExtResource( 21 )
 energy = 0.29
@@ -314,7 +314,7 @@ script = ExtResource( 19 )
 
 [node name="visionLighting" type="Light2D" parent="visionHolder"]
 show_behind_parent = true
-position = Vector2( -147.251, -21.7024 )
+position = Vector2( -1.91951, -21.0542 )
 scale = Vector2( 2.05269, 21.0249 )
 enabled = false
 texture = ExtResource( 20 )
@@ -337,14 +337,15 @@ color = Color( 0.301961, 0.294118, 0.294118, 0.803922 )
 polygon = PoolVector2Array( 1.91592, -790.618, -877.138, -785.68, -1180.39, -216.75, -846.638, 689.761, 1.88977, 809.969, -104.046, -15.4931 )
 
 [node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 0, -23.4974 )
 scale = Vector2( 120, 60 )
 texture = ExtResource( 68 )
 color = Color( 0.380392, 0.380392, 0.380392, 1 )
 energy = 0.2
 mode = 2
-range_item_cull_mask = 2
+range_item_cull_mask = 3
 shadow_enabled = true
-shadow_item_cull_mask = -2147483646
+shadow_item_cull_mask = 3
 __meta__ = {
 "_editor_description_": "
 "

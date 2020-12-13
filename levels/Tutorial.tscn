@@ -55,11 +55,11 @@ margin_bottom = 457.0
 [node name="Wall3" parent="Level/Walls" instance=ExtResource( 7 )]
 margin_left = 466.0
 margin_top = 236.0
-margin_right = 850.0
+margin_right = 852.0
 margin_bottom = 294.0
 
 [node name="Wall2" parent="Level/Walls" instance=ExtResource( 7 )]
-margin_left = 606.0
+margin_left = 605.0
 margin_top = 400.0
 margin_right = 668.0
 margin_bottom = 458.0
@@ -90,7 +90,7 @@ margin_bottom = 567.0
 
 [node name="Wall9" parent="Level/Walls" instance=ExtResource( 7 )]
 margin_left = 832.0
-margin_top = 237.0
+margin_top = 236.0
 margin_right = 852.0
 margin_bottom = 457.0
 

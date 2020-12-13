@@ -5,6 +5,7 @@
 [node name="WCTri" type="NinePatchRect" groups=[
 "wallJoint",
 ]]
+light_mask = -2147483647
 margin_right = 56.0
 margin_bottom = 40.0
 texture = ExtResource( 1 )
