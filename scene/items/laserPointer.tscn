@@ -11,6 +11,7 @@ extents = Vector2( 25.4773, 25.8857 )
 [node name="laserPointer" type="Node2D"]
 position = Vector2( 277.648, 354.051 )
 script = ExtResource( 1 )
+itemImageName = "laser"
 
 [node name="placeholderImage" parent="." instance=ExtResource( 3 )]
 position = Vector2( 22.357, 0.0377007 )

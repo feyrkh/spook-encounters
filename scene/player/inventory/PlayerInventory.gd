@@ -11,6 +11,7 @@ export(NodePath) var playerPath
 var player
 var itemHolder:HeldItem
 var itemDetector:ItemDetector
+onready var equippedItemLabel:Label = get_node("EquippedItemLabel")
 var emptyHandItem
 var invSlots = [null, null, null, null, null, null, null, null, null] # Actual objects that are held - not to be confused with their placeholder images
 var equippedItem = null
@@ -146,9 +147,12 @@ func setEquippedItem(newItem):
 		emit_signal("itemUnequipped", equippedItem)
 		itemHolder.unholdItem()
 	equippedItem = newItem
+	var itemName = ''
 	if newItem:
 		itemHolder.holdItem(equippedItem)
 		emit_signal("itemEquipped", equippedItem)
+		itemName = newItem.itemImageName
+	equippedItemLabel.text = itemName
 	updateAllInvSlotImages()
 
 func putItemInBag(item):

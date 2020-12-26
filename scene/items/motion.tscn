@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scene/items/basicItem.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 24, 17 )
+
+[node name="motion" type="Node2D"]
+script = ExtResource( 1 )
+itemImageName = "motion"
+
+[node name="ItemPickupArea" type="Area2D" parent="."]
+monitoring = false
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemPickupArea"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="Placed" type="Sprite" parent="."]
+
+[node name="DownHeld" type="Sprite" parent="."]
+
+[node name="LeftHeld" type="Sprite" parent="."]
+scale = Vector2( -1, 1 )
+
+[node name="RightHeld" type="Sprite" parent="."]
+
+[node name="UpHeld" type="Sprite" parent="."]

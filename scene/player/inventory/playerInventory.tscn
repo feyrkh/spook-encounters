@@ -50,3 +50,13 @@ position = Vector2( 904, 472 )
 [node name="EmptyHandItem" parent="." instance=ExtResource( 2 )]
 visible = false
 position = Vector2( 64, 536 )
+
+[node name="EquippedItemLabel" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 448.0
+margin_right = 1008.0
+margin_bottom = 462.0
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

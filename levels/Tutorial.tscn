@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scene/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/wall segments/wall_piece-corner_T.tscn" type="PackedScene" id=2]
@@ -8,9 +8,23 @@
 [ext_resource path="res://scene/props/furniture/wood-floor.jpg" type="Texture" id=6]
 [ext_resource path="res://assets/wall segments/9patch-wall.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/wall segments/doorframe.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scene/items/chalk.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scene/items/candle.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scene/items/flashlight.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scene/items/bible.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scene/items/crucifix.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scene/items/digitalcam.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scene/items/emf.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scene/items/EVP.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scene/items/knife.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scene/items/laser.tscn" type="PackedScene" id=18]
+[ext_resource path="res://scene/items/motion.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scene/items/recorder.tscn" type="PackedScene" id=20]
+[ext_resource path="res://scene/items/salt.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scene/items/thermalcam.tscn" type="PackedScene" id=22]
+[ext_resource path="res://scene/items/thermometer.tscn" type="PackedScene" id=23]
+[ext_resource path="res://scene/items/nightvision.tscn" type="PackedScene" id=24]
+[ext_resource path="res://scene/items/thermalvision.tscn" type="PackedScene" id=25]
 
 [node name="Tutorial" type="Node2D"]
 
@@ -100,21 +114,62 @@ margin_bottom = 561.0
 ]]
 position = Vector2( 85, -37 )
 
-[node name="Player" parent="Level/Props" instance=ExtResource( 1 )]
-position = Vector2( 513, 386 )
-
 [node name="table" parent="Level/Props" instance=ExtResource( 4 )]
 position = Vector2( 643, 373 )
 
 [node name="candle" parent="Level/Props" instance=ExtResource( 10 )]
-position = Vector2( 478, 403 )
+position = Vector2( 493, 348 )
 
 [node name="flashlight" parent="Level/Props" instance=ExtResource( 11 )]
-position = Vector2( 527, 360 )
+position = Vector2( 479, 348 )
 
 [node name="bible" parent="Level/Props" instance=ExtResource( 12 )]
-position = Vector2( 486, 381 )
-itemSlotIconTexture = null
+position = Vector2( 509, 349 )
+
+[node name="chalk" parent="Level/Props" instance=ExtResource( 9 )]
+position = Vector2( 527, 349 )
+
+[node name="crucifix" parent="Level/Props" instance=ExtResource( 13 )]
+position = Vector2( 545, 350 )
+
+[node name="digitalcam" parent="Level/Props" instance=ExtResource( 14 )]
+position = Vector2( 563, 349 )
+
+[node name="emf" parent="Level/Props" instance=ExtResource( 15 )]
+position = Vector2( 580, 350 )
+
+[node name="EVP" parent="Level/Props" instance=ExtResource( 16 )]
+position = Vector2( 595, 350 )
+
+[node name="knife" parent="Level/Props" instance=ExtResource( 17 )]
+position = Vector2( 610, 349 )
+
+[node name="motion" parent="Level/Props" instance=ExtResource( 19 )]
+position = Vector2( 636, 348 )
+
+[node name="nightvision" parent="Level/Props" instance=ExtResource( 24 )]
+position = Vector2( 649, 349 )
+
+[node name="recorder" parent="Level/Props" instance=ExtResource( 20 )]
+position = Vector2( 667, 349 )
+
+[node name="salt" parent="Level/Props" instance=ExtResource( 21 )]
+position = Vector2( 688, 350 )
+
+[node name="salt2" parent="Level/Props" instance=ExtResource( 22 )]
+position = Vector2( 706, 350 )
+
+[node name="salt3" parent="Level/Props" instance=ExtResource( 25 )]
+position = Vector2( 725, 350 )
+
+[node name="thermometer" parent="Level/Props" instance=ExtResource( 23 )]
+position = Vector2( 742, 350 )
+
+[node name="laser" parent="Level/Props" instance=ExtResource( 18 )]
+position = Vector2( 625, 349 )
+
+[node name="Player" parent="Level/Props" instance=ExtResource( 1 )]
+position = Vector2( 513, 386 )
 
 [node name="WallToppers" type="Node2D" parent="Level" groups=[
 "WallTopperParent",

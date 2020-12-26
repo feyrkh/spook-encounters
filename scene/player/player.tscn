@@ -201,17 +201,16 @@ func _on_MoveController_updateFacingAngle(angleDegrees):
 collision_layer = 2
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( -0.5, 0 )
+position = Vector2( 0, -13 )
 frames = SubResource( 1 )
 animation = "moveDownRightHoldItem"
 frame = 6
 flip_h = true
 
 [node name="BehindWallVisibilitySprite" type="AnimatedSprite" parent="."]
-visible = false
 modulate = Color( 1, 1, 1, 0.168627 )
 light_mask = 512
-position = Vector2( -0.5, 0 )
+position = Vector2( 0, -13 )
 z_index = 9
 frames = SubResource( 1 )
 animation = "idleUpHoldItem"
@@ -231,7 +230,7 @@ movePixelsPerSecond = 50
 kinematicBody2DPath = NodePath("..")
 
 [node name="ItemDetector" type="Area2D" parent="."]
-position = Vector2( 1.27489, 12.6328 )
+position = Vector2( 1.71683, -0.00673485 )
 monitorable = false
 collision_layer = 2147483650
 collision_mask = 8
@@ -243,6 +242,7 @@ position = Vector2( -3, -15 )
 shape = SubResource( 2 )
 
 [node name="HeldItem" type="Node2D" parent="."]
+position = Vector2( 0.441944, -12.6395 )
 script = ExtResource( 2 )
 
 [node name="Right" type="Position2D" parent="HeldItem"]
@@ -252,7 +252,7 @@ position = Vector2( 1.43814, -2.01692 )
 position = Vector2( -1.5, -2 )
 
 [node name="Down" type="Position2D" parent="HeldItem"]
-position = Vector2( 0.438141, -0.016923 )
+position = Vector2( 0.438, -1 )
 
 [node name="Up" type="Position2D" parent="HeldItem"]
 position = Vector2( -2.49939, -2.02823 )
@@ -273,7 +273,7 @@ position = Vector2( 1.43814, -2.01692 )
 z_index = 10
 
 [node name="WalkCollision" type="CollisionShape2D" parent="."]
-position = Vector2( -0.441223, 12.6965 )
+position = Vector2( 0.000720978, 0.056963 )
 rotation = 1.5708
 shape = SubResource( 3 )
 
@@ -284,7 +284,7 @@ zoom = Vector2( 0.15, 0.15 )
 script = ExtResource( 67 )
 
 [node name="Ears" parent="." instance=ExtResource( 15 )]
-position = Vector2( -17.0118, -27.2368 )
+position = Vector2( -16.5699, -39.8763 )
 
 [node name="HudLayer" type="CanvasLayer" parent="."]
 
@@ -362,10 +362,10 @@ shadow_filter = 5
 shadow_filter_smooth = 2.0
 script = ExtResource( 19 )
 [connection signal="frame_changed" from="AnimatedSprite" to="BehindWallVisibilitySprite" method="_on_AnimatedSprite_frame_changed"]
-[connection signal="facingChange" from="MoveController" to="HeldItem" method="_on_MoveController_facingChange"]
 [connection signal="facingChange" from="MoveController" to="BehindWallVisibilitySprite" method="_on_MoveController_facingChange"]
-[connection signal="updateFacingAngle" from="MoveController" to="HeldItem" method="_on_MoveController_updateFacingAngle"]
+[connection signal="facingChange" from="MoveController" to="HeldItem" method="_on_MoveController_facingChange"]
 [connection signal="updateFacingAngle" from="MoveController" to="visionHolder" method="_on_MoveController_updateFacingAngle"]
+[connection signal="updateFacingAngle" from="MoveController" to="HeldItem" method="_on_MoveController_updateFacingAngle"]
 [connection signal="updatedAnimation" from="MoveController" to="BehindWallVisibilitySprite" method="_on_MoveController_updatedAnimation"]
 [connection signal="area_entered" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_entered"]
 [connection signal="area_exited" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_exited"]
