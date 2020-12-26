@@ -11,6 +11,7 @@ var canBePickedUp = true
 export var facing = Right
 
 export(Texture) var itemSlotIconTexture
+export(String) var itemImageName
 
 var facingPosition
 
@@ -18,9 +19,33 @@ const itemInRangeMaterial:Material = preload("res://shaders/itemInRangeMaterial.
 const itemSelectedMaterial:Material = preload("res://shaders/itemSelectedMaterial.tres")
 
 func _ready():
+	loadItemTextures()
 	facingPosition = get_node_or_null('Facing')
 	updateFacing(0, facing, 0)
 
+func loadItemTextures():
+	if !itemImageName: return
+	var sprite = find_node('DownHeld', true)
+	if sprite: sprite.texture = load('res://assets/held_items/held_item-%s_down.png'%itemImageName)
+	sprite = find_node('UpHeld', true)
+	if sprite: sprite.texture = load('res://assets/held_items/held_item-%s_up.png'%itemImageName)
+	sprite = find_node('RightHeld', true)
+	if sprite: sprite.texture = load('res://assets/held_items/held_item-%s_side.png'%itemImageName)
+	sprite = find_node('LeftHeld', true)
+	if sprite: sprite.texture = load('res://assets/held_items/held_item-%s_side.png'%itemImageName)
+	sprite = find_node('Placed', true)
+	if sprite: sprite.texture = load('res://assets/item-placed/placed_item-%s.png'%itemImageName)
+	else:
+		sprite = find_node('UpPlaced', true)
+		if sprite: sprite.texture = load('res://assets/item-placed/placed_item-%s_up.png'%itemImageName)
+		sprite = find_node('RightPlaced', true)
+		if sprite: sprite.texture = load('res://assets/item-placed/placed_item-%s_side.png'%itemImageName)
+		sprite = find_node('LeftPlaced', true)
+		if sprite: sprite.texture = load('res://assets/item-placed/placed_item-%s_side.png'%itemImageName)
+		sprite = find_node('DownPlaced', true)
+		if sprite: sprite.texture = load('res://assets/item-placed/placed_item-%s_down.png'%itemImageName)
+	if !itemSlotIconTexture: itemSlotIconTexture = load('res://assets/item-placed/placed_item-%s.png'%itemImageName)
+	
 func updateFacing(oldFacing, newFacing, facingDegrees):
 	if facingPosition: facingPosition.rotation_degrees = facingDegrees
 	facing = newFacing

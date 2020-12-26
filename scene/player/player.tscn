@@ -77,19 +77,14 @@ animations = [ {
 "name": "idleUpRight",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 65 ) ],
+"loop": true,
+"name": "idleDownRightHoldItem",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 4 ), ExtResource( 30 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 28 ), ExtResource( 35 ), ExtResource( 33 ), ExtResource( 36 ) ],
 "loop": true,
 "name": "moveUp",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 34 ), ExtResource( 8 ), ExtResource( 27 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 31 ) ],
-"loop": true,
-"name": "moveRight",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "idleUp",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ) ],
@@ -97,64 +92,9 @@ animations = [ {
 "name": "idleDown",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ) ],
-"loop": true,
-"name": "idleRight",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 55 ), ExtResource( 42 ), ExtResource( 47 ), ExtResource( 57 ), ExtResource( 46 ), ExtResource( 53 ), ExtResource( 62 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "moveDownHoldItem",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 66 ) ],
-"loop": true,
-"name": "idleDownHoldItem",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 65 ) ],
-"loop": true,
-"name": "idleDownRightHoldItem",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 64 ) ],
-"loop": true,
-"name": "idleUpHoldItem",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 65 ) ],
-"loop": true,
-"name": "idleRightHoldItem",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 60 ), ExtResource( 61 ), ExtResource( 56 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 58 ), ExtResource( 59 ) ],
 "loop": true,
 "name": "moveDownRightHoldItem",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 65 ) ],
-"loop": true,
-"name": "idleUpRightHoldItem",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 60 ), ExtResource( 61 ), ExtResource( 56 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 58 ), ExtResource( 59 ) ],
-"loop": true,
-"name": "moveUpRightHoldItem",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 37 ), ExtResource( 38 ), ExtResource( 40 ), ExtResource( 39 ), ExtResource( 1 ), ExtResource( 25 ), ExtResource( 32 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "moveDown",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 9 ) ],
-"loop": true,
-"name": "idleDownRight",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 60 ), ExtResource( 61 ), ExtResource( 56 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 58 ), ExtResource( 59 ) ],
-"loop": true,
-"name": "moveRightHoldItem",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 34 ), ExtResource( 8 ), ExtResource( 27 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 31 ) ],
@@ -170,6 +110,66 @@ animations = [ {
 "frames": [ ExtResource( 34 ), ExtResource( 8 ), ExtResource( 27 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 31 ) ],
 "loop": true,
 "name": "moveDownRight",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 64 ) ],
+"loop": true,
+"name": "idleUpHoldItem",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 34 ), ExtResource( 8 ), ExtResource( 27 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 31 ) ],
+"loop": true,
+"name": "moveRight",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "idleRight",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 65 ) ],
+"loop": true,
+"name": "idleRightHoldItem",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 65 ) ],
+"loop": true,
+"name": "idleUpRightHoldItem",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 60 ), ExtResource( 61 ), ExtResource( 56 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 58 ), ExtResource( 59 ) ],
+"loop": true,
+"name": "moveRightHoldItem",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "idleUp",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 37 ), ExtResource( 38 ), ExtResource( 40 ), ExtResource( 39 ), ExtResource( 1 ), ExtResource( 25 ), ExtResource( 32 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "moveDown",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 55 ), ExtResource( 42 ), ExtResource( 47 ), ExtResource( 57 ), ExtResource( 46 ), ExtResource( 53 ), ExtResource( 62 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "moveDownHoldItem",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 60 ), ExtResource( 61 ), ExtResource( 56 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 58 ), ExtResource( 59 ) ],
+"loop": true,
+"name": "moveUpRightHoldItem",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 66 ) ],
+"loop": true,
+"name": "idleDownHoldItem",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "idleDownRight",
 "speed": 5.0
 } ]
 
@@ -201,6 +201,7 @@ func _on_MoveController_updateFacingAngle(angleDegrees):
 collision_layer = 2
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -0.5, 0 )
 frames = SubResource( 1 )
 animation = "moveDownRightHoldItem"
 frame = 6
@@ -210,7 +211,8 @@ flip_h = true
 visible = false
 modulate = Color( 1, 1, 1, 0.168627 )
 light_mask = 512
-z_index = 10
+position = Vector2( -0.5, 0 )
+z_index = 9
 frames = SubResource( 1 )
 animation = "idleUpHoldItem"
 script = ExtResource( 69 )
@@ -247,7 +249,7 @@ script = ExtResource( 2 )
 position = Vector2( 1.43814, -2.01692 )
 
 [node name="Left" type="Position2D" parent="HeldItem"]
-position = Vector2( -1.56186, -2.01692 )
+position = Vector2( -1.5, -2 )
 
 [node name="Down" type="Position2D" parent="HeldItem"]
 position = Vector2( 0.438141, -0.016923 )
@@ -256,18 +258,19 @@ position = Vector2( 0.438141, -0.016923 )
 position = Vector2( -2.49939, -2.02823 )
 
 [node name="UpLeft" type="Position2D" parent="HeldItem"]
-position = Vector2( -1.56186, -1.01692 )
+position = Vector2( -1.5, -2 )
 
 [node name="UpRight" type="Position2D" parent="HeldItem"]
-position = Vector2( 1.43814, -2.01692 )
+position = Vector2( 1.5, -2 )
 
 [node name="DownLeft" type="Position2D" parent="HeldItem"]
-position = Vector2( -1.56186, -1.01692 )
+position = Vector2( -1.5, -2 )
 
 [node name="DownRight" type="Position2D" parent="HeldItem"]
 position = Vector2( 1.43814, -2.01692 )
 
 [node name="Held" type="Node2D" parent="HeldItem"]
+z_index = 10
 
 [node name="WalkCollision" type="CollisionShape2D" parent="."]
 position = Vector2( -0.441223, 12.6965 )
@@ -353,7 +356,6 @@ position = Vector2( -0.597992, -8.68491 )
 scale = Vector2( 0.497469, 0.439718 )
 texture = ExtResource( 21 )
 energy = 0.29
-mode = 2
 shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
 shadow_filter = 5
@@ -362,8 +364,8 @@ script = ExtResource( 19 )
 [connection signal="frame_changed" from="AnimatedSprite" to="BehindWallVisibilitySprite" method="_on_AnimatedSprite_frame_changed"]
 [connection signal="facingChange" from="MoveController" to="HeldItem" method="_on_MoveController_facingChange"]
 [connection signal="facingChange" from="MoveController" to="BehindWallVisibilitySprite" method="_on_MoveController_facingChange"]
-[connection signal="updateFacingAngle" from="MoveController" to="visionHolder" method="_on_MoveController_updateFacingAngle"]
 [connection signal="updateFacingAngle" from="MoveController" to="HeldItem" method="_on_MoveController_updateFacingAngle"]
+[connection signal="updateFacingAngle" from="MoveController" to="visionHolder" method="_on_MoveController_updateFacingAngle"]
 [connection signal="updatedAnimation" from="MoveController" to="BehindWallVisibilitySprite" method="_on_MoveController_updatedAnimation"]
 [connection signal="area_entered" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_entered"]
 [connection signal="area_exited" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_exited"]

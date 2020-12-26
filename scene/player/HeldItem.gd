@@ -14,6 +14,11 @@ signal item_drop_requested # (heldItem)
 
 func _ready():
 	itemLayer = get_tree().get_nodes_in_group('ItemLayer')[0]
+	var t:Timer = Timer.new()
+	add_child(t)
+	t.one_shot = false
+	t.start(3)
+	t.connect('timeout', self, 'print_data')
 
 func holdItem(item):
 	var attachPoint:Node2D = getAttachPoint(facing)
@@ -23,10 +28,24 @@ func holdItem(item):
 	if heldItem.get_parent() != null: 
 		heldItem.get_parent().remove_child(heldItem)
 	holdNode.add_child(heldItem)
-	heldItem.global_position = attachPoint.global_position
+	updateAttachPoint(facing)
 	updateHeldItemRotation()
 	if heldItem.has_method('onHold'): heldItem.onHold()
 	EventBus.emit_signal("setAnimationSuffix", 'HoldItem')
+
+func print_data():
+	if heldItem:
+		print('heldItem: ', heldItem)
+		print('  pos   : ', heldItem.global_position)
+		print('  rot   : ', heldItem.rotation)
+	if curAttachPoint:
+		print('attachPt: ', curAttachPoint.name)
+		print('  pos   : ', curAttachPoint.global_position)
+		print('  rot   : ', curAttachPoint.rotation)
+	if holdNode:
+		print('holdNode: ', holdNode.name)
+		print('  pos   : ', holdNode.global_position)
+		print('  rot   : ', curAttachPoint.rotation)
 
 func unholdItem():
 	if heldItem:
@@ -52,14 +71,17 @@ func dropItem() -> bool:
 	
 func _on_MoveController_facingChange(oldFacing, newFacing, angleDegrees):
 	facing = newFacing
-	var oldAttach:Node2D = getAttachPoint(oldFacing)
+	if heldItem && heldItem.has_method('updateFacing'): heldItem.updateFacing(oldFacing, newFacing, angleDegrees)
+	updateAttachPoint(newFacing)
+
+func updateAttachPoint(newFacing):
 	var newAttach:Node2D = getAttachPoint(newFacing)
 	curAttachPoint = newAttach
-	if heldItem && heldItem.has_method('updateFacing'): heldItem.updateFacing(oldFacing, newFacing, angleDegrees)
-	print('moving from ', oldAttach.name, ' to ', newAttach.name)
-	if !newAttach: return
+	print('moving attach point to ', newAttach.name)
 	for child in holdNode.get_children():
-		child.global_position = newAttach.global_position
+		child.position = Vector2.ZERO
+		if child.has_method('updateFacing'): child.updateFacing(0, newFacing, rad2deg(curAngleRad))
+	holdNode.global_position = newAttach.global_position
 	
 
 func getAttachPoint(_facing):

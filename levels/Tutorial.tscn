@@ -8,9 +8,9 @@
 [ext_resource path="res://scene/props/furniture/wood-floor.jpg" type="Texture" id=6]
 [ext_resource path="res://assets/wall segments/9patch-wall.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/wall segments/doorframe.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scene/items/ExorcismBook.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scene/items/candle.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scene/items/flashlight.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scene/items/bible.tscn" type="PackedScene" id=12]
 
 [node name="Tutorial" type="Node2D"]
 
@@ -101,19 +101,20 @@ margin_bottom = 561.0
 position = Vector2( 85, -37 )
 
 [node name="Player" parent="Level/Props" instance=ExtResource( 1 )]
-position = Vector2( 596, 507 )
+position = Vector2( 513, 386 )
 
 [node name="table" parent="Level/Props" instance=ExtResource( 4 )]
 position = Vector2( 643, 373 )
-
-[node name="ExorcismBook" parent="Level/Props" instance=ExtResource( 9 )]
-position = Vector2( 538, 388 )
 
 [node name="candle" parent="Level/Props" instance=ExtResource( 10 )]
 position = Vector2( 478, 403 )
 
 [node name="flashlight" parent="Level/Props" instance=ExtResource( 11 )]
 position = Vector2( 527, 360 )
+
+[node name="bible" parent="Level/Props" instance=ExtResource( 12 )]
+position = Vector2( 486, 381 )
+itemSlotIconTexture = null
 
 [node name="WallToppers" type="Node2D" parent="Level" groups=[
 "WallTopperParent",
