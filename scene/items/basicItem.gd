@@ -44,7 +44,12 @@ func loadItemTextures():
 		if sprite: sprite.texture = load('res://assets/item-placed/placed_item-%s_side.png'%itemImageName)
 		sprite = find_node('DownPlaced', true)
 		if sprite: sprite.texture = load('res://assets/item-placed/placed_item-%s_down.png'%itemImageName)
-	if !itemSlotIconTexture: itemSlotIconTexture = load('res://assets/item-placed/placed_item-%s.png'%itemImageName)
+	if !itemSlotIconTexture: 
+		if find_node('Placed', true):
+			itemSlotIconTexture = load('res://assets/item-placed/placed_item-%s.png'%itemImageName)
+		else:
+			itemSlotIconTexture = load('res://assets/item-placed/placed_item-%s_down.png'%itemImageName)
+			
 	
 func updateFacing(oldFacing, newFacing, facingDegrees):
 	if facingPosition: facingPosition.rotation_degrees = facingDegrees

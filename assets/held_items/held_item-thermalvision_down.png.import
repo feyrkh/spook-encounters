@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/held_item-thermaltvision_down.png-27abf6e3b900d36817e996ce5b839d16.stex"
+path="res://.import/held_item-thermalvision_down.png-f477066329059543b4630524215771a0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/held_items/held_item-thermaltvision_down.png"
-dest_files=[ "res://.import/held_item-thermaltvision_down.png-27abf6e3b900d36817e996ce5b839d16.stex" ]
+source_file="res://assets/held_items/held_item-thermalvision_down.png"
+dest_files=[ "res://.import/held_item-thermalvision_down.png-f477066329059543b4630524215771a0.stex" ]
 
 [params]
 

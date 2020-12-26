@@ -1,0 +1,15 @@
+[gd_scene format=2]
+
+[node name="square_nw" type="Node2D"]
+
+[node name="Floors" type="Node2D" parent="."]
+
+[node name="Walls" type="YSort" parent="."]
+
+[node name="Props" type="YSort" parent="."]
+
+[node name="WallToppers" type="Node2D" parent="."]
+
+[node name="WallCorners" type="Node2D" parent="."]
+
+[node name="NavMesh" type="Node2D" parent="."]

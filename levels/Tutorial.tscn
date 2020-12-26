@@ -119,9 +119,11 @@ position = Vector2( 643, 373 )
 
 [node name="candle" parent="Level/Props" instance=ExtResource( 10 )]
 position = Vector2( 493, 348 )
+itemImageName = "candle"
 
 [node name="flashlight" parent="Level/Props" instance=ExtResource( 11 )]
 position = Vector2( 479, 348 )
+itemImageName = "flashlight"
 
 [node name="bible" parent="Level/Props" instance=ExtResource( 12 )]
 position = Vector2( 509, 349 )
@@ -225,6 +227,8 @@ margin_top = 529.0
 margin_right = 699.0
 margin_bottom = 569.0
 rect_rotation = -180.0
+
+[node name="NavMesh" type="Navigation2D" parent="Level"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2( 11, -40 )

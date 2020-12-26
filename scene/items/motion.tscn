@@ -18,7 +18,13 @@ collision_mask = 2
 visible = false
 shape = SubResource( 1 )
 
-[node name="Placed" type="Sprite" parent="."]
+[node name="DownPlaced" type="Sprite" parent="."]
+
+[node name="UpPlaced" type="Sprite" parent="."]
+
+[node name="RightPlaced" type="Sprite" parent="."]
+
+[node name="LeftPlaced" type="Sprite" parent="."]
 
 [node name="DownHeld" type="Sprite" parent="."]
 

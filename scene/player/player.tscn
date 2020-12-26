@@ -72,29 +72,24 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 9 ) ],
-"loop": true,
-"name": "idleUpRight",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 65 ) ],
-"loop": true,
-"name": "idleDownRightHoldItem",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 30 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 28 ), ExtResource( 35 ), ExtResource( 33 ), ExtResource( 36 ) ],
-"loop": true,
-"name": "moveUp",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "idleDown",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "idleUpRight",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 34 ), ExtResource( 8 ), ExtResource( 27 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 31 ) ],
+"loop": true,
+"name": "moveRight",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 60 ), ExtResource( 61 ), ExtResource( 56 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 58 ), ExtResource( 59 ) ],
 "loop": true,
-"name": "moveDownRightHoldItem",
+"name": "moveRightHoldItem",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 34 ), ExtResource( 8 ), ExtResource( 27 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 31 ) ],
@@ -102,9 +97,19 @@ animations = [ {
 "name": "moveUpRight",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 41 ), ExtResource( 63 ), ExtResource( 43 ), ExtResource( 48 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 54 ), ExtResource( 52 ) ],
+"frames": [ ExtResource( 6 ) ],
 "loop": true,
-"name": "moveUpHoldItem",
+"name": "idleUp",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 65 ) ],
+"loop": true,
+"name": "idleUpRightHoldItem",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 37 ), ExtResource( 38 ), ExtResource( 40 ), ExtResource( 39 ), ExtResource( 1 ), ExtResource( 25 ), ExtResource( 32 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "moveDown",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 34 ), ExtResource( 8 ), ExtResource( 27 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 31 ) ],
@@ -112,14 +117,44 @@ animations = [ {
 "name": "moveDownRight",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 60 ), ExtResource( 61 ), ExtResource( 56 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 58 ), ExtResource( 59 ) ],
+"loop": true,
+"name": "moveUpRightHoldItem",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "idleDownRight",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 30 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 28 ), ExtResource( 35 ), ExtResource( 33 ), ExtResource( 36 ) ],
+"loop": true,
+"name": "moveUp",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 64 ) ],
 "loop": true,
 "name": "idleUpHoldItem",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 34 ), ExtResource( 8 ), ExtResource( 27 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 31 ) ],
+"frames": [ ExtResource( 66 ) ],
 "loop": true,
-"name": "moveRight",
+"name": "idleDownHoldItem",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 65 ) ],
+"loop": true,
+"name": "idleRightHoldItem",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 41 ), ExtResource( 63 ), ExtResource( 43 ), ExtResource( 48 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 54 ), ExtResource( 52 ) ],
+"loop": true,
+"name": "moveUpHoldItem",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 60 ), ExtResource( 61 ), ExtResource( 56 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 58 ), ExtResource( 59 ) ],
+"loop": true,
+"name": "moveDownRightHoldItem",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 9 ) ],
@@ -129,47 +164,12 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 65 ) ],
 "loop": true,
-"name": "idleRightHoldItem",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 65 ) ],
-"loop": true,
-"name": "idleUpRightHoldItem",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 60 ), ExtResource( 61 ), ExtResource( 56 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 58 ), ExtResource( 59 ) ],
-"loop": true,
-"name": "moveRightHoldItem",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "idleUp",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 37 ), ExtResource( 38 ), ExtResource( 40 ), ExtResource( 39 ), ExtResource( 1 ), ExtResource( 25 ), ExtResource( 32 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "moveDown",
+"name": "idleDownRightHoldItem",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 55 ), ExtResource( 42 ), ExtResource( 47 ), ExtResource( 57 ), ExtResource( 46 ), ExtResource( 53 ), ExtResource( 62 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "moveDownHoldItem",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 60 ), ExtResource( 61 ), ExtResource( 56 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 58 ), ExtResource( 59 ) ],
-"loop": true,
-"name": "moveUpRightHoldItem",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 66 ) ],
-"loop": true,
-"name": "idleDownHoldItem",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 9 ) ],
-"loop": true,
-"name": "idleDownRight",
 "speed": 5.0
 } ]
 
@@ -346,13 +346,14 @@ visible = false
 polygon = PoolVector2Array( -104.915, -2.63846, 1.68994, -776.637, 1201.69, -776.637, 1201.69, 823.363, 1.68994, 823.363 )
 
 [node name="Blindspot" type="Polygon2D" parent="visionHolder"]
+visible = false
 z_index = 999
 z_as_relative = false
 color = Color( 0.301961, 0.294118, 0.294118, 0.803922 )
 polygon = PoolVector2Array( 1.91592, -790.618, -877.138, -785.68, -1180.39, -216.75, -846.638, 689.761, 1.88977, 809.969, -104.046, -15.4931 )
 
 [node name="visionNearby" type="Light2D" parent="."]
-position = Vector2( -0.597992, -8.68491 )
+position = Vector2( -0.00271606, -19.7967 )
 scale = Vector2( 0.497469, 0.439718 )
 texture = ExtResource( 21 )
 energy = 0.29
@@ -364,8 +365,8 @@ script = ExtResource( 19 )
 [connection signal="frame_changed" from="AnimatedSprite" to="BehindWallVisibilitySprite" method="_on_AnimatedSprite_frame_changed"]
 [connection signal="facingChange" from="MoveController" to="BehindWallVisibilitySprite" method="_on_MoveController_facingChange"]
 [connection signal="facingChange" from="MoveController" to="HeldItem" method="_on_MoveController_facingChange"]
-[connection signal="updateFacingAngle" from="MoveController" to="visionHolder" method="_on_MoveController_updateFacingAngle"]
 [connection signal="updateFacingAngle" from="MoveController" to="HeldItem" method="_on_MoveController_updateFacingAngle"]
+[connection signal="updateFacingAngle" from="MoveController" to="visionHolder" method="_on_MoveController_updateFacingAngle"]
 [connection signal="updatedAnimation" from="MoveController" to="BehindWallVisibilitySprite" method="_on_MoveController_updatedAnimation"]
 [connection signal="area_entered" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_entered"]
 [connection signal="area_exited" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_exited"]
