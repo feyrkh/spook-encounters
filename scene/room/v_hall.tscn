@@ -22,20 +22,20 @@ texture = ExtResource( 1 )
 
 [node name="Wall2" parent="Walls" instance=ExtResource( 3 )]
 margin_left = -20.0
-margin_top = -60.0
+margin_top = -59.0
 margin_right = 0.0
 margin_bottom = 240.0
+
+[node name="Wall4" parent="Walls" instance=ExtResource( 3 )]
+margin_left = -1.0
+margin_top = -60.0
+margin_right = 26.0
+margin_bottom = -3.0
 
 [node name="Wall3" parent="Walls" instance=ExtResource( 3 )]
 margin_left = 54.0
 margin_top = -60.0
 margin_right = 106.0
-margin_bottom = -3.0
-
-[node name="Wall4" parent="Walls" instance=ExtResource( 3 )]
-margin_left = -20.0
-margin_top = -60.0
-margin_right = 26.0
 margin_bottom = -3.0
 
 [node name="Props" type="YSort" parent="."]

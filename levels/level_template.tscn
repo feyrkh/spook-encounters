@@ -4,18 +4,22 @@
 
 [node name="Tutorial" type="Node2D"]
 
-[node name="Rooms" type="Node2D" parent="."]
-
 [node name="Level" type="Node2D" parent="."]
 position = Vector2( -85, 37 )
 
 [node name="Floors" type="Node2D" parent="Level" groups=[
-"WallParent",
+"FloorParent",
 ]]
+
+[node name="placeholder" type="Node2D" parent="Level/Floors"]
+
+[node name="Rooms" type="Node2D" parent="Level"]
 
 [node name="Walls" type="YSort" parent="Level" groups=[
 "WallParent",
 ]]
+
+[node name="placeholder" type="Node2D" parent="Level/Walls"]
 
 [node name="Props" type="YSort" parent="Level" groups=[
 "ItemLayer",
@@ -23,22 +27,25 @@ position = Vector2( -85, 37 )
 position = Vector2( 85, -37 )
 
 [node name="Player" parent="Level/Props" instance=ExtResource( 1 )]
-position = Vector2( -1, 4 )
+position = Vector2( 340, 325 )
 
-[node name="WallToppers" type="Node2D" parent="Level" groups=[
+[node name="WallToppers" type="YSort" parent="Level" groups=[
 "WallTopperParent",
 ]]
+
+[node name="placeholder" type="Node2D" parent="Level/WallToppers"]
 
 [node name="WallCorners" type="Node2D" parent="Level" groups=[
 "WallCornerParent",
 ]]
+
+[node name="placeholder" type="Node2D" parent="Level/WallCorners"]
 
 [node name="NavMesh" type="Navigation2D" parent="Level" groups=[
 "NavMeshParent",
 ]]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 position = Vector2( 11, -40 )
 z_index = 4096
 color = Color( 0, 0, 0, 1 )

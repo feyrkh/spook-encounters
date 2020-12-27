@@ -13,6 +13,7 @@ extents = Vector2( 25.4773, 25.8857 )
 
 [node name="flashlight" type="Node2D"]
 script = ExtResource( 1 )
+itemImageName = "flashlight"
 itemSlotIconTextureEnabled = ExtResource( 9 )
 itemSlotIconTextureDisabled = ExtResource( 5 )
 
