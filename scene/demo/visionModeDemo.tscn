@@ -101,10 +101,7 @@ position = Vector2( 668.046, 144.364 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 453.465, 270.176 )
 
-[node name="HeldItem" parent="Player" index="3"]
-itemLayer = NodePath("../../ItemLayer")
-
-[node name="Camera2D" parent="Player" index="5"]
+[node name="Camera2D" parent="Player" index="6"]
 material = SubResource( 1 )
 
 [node name="nightVision" parent="Player/HudLayer/VisionModes" index="0"]
@@ -118,7 +115,7 @@ margin_bottom = 720.0
 [node name="PlayerInventory" parent="Player/HudLayer" index="1"]
 light_mask = 0
 
-[node name="visionHolder" parent="Player" index="8"]
+[node name="visionHolder" parent="Player" index="9"]
 z_index = 999
 
 [node name="defaultVisionGhost" parent="." instance=ExtResource( 22 )]
