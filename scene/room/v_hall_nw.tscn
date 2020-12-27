@@ -1,10 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scene/props/furniture/wood-floor.jpg" type="Texture" id=1]
 [ext_resource path="res://scene/room/Room.gd" type="Script" id=2]
 [ext_resource path="res://assets/wall segments/9patch-wall.tscn" type="PackedScene" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 65, -4, 106, -4, 106, 239, 0, 239, 0, 129, -24, 129, -24, 62, 0, 62, 22, -3, 0, -3, 22, -64, 64, -64 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 4, 5, 6, 7 ), PoolIntArray( 0, 4, 7, 8 ), PoolIntArray( 7, 9, 8 ), PoolIntArray( 0, 8, 10, 11 ) ]
+outlines = [ PoolVector2Array( 22, -64, 22, -3, 0, -3, 0, 62, -24, 62, -24, 129, 0, 129, 0, 239, 106, 239, 106, -4, 65, -4, 64, -64 ) ]
+
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 53, 150 )
 
 [node name="room" type="Node2D"]
@@ -52,6 +57,9 @@ margin_bottom = 240.0
 
 [node name="NavMesh" type="Node2D" parent="."]
 
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="NavMesh"]
+navpoly = SubResource( 1 )
+
 [node name="RoomArea" type="Area2D" parent="."]
 collision_layer = 262144
 collision_mask = 2
@@ -59,4 +67,4 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomArea"]
 visible = false
 position = Vector2( 54, 91 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
