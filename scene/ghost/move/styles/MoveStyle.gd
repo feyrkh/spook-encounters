@@ -1,6 +1,8 @@
 extends Node
 class_name MoveStyle
 
+signal move_complete()
+
 var body:KinematicBody2D
 var moveTarget:Position2D
 var moveComplete = true

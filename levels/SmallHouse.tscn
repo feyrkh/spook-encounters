@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scene/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scene/room/square_w.tscn" type="PackedScene" id=2]
@@ -10,19 +10,56 @@
 [ext_resource path="res://assets/wall segments/wall_piece-corner_top.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/wall segments/wall_piece-corner_T.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scene/items/flashlight.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scene/ghost/ScriptedGhost.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scene/ghost/goal/steps/moveTo.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scene/ghost/move/styles/walk.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scene/ghost/visual/ghost.png" type="Texture" id=14]
+[ext_resource path="res://scene/ghost/goal/steps/wait.tscn" type="PackedScene" id=15]
 
-[node name="Tutorial" type="Node2D"]
+[sub_resource type="GDScript" id=1]
+script/source = "extends Position2D
+
+"
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Navigation2D
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	yield(get_tree(), 'idle_frame')
+	for child in get_children():
+		if child.has_method('get_navigation_polygon'):
+			navpoly_add(child.get_navigation_polygon(), Transform2D.IDENTITY)
+"
+
+[sub_resource type="NavigationPolygon" id=3]
+vertices = PoolVector2Array( 443, -147, 441, -236, 749, -238, 750, -35, 612, -38, 603, -39, 259, 53, 97, 55, 98, -19, 270, 360, 414, 361, 416, 564, 97, 561, 262, 361, 754, 562, 433, 562, 436, 361, 598, 360, 752, 361, 611, 359, 597, 320, 609, 318, 1089, 174, 1093, 383, 773, 385, 773, 294, 776, 275, 99, 358, 262, 321, 273, 319, 76, -20, 78, -59, 99, -59, 98, 183, 99, 93, 260, 95, 99, 223, 99, -147, 415, -120, 751, 202, 751, 239, 441, 239, 440, 5, 602, 3, 613, 3, 272, 94, 417, 95, 416, 273, 750, 3, 443, -41, 439, -119, 777, 174, 754, 276, 752, 293, 99, 319, 77, 222, 78, 183, 417, 34, 416, 53, 273, 53, 751, 316, 448, 263, 739, 264, 581, 321, 437, 273 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5 ), PoolIntArray( 6, 7, 8 ), PoolIntArray( 9, 10, 11, 12, 13 ), PoolIntArray( 14, 15, 16, 17, 18 ), PoolIntArray( 19, 18, 17 ), PoolIntArray( 19, 17, 20, 21 ), PoolIntArray( 22, 23, 24, 25, 26 ), PoolIntArray( 12, 27, 13 ), PoolIntArray( 9, 13, 28, 29 ), PoolIntArray( 8, 30, 31, 32 ), PoolIntArray( 33, 34, 35, 29, 28, 36 ), PoolIntArray( 32, 37, 0, 38 ), PoolIntArray( 39, 40, 41, 42, 43, 44 ), PoolIntArray( 45, 46, 47, 29, 35 ), PoolIntArray( 44, 48, 39 ), PoolIntArray( 4, 44, 43, 5 ), PoolIntArray( 0, 5, 49, 50 ), PoolIntArray( 26, 51, 22 ), PoolIntArray( 52, 26, 25, 53 ), PoolIntArray( 28, 54, 36 ), PoolIntArray( 36, 55, 56, 33 ), PoolIntArray( 57, 58, 59, 8, 32, 38 ), PoolIntArray( 53, 60, 21 ), PoolIntArray( 0, 50, 38 ), PoolIntArray( 6, 8, 59 ), PoolIntArray( 6, 59, 45, 35 ), PoolIntArray( 61, 62, 52, 53, 21, 20, 63, 64 ), PoolIntArray( 64, 63, 29, 47 ) ]
+outlines = [ PoolVector2Array( 78, -59, 99, -59, 99, -147, 443, -147, 441, -236, 749, -238, 750, -35, 612, -38, 613, 3, 750, 3, 751, 202, 751, 239, 441, 239, 440, 5, 602, 3, 603, -39, 443, -41, 439, -119, 415, -120, 417, 34, 416, 53, 273, 53, 272, 94, 417, 95, 416, 273, 437, 273, 448, 263, 739, 264, 754, 276, 776, 275, 777, 174, 1089, 174, 1093, 383, 773, 385, 773, 294, 752, 293, 751, 316, 609, 318, 611, 359, 752, 361, 754, 562, 433, 562, 436, 361, 598, 360, 597, 320, 581, 321, 273, 319, 270, 360, 414, 361, 416, 564, 97, 561, 99, 358, 262, 361, 262, 321, 99, 319, 99, 223, 77, 222, 78, 183, 98, 183, 99, 93, 260, 95, 259, 53, 97, 55, 98, -19, 76, -20 ) ]
+
+[node name="SmallHouse" type="Node2D"]
 
 [node name="Level" type="Node2D" parent="."]
-position = Vector2( -85, 37 )
 
 [node name="Floors" type="Node2D" parent="Level" groups=[
 "FloorParent",
 ]]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="placeholder" type="Node2D" parent="Level/Floors"]
 
 [node name="Rooms" type="Node2D" parent="Level"]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="livingRoom" parent="Level/Rooms" instance=ExtResource( 2 )]
 position = Vector2( 98, -147 )
@@ -59,6 +96,9 @@ roomName = "Child's Room"
 [node name="Walls" type="YSort" parent="Level" groups=[
 "WallParent",
 ]]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="placeholder" type="Node2D" parent="Level/Walls"]
 
@@ -89,7 +129,7 @@ margin_bottom = 599.0
 [node name="Wall4" parent="Level/Walls" instance=ExtResource( 4 )]
 margin_left = 79.0
 margin_top = 543.0
-margin_right = 775.0
+margin_right = 774.0
 margin_bottom = 601.0
 
 [node name="Wall5" parent="Level/Walls" instance=ExtResource( 4 )]
@@ -101,33 +141,96 @@ margin_bottom = 419.0
 [node name="Props" type="YSort" parent="Level" groups=[
 "ItemLayer",
 ]]
-position = Vector2( 85, -37 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Player" parent="Level/Props" instance=ExtResource( 1 )]
-position = Vector2( 84, 21 )
+position = Vector2( 162, -27 )
 
 [node name="flashlight" parent="Level/Props" instance=ExtResource( 10 )]
-position = Vector2( 10, 10 )
+position = Vector2( 88, -38 )
+
+[node name="walkGhost" parent="Level/Props" instance=ExtResource( 11 )]
+position = Vector2( 272, -57 )
+
+[node name="GhostVisual" parent="Level/Props/walkGhost" index="0"]
+hidesOutsideVisionCone = false
+
+[node name="all" type="Sprite" parent="Level/Props/walkGhost/GhostVisual" index="0"]
+position = Vector2( 0, -7 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 14 )
+
+[node name="CollisionShape2D" parent="Level/Props/walkGhost" index="1"]
+position = Vector2( -1.14441e-05, -7 )
+
+[node name="moveTo" parent="Level/Props/walkGhost/GhostScript" index="0" instance=ExtResource( 12 )]
+stepTimeout = 99999999
+target = NodePath("../../../ghostTarget")
+targetContainer = NodePath("../../../../NavMesh")
+moveStyleName = "walk"
+
+[node name="wait" parent="Level/Props/walkGhost/GhostScript" index="1" instance=ExtResource( 15 )]
+waitForSeconds = 2.0
+
+[node name="walk" parent="Level/Props/walkGhost/GhostMoveStyles" index="0" instance=ExtResource( 13 )]
+
+[node name="floatGhost" parent="Level/Props" instance=ExtResource( 11 )]
+position = Vector2( 272, -57 )
+
+[node name="GhostVisual" parent="Level/Props/floatGhost" index="0"]
+hidesOutsideVisionCone = false
+
+[node name="all" type="Sprite" parent="Level/Props/floatGhost/GhostVisual" index="0"]
+position = Vector2( 0, -7 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 14 )
+
+[node name="CollisionShape2D" parent="Level/Props/floatGhost" index="1"]
+position = Vector2( -1.14441e-05, -7 )
+
+[node name="moveTo" parent="Level/Props/floatGhost/GhostScript" index="0" instance=ExtResource( 12 )]
+stepTimeout = 99999999
+target = NodePath("../../../ghostTarget")
+targetContainer = NodePath("../../../../NavMesh")
+moveStyleName = "float"
+
+[node name="wait" parent="Level/Props/floatGhost/GhostScript" index="1" instance=ExtResource( 15 )]
+waitForSeconds = 2.0
+
+[node name="float" parent="Level/Props/floatGhost/GhostMoveStyles" index="0"]
+movePixelsPerSecond = 10.0
+
+[node name="ghostTarget" type="Position2D" parent="Level/Props"]
+position = Vector2( 826, 254 )
+script = SubResource( 1 )
 
 [node name="WallToppers" type="YSort" parent="Level" groups=[
 "WallTopperParent",
 ]]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="placeholder" type="Node2D" parent="Level/WallToppers"]
 
 [node name="WallCorners" type="Node2D" parent="Level" groups=[
 "WallCornerParent",
 ]]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="placeholder" type="Node2D" parent="Level/WallCorners"]
 
-[node name="Wall6" parent="Level/WallCorners" instance=ExtResource( 4 )]
-margin_left = 417.0
-margin_top = -46.0
-margin_right = 437.0
-margin_bottom = 231.0
-
 [node name="Wall7" parent="Level/WallCorners" instance=ExtResource( 4 )]
+margin_left = 417.0
+margin_top = -44.0
+margin_right = 437.0
+margin_bottom = 233.0
+
+[node name="Wall8" parent="Level/WallCorners" instance=ExtResource( 4 )]
 margin_left = 416.0
 margin_top = 333.0
 margin_right = 436.0
@@ -140,9 +243,9 @@ margin_right = 98.0
 margin_bottom = 563.0
 
 [node name="WCBot2" parent="Level/WallCorners" instance=ExtResource( 7 )]
-margin_left = 775.0
+margin_left = 774.0
 margin_top = 543.0
-margin_right = 795.0
+margin_right = 794.0
 margin_bottom = 563.0
 rect_scale = Vector2( -1, 1 )
 
@@ -279,9 +382,97 @@ rect_rotation = -180.0
 [node name="NavMesh" type="Navigation2D" parent="Level" groups=[
 "NavMeshParent",
 ]]
+script = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="livingRoomCenter" type="Position2D" parent="Level/NavMesh" groups=[
+"Locations",
+]]
+position = Vector2( 246, -37 )
+
+[node name="livingRoomCorner" type="Position2D" parent="Level/NavMesh" groups=[
+"Locations",
+]]
+position = Vector2( 131, -125 )
+
+[node name="kitchenCenter" type="Position2D" parent="Level/NavMesh" groups=[
+"Locations",
+]]
+position = Vector2( 256, 188 )
+
+[node name="kitchenCorner" type="Position2D" parent="Level/NavMesh" groups=[
+"Locations",
+]]
+position = Vector2( 119, 276 )
+
+[node name="kitchenBathCenter" type="Position2D" parent="Level/NavMesh" groups=[
+"Locations",
+]]
+position = Vector2( 255, 448 )
+
+[node name="kitchenBathCorner" type="Position2D" parent="Level/NavMesh" groups=[
+"Locations",
+]]
+position = Vector2( 117, 397 )
+
+[node name="childsRoomCenter" type="Position2D" parent="Level/NavMesh" groups=[
+"Locations",
+]]
+position = Vector2( 600, 448 )
+
+[node name="childsRoomCorner" type="Position2D" parent="Level/NavMesh" groups=[
+"Locations",
+]]
+position = Vector2( 458, 381 )
+
+[node name="hallway" type="Position2D" parent="Level/NavMesh" groups=[
+"Locations",
+]]
+position = Vector2( 519, 285 )
+
+[node name="studyCenter" type="Position2D" parent="Level/NavMesh" groups=[
+"Locations",
+]]
+position = Vector2( 941, 265 )
+
+[node name="studyCorner" type="Position2D" parent="Level/NavMesh" groups=[
+"Locations",
+]]
+position = Vector2( 1065, 340 )
+
+[node name="masterBathCenter" type="Position2D" parent="Level/NavMesh" groups=[
+"Locations",
+]]
+position = Vector2( 596, 100 )
+
+[node name="masterBathCorner" type="Position2D" parent="Level/NavMesh" groups=[
+"Locations",
+]]
+position = Vector2( 724, 21 )
+
+[node name="masterBedCenter" type="Position2D" parent="Level/NavMesh" groups=[
+"Locations",
+]]
+position = Vector2( 590, -152 )
+
+[node name="masterBedCorner" type="Position2D" parent="Level/NavMesh" groups=[
+"Locations",
+]]
+position = Vector2( 458, -68 )
+
+[node name="placeholder" type="Node" parent="Level/NavMesh"]
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Level/NavMesh"]
+navpoly = SubResource( 3 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 position = Vector2( 11, -40 )
 z_index = 4096
 color = Color( 0, 0, 0, 1 )
+
+[editable path="Level/Props/walkGhost"]
+
+[editable path="Level/Props/floatGhost"]

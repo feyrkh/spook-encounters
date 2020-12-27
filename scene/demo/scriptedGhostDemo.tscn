@@ -46,7 +46,6 @@ position = Vector2( 316.924, 284.22 )
 position = Vector2( 443.324, 255.27 )
 
 [node name="moveTo" parent="ghost2/GhostScript" index="0" instance=ExtResource( 4 )]
-target = "Position2D"
 
 [node name="wait" parent="ghost2/GhostScript" index="1" instance=ExtResource( 7 )]
 waitForSeconds = 5.0
@@ -55,7 +54,6 @@ waitForSeconds = 5.0
 soundText = "Gonna spook this guy..."
 
 [node name="moveTo2" parent="ghost2/GhostScript" index="3" instance=ExtResource( 4 )]
-target = "Position2D2"
 
 [node name="soundEffect3" parent="ghost2/GhostScript" index="4" instance=ExtResource( 8 )]
 soundText = "Boo!"

@@ -131,6 +131,8 @@ gdscript/warnings/shadowed_variable=false
 gdscript/warnings/unused_argument=false
 gdscript/warnings/unused_signal=false
 gdscript/warnings/return_value_discarded=false
+shapes/navigation/geometry_color=Color( 0.101961, 1, 0.701961, 0.101961 )
+shapes/navigation/disabled_geometry_color=Color( 1, 0.101961, 0.458824, 0.109804 )
 
 [display]
 

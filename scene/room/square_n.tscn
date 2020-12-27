@@ -4,12 +4,12 @@
 [ext_resource path="res://scene/room/Room.gd" type="Script" id=2]
 [ext_resource path="res://assets/wall segments/9patch-wall.tscn" type="PackedScene" id=3]
 
-[sub_resource type="NavigationPolygon" id=2]
+[sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 150, -3, 150, -61, 187, -61, 187, -4, 320, -4, 320, 240, -1, 240, -1, -2 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 3, 4, 5, 6, 0 ), PoolIntArray( 6, 7, 0 ) ]
 outlines = [ PoolVector2Array( -1, -2, 150, -3, 150, -61, 187, -61, 187, -4, 320, -4, 320, 240, -1, 240 ) ]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 168, 121 )
 
 [node name="room" type="Node2D"]
@@ -51,7 +51,8 @@ margin_bottom = -2.0
 [node name="NavMesh" type="Node2D" parent="."]
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="NavMesh"]
-navpoly = SubResource( 2 )
+visible = false
+navpoly = SubResource( 1 )
 
 [node name="RoomArea" type="Area2D" parent="."]
 collision_layer = 262144
@@ -60,4 +61,4 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomArea"]
 visible = false
 position = Vector2( 151, 117 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
