@@ -42,7 +42,7 @@ func updateHighlight():
 func _on_ItemDetector_area_entered(area):
 	#print('something entered itemdetector: ', area)
 	var item = area.get_parent()
-	if item.isHeld: 
+	if !item.has_method('getIsHeld') or item.getIsHeld(): 
 		return # Don't count items which are already being held
 	itemsInRange.append(item)
 	if item.has_method('addItemInRangeHighlight'): 

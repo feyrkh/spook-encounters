@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://assets/chara_sprites/walkcycle-down05.png" type="Texture" id=1]
 [ext_resource path="res://scene/player/HeldItem.gd" type="Script" id=2]
@@ -67,6 +67,7 @@
 [ext_resource path="res://assets/chara_sprites/chara-static_side_item.png" type="Texture" id=65]
 [ext_resource path="res://assets/chara_sprites/chara-static_down_item.png" type="Texture" id=66]
 [ext_resource path="res://scene/player/Camera2D.gd" type="Script" id=67]
+[ext_resource path="res://scene/player/RoomDetector.gd" type="Script" id=68]
 [ext_resource path="res://scene/player/BehindWallVisibilitySprite.gd" type="Script" id=69]
 [ext_resource path="res://scene/items/light-laserpointer.png" type="Texture" id=70]
 
@@ -196,6 +197,9 @@ script/source = "extends Node2D
 func _on_MoveController_updateFacingAngle(angleDegrees):
 	self.rotation_degrees = angleDegrees
 "
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 5.60218
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
@@ -362,6 +366,14 @@ shadow_color = Color( 0, 0, 0, 1 )
 shadow_filter = 5
 shadow_filter_smooth = 2.0
 script = ExtResource( 19 )
+
+[node name="RoomDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 262144
+script = ExtResource( 68 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDetector"]
+shape = SubResource( 7 )
 [connection signal="frame_changed" from="AnimatedSprite" to="BehindWallVisibilitySprite" method="_on_AnimatedSprite_frame_changed"]
 [connection signal="facingChange" from="MoveController" to="BehindWallVisibilitySprite" method="_on_MoveController_facingChange"]
 [connection signal="facingChange" from="MoveController" to="HeldItem" method="_on_MoveController_facingChange"]
@@ -371,3 +383,5 @@ script = ExtResource( 19 )
 [connection signal="area_entered" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_entered"]
 [connection signal="area_exited" from="ItemDetector" to="ItemDetector" method="_on_ItemDetector_area_exited"]
 [connection signal="itemPickupRequested" from="ItemDetector" to="HudLayer/PlayerInventory" method="onItemPickupRequested"]
+[connection signal="area_entered" from="RoomDetector" to="RoomDetector" method="_on_RoomDetector_area_entered"]
+[connection signal="area_exited" from="RoomDetector" to="RoomDetector" method="_on_RoomDetector_area_exited"]

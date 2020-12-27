@@ -27,6 +27,21 @@ func _ready():
 	$"/root/EventBus".connect('inventoryIconsNeedUpdate', self, 'updateAllInvSlotImages')
 	$"/root/EventBus".connect('disablePlayerClickControls', self, 'disablePlayerClickControls')
 	$"/root/EventBus".connect('enablePlayerClickControls', self, 'enablePlayerClickControls')
+	EventBus.connect("enteredRoom", self, 'onEnterRoom')
+	EventBus.connect("exitedRoom", self, 'onExitRoom')
+
+var enteredRooms = []
+func onEnterRoom(roomName):
+	print('entered room: ', roomName)
+	enteredRooms.append(roomName)
+	find_node('RoomNameLabel').text = enteredRooms[-1]
+
+func onExitRoom(roomName):
+	print('exited room: ', roomName)
+	enteredRooms.erase(roomName)
+	var bestName = ''
+	if enteredRooms.size() > 0: bestName = enteredRooms[-1]
+	find_node('RoomNameLabel').text = bestName
 
 func enablePlayerClickControls():
 	playerClickControls = true

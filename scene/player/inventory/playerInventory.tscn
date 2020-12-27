@@ -60,3 +60,13 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="RoomNameLabel" type="Label" parent="."]
+margin_left = 40.0
+margin_top = -472.0
+margin_right = 1032.0
+margin_bottom = -458.0
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,0 +1,260 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scene/player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scene/room/square_w.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scene/room/square_nw.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/wall segments/9patch-wall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scene/room/square_n.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scene/room/h_hall_w.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/wall segments/wall_piece-corner_bottom.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/wall segments/wall_piece-corner_top.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/wall segments/wall_piece-corner_T.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scene/items/flashlight.tscn" type="PackedScene" id=10]
+
+[node name="Tutorial" type="Node2D"]
+
+[node name="Level" type="Node2D" parent="."]
+position = Vector2( -85, 37 )
+
+[node name="Floors" type="Node2D" parent="Level" groups=[
+"FloorParent",
+]]
+
+[node name="Rooms" type="Node2D" parent="Level"]
+
+[node name="livingRoom" parent="Level/Rooms" instance=ExtResource( 2 )]
+position = Vector2( 98, -147 )
+roomName = "Living Room"
+
+[node name="masterBedroom" parent="Level/Rooms" instance=ExtResource( 2 )]
+position = Vector2( 437, -238 )
+roomName = "Master Bedroom"
+
+[node name="kitchen" parent="Level/Rooms" instance=ExtResource( 3 )]
+position = Vector2( 98, 95 )
+roomName = "Kitchen"
+
+[node name="study" parent="Level/Rooms" instance=ExtResource( 2 )]
+position = Vector2( 773, 173 )
+roomName = "Study"
+
+[node name="masterBath" parent="Level/Rooms" instance=ExtResource( 3 )]
+position = Vector2( 437, 3 )
+roomName = "Master Bath"
+
+[node name="hallway" parent="Level/Rooms" instance=ExtResource( 6 )]
+position = Vector2( 437, 264 )
+roomName = "Hallway"
+
+[node name="kitchenBath" parent="Level/Rooms" instance=ExtResource( 5 )]
+position = Vector2( 98, 360 )
+roomName = "Bathroom"
+
+[node name="childsRoom" parent="Level/Rooms" instance=ExtResource( 5 )]
+position = Vector2( 436, 360 )
+roomName = "Child's Room"
+
+[node name="Walls" type="YSort" parent="Level" groups=[
+"WallParent",
+]]
+
+[node name="Wall" parent="Level/Walls" instance=ExtResource( 4 )]
+margin_left = 753.0
+margin_top = -298.0
+margin_right = 773.0
+margin_bottom = 262.0
+
+[node name="Wall2" parent="Level/Walls" instance=ExtResource( 4 )]
+margin_left = 1093.0
+margin_top = 113.0
+margin_right = 1113.0
+margin_bottom = 411.0
+
+[node name="Wall3" parent="Level/Walls" instance=ExtResource( 4 )]
+margin_left = 755.0
+margin_top = 300.0
+margin_right = 775.0
+margin_bottom = 599.0
+
+[node name="Wall4" parent="Level/Walls" instance=ExtResource( 4 )]
+margin_left = 79.0
+margin_top = 543.0
+margin_right = 775.0
+margin_bottom = 601.0
+
+[node name="Wall5" parent="Level/Walls" instance=ExtResource( 4 )]
+margin_left = 775.0
+margin_top = 361.0
+margin_right = 1113.0
+margin_bottom = 419.0
+
+[node name="Props" type="YSort" parent="Level" groups=[
+"ItemLayer",
+]]
+position = Vector2( 85, -37 )
+
+[node name="Player" parent="Level/Props" instance=ExtResource( 1 )]
+position = Vector2( -1, 4 )
+
+[node name="flashlight" parent="Level/Props" instance=ExtResource( 10 )]
+position = Vector2( 10, 10 )
+
+[node name="WallToppers" type="Node2D" parent="Level" groups=[
+"WallTopperParent",
+]]
+
+[node name="WallCorners" type="Node2D" parent="Level" groups=[
+"WallCornerParent",
+]]
+
+[node name="WCBot" parent="Level/WallCorners" instance=ExtResource( 7 )]
+margin_left = 78.0
+margin_top = 543.0
+margin_right = 98.0
+margin_bottom = 563.0
+
+[node name="WCBot2" parent="Level/WallCorners" instance=ExtResource( 7 )]
+margin_left = 775.0
+margin_top = 543.0
+margin_right = 795.0
+margin_bottom = 563.0
+rect_scale = Vector2( -1, 1 )
+
+[node name="WCBot3" parent="Level/WallCorners" instance=ExtResource( 7 )]
+margin_left = 1113.0
+margin_top = 361.0
+margin_right = 1133.0
+margin_bottom = 381.0
+rect_scale = Vector2( -1, 1 )
+
+[node name="WCBot4" parent="Level/WallCorners" instance=ExtResource( 7 )]
+margin_left = 773.0
+margin_top = 204.0
+margin_right = 793.0
+margin_bottom = 224.0
+rect_scale = Vector2( -1, 1 )
+
+[node name="WCBot5" parent="Level/WallCorners" instance=ExtResource( 7 )]
+margin_left = 437.0
+margin_top = -207.0
+margin_right = 457.0
+margin_bottom = -187.0
+rect_scale = Vector2( -1, 1 )
+
+[node name="WCTop" parent="Level/WallCorners" instance=ExtResource( 8 )]
+margin_left = 78.0
+margin_top = -207.0
+margin_right = 103.0
+margin_bottom = -167.0
+
+[node name="WCTop2" parent="Level/WallCorners" instance=ExtResource( 8 )]
+margin_left = 417.0
+margin_top = -298.0
+margin_right = 442.0
+margin_bottom = -258.0
+
+[node name="WCTop3" parent="Level/WallCorners" instance=ExtResource( 8 )]
+margin_left = 773.0
+margin_top = -298.0
+margin_right = 798.0
+margin_bottom = -258.0
+rect_scale = Vector2( -1, 1 )
+
+[node name="WCTop4" parent="Level/WallCorners" instance=ExtResource( 8 )]
+margin_left = 1113.0
+margin_top = 113.0
+margin_right = 1138.0
+margin_bottom = 153.0
+rect_scale = Vector2( -1, 1 )
+
+[node name="WCTop5" parent="Level/WallCorners" instance=ExtResource( 8 )]
+margin_left = 775.0
+margin_top = 300.0
+margin_right = 800.0
+margin_bottom = 340.0
+rect_scale = Vector2( -1, 1 )
+
+[node name="WCTri" parent="Level/WallCorners" instance=ExtResource( 9 )]
+margin_left = 398.0
+margin_top = 300.0
+margin_right = 454.0
+margin_bottom = 340.0
+
+[node name="WCTri2" parent="Level/WallCorners" instance=ExtResource( 9 )]
+margin_left = 78.0
+margin_top = 338.0
+margin_right = 134.0
+margin_bottom = 378.0
+rect_rotation = -89.9999
+
+[node name="WCTri3" parent="Level/WallCorners" instance=ExtResource( 9 )]
+margin_left = 78.0
+margin_top = 73.0
+margin_right = 134.0
+margin_bottom = 113.0
+rect_rotation = -89.9999
+
+[node name="WCTri4" parent="Level/WallCorners" instance=ExtResource( 9 )]
+margin_left = 417.0
+margin_top = -19.0
+margin_right = 473.0
+margin_bottom = 21.0
+rect_rotation = -89.9999
+
+[node name="WCTri5" parent="Level/WallCorners" instance=ExtResource( 9 )]
+margin_left = 417.0
+margin_top = -19.0
+margin_right = 473.0
+margin_bottom = 21.0
+rect_rotation = -89.9999
+
+[node name="WCTri10" parent="Level/WallCorners" instance=ExtResource( 9 )]
+margin_left = 773.0
+margin_top = -75.0
+margin_right = 829.0
+margin_bottom = -35.0
+rect_rotation = -270.0
+
+[node name="WCTri11" parent="Level/WallCorners" instance=ExtResource( 9 )]
+margin_left = 437.0
+margin_top = 17.0
+margin_right = 493.0
+margin_bottom = 57.0
+rect_rotation = -270.0
+
+[node name="WCTri6" parent="Level/WallCorners" instance=ExtResource( 9 )]
+margin_left = 417.0
+margin_top = 242.0
+margin_right = 473.0
+margin_bottom = 282.0
+rect_rotation = -89.9999
+
+[node name="WCTri7" parent="Level/WallCorners" instance=ExtResource( 9 )]
+margin_left = 753.0
+margin_top = 151.0
+margin_right = 809.0
+margin_bottom = 191.0
+rect_rotation = -89.9999
+
+[node name="WCTri8" parent="Level/WallCorners" instance=ExtResource( 9 )]
+margin_left = 755.0
+margin_top = 399.0
+margin_right = 811.0
+margin_bottom = 439.0
+rect_rotation = -89.9999
+
+[node name="WCTri9" parent="Level/WallCorners" instance=ExtResource( 9 )]
+margin_left = 454.0
+margin_top = 563.0
+margin_right = 510.0
+margin_bottom = 603.0
+rect_rotation = -180.0
+
+[node name="NavMesh" type="Navigation2D" parent="Level" groups=[
+"NavMeshParent",
+]]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2( 11, -40 )
+z_index = 4096
+color = Color( 0, 0, 0, 1 )

@@ -18,6 +18,8 @@ var facingPosition
 const itemInRangeMaterial:Material = preload("res://shaders/itemInRangeMaterial.tres")
 const itemSelectedMaterial:Material = preload("res://shaders/itemSelectedMaterial.tres")
 
+func getIsHeld(): return isHeld
+
 func _ready():
 	loadItemTextures()
 	facingPosition = get_node_or_null('Facing')

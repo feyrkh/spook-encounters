@@ -9,6 +9,9 @@ signal setAnimationSuffix # (suffix)
 signal disablePlayerClickControls # Something happened that requires normal clicking, not item-use clicking
 signal enablePlayerClickControls # Reenable item-use clicking
 
+signal enteredRoom(roomName)
+signal exitedRoom(roomName)
+
 var currentVisualMode = "default"
 var itemCausingVisualMode = null
 

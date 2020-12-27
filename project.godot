@@ -283,6 +283,7 @@ use_item_alternate={
 2d_physics/layer_4="PickableItems"
 2d_physics/layer_5="BrightLight"
 2d_physics/layer_6="PlayerVision"
+2d_physics/layer_19="RoomAreas"
 2d_physics/layer_20="Light Obstruction"
 
 [rendering]

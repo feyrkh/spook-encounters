@@ -8,6 +8,7 @@ func _ready():
 	$StaticBody2D/MoveObstruction.shape.extents = Vector2(self.rect_size.x/2, self.rect_size.y/2 - 11)
 	$StaticBody2D/MoveObstruction.position = Vector2(self.rect_size.x/2, (self.rect_size.y/2)+11)
 	$Topper.visible = true
+	yield(get_tree(), "idle_frame")
 	resizeWallTopper()
 	moveWallToppersAboveEverything()
 	

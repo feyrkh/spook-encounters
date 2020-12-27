@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scene/player/player.tscn" type="PackedScene" id=1]
+
+[node name="Tutorial" type="Node2D"]
+
+[node name="Rooms" type="Node2D" parent="."]
+
+[node name="Level" type="Node2D" parent="."]
+position = Vector2( -85, 37 )
+
+[node name="Floors" type="Node2D" parent="Level" groups=[
+"WallParent",
+]]
+
+[node name="Walls" type="YSort" parent="Level" groups=[
+"WallParent",
+]]
+
+[node name="Props" type="YSort" parent="Level" groups=[
+"ItemLayer",
+]]
+position = Vector2( 85, -37 )
+
+[node name="Player" parent="Level/Props" instance=ExtResource( 1 )]
+position = Vector2( -1, 4 )
+
+[node name="WallToppers" type="Node2D" parent="Level" groups=[
+"WallTopperParent",
+]]
+
+[node name="WallCorners" type="Node2D" parent="Level" groups=[
+"WallCornerParent",
+]]
+
+[node name="NavMesh" type="Navigation2D" parent="Level" groups=[
+"NavMeshParent",
+]]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+position = Vector2( 11, -40 )
+z_index = 4096
+color = Color( 0, 0, 0, 1 )

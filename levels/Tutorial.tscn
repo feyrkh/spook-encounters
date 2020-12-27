@@ -31,7 +31,9 @@
 [node name="Level" type="Node2D" parent="."]
 position = Vector2( -85, 37 )
 
-[node name="Floors" type="Node2D" parent="Level"]
+[node name="Floors" type="Node2D" parent="Level" groups=[
+"WallParent",
+]]
 
 [node name="wood-floor" type="Sprite" parent="Level/Floors"]
 position = Vector2( 1146, 395 )
@@ -53,7 +55,9 @@ texture = ExtResource( 6 )
 position = Vector2( 672, 395 )
 texture = ExtResource( 6 )
 
-[node name="Walls" type="YSort" parent="Level"]
+[node name="Walls" type="YSort" parent="Level" groups=[
+"WallParent",
+]]
 
 [node name="Wall" parent="Level/Walls" instance=ExtResource( 7 )]
 margin_left = 693.0
@@ -180,7 +184,9 @@ position = Vector2( 513, 386 )
 [node name="DoorFrame" parent="Level/WallToppers" instance=ExtResource( 8 )]
 position = Vector2( 681, 410 )
 
-[node name="WallCorners" type="Node2D" parent="Level"]
+[node name="WallCorners" type="Node2D" parent="Level" groups=[
+"WallCornerParent",
+]]
 
 [node name="WCTop" parent="Level/WallCorners" instance=ExtResource( 3 )]
 margin_left = 605.0
@@ -228,7 +234,9 @@ margin_right = 699.0
 margin_bottom = 569.0
 rect_rotation = -180.0
 
-[node name="NavMesh" type="Navigation2D" parent="Level"]
+[node name="NavMesh" type="Navigation2D" parent="Level" groups=[
+"NavMeshParent",
+]]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2( 11, -40 )
